@@ -4,15 +4,15 @@
 <div align="center">
   <!-- PROJECT LOGO -->
   <a href="https://github.com/SenaThenu/readme-forge">
-    <img src="https://github.com/SenaThenu/readme-forge/blob/main/readme-assets/logo.png" alt="Logo" height="100">
+    <img src="https://github.com/SenaThenu/readme-forge/blob/main/src/assets/logo.svg" alt="Repo Logo" height="100">
   </a>
 
   <!-- PROJECT TITLE -->"
-  <h3 align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel and places/Rocket.png" alt="Rocket" width="25" height="25" /> project_title <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel and places/Rocket.png" alt="Rocket" width="25" height="25" /></h3>
+  <h3 align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel and places/Rocket.png" alt="Rocket" width="25" height="25" /> Readme Forge <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel and places/Rocket.png" alt="Rocket" width="25" height="25" /></h3>
 
   <!-- Project Description -->
   <p align="center">
-    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkles.png" alt="Sparkles" width="25" height="25" /> project_description <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkles.png" alt="Sparkles" width="25" height="25" />
+    <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkles.png" alt="Sparkles" width="25" height="25" /> Effortless READMEs, Lightning Fast! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkles.png" alt="Sparkles" width="25" height="25" />
     <br>
     <a href="https://github.com/SenaThenu/readme-forge/issues">Report a Bug <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Animals/Bug.png" alt="Bug" width="20" height="20" /> or Request a New Feature<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel and places/Star.png" alt="Star" width="20" height="20" /></a>
   </p>
@@ -40,48 +40,31 @@
 - [Project Preview 📖](#project-preview-)
 - [Features 🌟](#features-)
 - [Built With 🔧](#built-with-)
-- [Getting Started 🌱](#getting-started-)
-  - [Prerequisites 📋](#prerequisites-)
-  - [Installation 🛠️](#installation-️)
-- [How to Use 🚀](#how-to-use-)
 - [Contributing 👋](#contributing-)
 - [Current Contributors 🧙‍♂️](#current-contributors-️)
-- [Acknowledgments 💝](#acknowledgments-)
 
 
 <!-- PROJECT PREVIEW -->
 
 ## Project Preview 📖
 
-Replace `readme-forge`
+This is still work-in-progress!
 
 <p align="right"><a href="#readme-top">Jump to Top<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand gestures/Index Pointing Up.png" alt="Pointing Up" width="25" height="25" /></a></p>
 
 ## Features 🌟
 
-- feature 1
+*These are proposed features that are currently under development...*
+- A component-based README.md generator
+- Form UI to customize components (instead of having to deal with markdown directly)
+- Collection of beautiful built-in templates with animated emojis
+- Custom templates builder to build and user your own templates
 
 <p align="right"><a href="#readme-top">Jump to Top<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand gestures/Index Pointing Up.png" alt="Pointing Up" width="25" height="25" /></a></p>
 
 ## Built With 🔧
 
-<img src="https://img.shields.io/badge/Python-3570a0?style=for-the-badge&logo=python&logoColor=ffffff" alt="Python"> <img src="https://img.shields.io/badge/JavaScript-f7df1d?style=for-the-badge&logo=javascript&logoColor=000" alt="JavaScript"> <img src="https://img.shields.io/badge/Express.js-c3c3c3?style=for-the-badge&logo=express&logoColor=000" alt="Express.js"> <img src="https://img.shields.io/badge/Node.js-3c873a?style=for-the-badge&logo=nodedotjs&logoColor=fff" alt="Node.js"> <img src="https://img.shields.io/badge/SCSS-cd6799?style=for-the-badge&logo=sass&logoColor=fff" alt="SCSS"> <img src="https://img.shields.io/badge/HTML-fc4a0b?style=for-the-badge&logo=html5&logoColor=fff" alt="HTML"> <img src="https://img.shields.io/badge/CSS-1572b6?style=for-the-badge&logo=css3&logoColor=fff" alt="HTML">
-
-<p align="right"><a href="#readme-top">Jump to Top<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand gestures/Index Pointing Up.png" alt="Pointing Up" width="25" height="25" /></a></p>
-
-<!-- GETTING STARTED -->
-
-## Getting Started 🌱
-
-### Prerequisites 📋
-
-### Installation 🛠️
-
-<p align="right"><a href="#readme-top">Jump to Top<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand gestures/Index Pointing Up.png" alt="Pointing Up" width="25" height="25" /></a></p>
-
-<!-- USAGE EXAMPLES -->
-
-## How to Use 🚀
+ <img src="https://img.shields.io/badge/React-087ea4?style=for-the-badge&logo=react&logoColor=fff" alt="Node.js"> <img src="https://img.shields.io/badge/TypeScript-3178c6?style=for-the-badge&logo=typescript&logoColor=fff" alt="TypeScript"> <img src="https://img.shields.io/badge/SCSS-cd6799?style=for-the-badge&logo=sass&logoColor=fff" alt="SCSS"> <img src="https://img.shields.io/badge/Vite-9575cd?style=for-the-badge&logo=vite&logoColor=fff" alt="Node.js"> <img src="https://img.shields.io/badge/Node.js-3c873a?style=for-the-badge&logo=nodedotjs&logoColor=fff" alt="Node.js">
 
 <p align="right"><a href="#readme-top">Jump to Top<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand gestures/Index Pointing Up.png" alt="Pointing Up" width="25" height="25" /></a></p>
 
@@ -103,14 +86,16 @@ _Let's show the power <img src="https://raw.githubusercontent.com/Tarikul-Islam-
 
 <br>
 
--   Ways to Contribute <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Smiling Face with Open Hands.png" alt="Hugging Face" width="25" height="25" />
+- Ways to Contribute <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Smiling Face with Open Hands.png" alt="Hugging Face" width="25" height="25" />
     -   Introduce **_Awesome Features_**
     -   [Open Issues](https://github.com/SenaThenu/snake/issues)
     -   [Update Readme](https://github.com/SenaThenu/snake/blob/main/README.md)
     -   [Make the Logo and the Assets Cooler](https://github.com/SenaThenu/snake/tree/main/slides) 
 
-- What to Contribute <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Thinking%20Face.png" alt="Thinking Face" width="25" height="25" />
-  - You can find some proposed features in the [Projects](https://github.com/SenaThenu/snake/projects) pane of this repository! (your proposals are welcome)
+- How to set up the local dev environment? <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Thinking%20Face.png" alt="Thinking Face" width="25" height="25" />
+  - Simple, make sure you have `Node.js` installed.
+  - Go to the root directory and run `npm i` to install all the necessarry packages.
+  - Then, `npm run dev` to kickstart the local development server.
 
 <p align="right"><a href="#readme-top">Jump to Top<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand gestures/Index Pointing Up.png" alt="Pointing Up" width="25" height="25" /></a></p>
 
@@ -126,11 +111,5 @@ _Let's show the power <img src="https://raw.githubusercontent.com/Tarikul-Islam-
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-<!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments 💝
-
--   []()
 
 <p align="right"><a href="#readme-top">Jump to Top<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand gestures/Index Pointing Up.png" alt="Pointing Up" width="25" height="25" /></a></p>
