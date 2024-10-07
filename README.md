@@ -7,7 +7,7 @@
     <img src="https://github.com/SenaThenu/readme-forge/blob/main/src/assets/logo.svg" alt="Repo Logo" height="100">
   </a>
 
-  <!-- PROJECT TITLE -->"
+  <!-- PROJECT TITLE -->
   <h3 align="center"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel and places/Rocket.png" alt="Rocket" width="25" height="25" /> Readme Forge <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel and places/Rocket.png" alt="Rocket" width="25" height="25" /></h3>
 
   <!-- Project Description -->
@@ -94,7 +94,7 @@ _Let's show the power <img src="https://raw.githubusercontent.com/Tarikul-Islam-
 
 - How to set up the local dev environment? <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Thinking%20Face.png" alt="Thinking Face" width="25" height="25" />
   - Simple, make sure you have `Node.js` installed.
-  - Go to the root directory and run `npm i` to install all the necessarry packages.
+  - Go to the root directory and run `npm i` to install all the necessary packages.
   - Then, `npm run dev` to kickstart the local development server.
 
 <p align="right"><a href="#readme-top">Jump to Top<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand gestures/Index Pointing Up.png" alt="Pointing Up" width="25" height="25" /></a></p>
