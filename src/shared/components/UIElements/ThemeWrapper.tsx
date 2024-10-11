@@ -73,10 +73,10 @@ interface ThemeWrapperProps {
 }
 
 export default function ThemeWrapper({ children }: ThemeWrapperProps) {
-    const { mode } = useColorScheme(); // Get the current color scheme mode (light or dark)
+    const { mode } = useColorScheme();
 
     return (
-        <ThemeProvider theme={theme} defaultMode={mode ?? "system"}>
+        <ThemeProvider theme={theme} defaultMode={mode ?? "dark"}>
             <CssBaseline />
             {children}
         </ThemeProvider>
