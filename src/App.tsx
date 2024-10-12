@@ -2,6 +2,7 @@ import { useColorScheme } from "@mui/material";
 
 // components
 import StyledButton from "./shared/components/UIElements/StyledButton";
+import Block from "./forge/components/Block";
 
 export default function App() {
     const { mode, setMode } = useColorScheme();
@@ -24,6 +25,7 @@ export default function App() {
                 <StyledButton variant="contained" onClick={themeToggler}>
                     Toggle Theme
                 </StyledButton>
+                <Block />
             </div>
             <div className="forge-area">
                 <div className="left-pane">
