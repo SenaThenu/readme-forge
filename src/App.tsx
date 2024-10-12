@@ -25,11 +25,12 @@ export default function App() {
                 <StyledButton variant="contained" onClick={themeToggler}>
                     Toggle Theme
                 </StyledButton>
-                <Block />
             </div>
             <div className="forge-area">
                 <div className="left-pane">
-                    <div className="selected-components"></div>
+                    <div className="selected-components">
+                        <Block>Senash</Block>
+                    </div>
                     <div className="available-components"></div>
                 </div>
                 <div className="component-form"></div>

@@ -2,7 +2,7 @@ import Card, { CardProps } from "@mui/material/Card";
 import CardContent, { CardContentProps } from "@mui/material/CardContent";
 import { styled } from "@mui/material/styles";
 
-export default function Block() {
+export default function Block(props: CardProps) {
     const StyledCard = styled(Card)<CardProps>(({ theme }) => ({
         width: "100%",
         borderRadius: "25px",
@@ -19,8 +19,8 @@ export default function Block() {
     }));
 
     return (
-        <StyledCard>
-            <StyledCardContent>Lizard</StyledCardContent>
+        <StyledCard onClick={props.onClick}>
+            <StyledCardContent>{props.children}</StyledCardContent>
         </StyledCard>
     );
 }
