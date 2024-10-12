@@ -12,7 +12,7 @@ export default function Block() {
     }));
 
     const StyledCardContent = styled(CardContent)<CardContentProps>(() => ({
-        fontSize: "1.2rem",
+        fontSize: "1.1rem",
         fontWeight: 500,
         textAlign: "left",
         padding: "5px 10px !important",
