@@ -22,6 +22,7 @@ const theme = createTheme({
             palette: {
                 text: {
                     primary: "#e0f4ff",
+                    secondary: "#000304",
                 },
                 background: {
                     default: "#041020",
@@ -44,6 +45,7 @@ const theme = createTheme({
             palette: {
                 text: {
                     primary: "#000304",
+                    secondary: "#e0f4ff",
                 },
                 background: {
                     default: "#dfebfb",
@@ -52,7 +54,7 @@ const theme = createTheme({
                     main: "#04448e",
                 },
                 secondary: {
-                    main: "#233f53",
+                    main: "#8daec6",
                 },
                 accent: {
                     main: "#49a8db",
