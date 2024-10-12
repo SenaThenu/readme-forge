@@ -3,6 +3,7 @@ import { useColorScheme } from "@mui/material";
 // components
 import StyledButton from "./shared/components/UIElements/StyledButton";
 import Block from "./forge/components/Block";
+import ExportButton from "./forge/components/ExportButton";
 
 export default function App() {
     const { mode, setMode } = useColorScheme();
@@ -30,6 +31,7 @@ export default function App() {
                 <div className="left-pane">
                     <div className="selected-components">
                         <Block>Senash</Block>
+                        <ExportButton />
                     </div>
                     <div className="available-components"></div>
                 </div>
