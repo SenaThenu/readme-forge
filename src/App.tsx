@@ -4,6 +4,7 @@ import { useColorScheme } from "@mui/material";
 import StyledButton from "./shared/components/UIElements/StyledButton";
 import Block from "./forge/components/Block";
 import ExportButton from "./forge/components/ExportButton";
+import SearchField from "./forge/components/SearchField";
 
 export default function App() {
     const { mode, setMode } = useColorScheme();
@@ -30,7 +31,10 @@ export default function App() {
             <div className="forge-area">
                 <div className="left-pane">
                     <div className="selected-components">
-                        <Block>Senash</Block>
+                        <Block blockDescription="Name of a random person!">
+                            Senash
+                        </Block>
+                        <SearchField />
                         <ExportButton />
                     </div>
                     <div className="available-components"></div>
