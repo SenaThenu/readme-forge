@@ -1,5 +1,5 @@
 import Button, { ButtonProps } from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
+import { styled, alpha } from "@mui/material/styles";
 
 function getCustomButton(iconOnly: boolean) {
     return styled(Button)<ButtonProps>(({ theme }) => ({
@@ -10,10 +10,12 @@ function getCustomButton(iconOnly: boolean) {
         boxShadow: "none !important",
         textTransform: "none",
         fontSize: "1rem",
-        color:
+        backgroundColor:
             theme.palette.mode === "dark"
-                ? theme.palette.text.primary // Dark theme color
-                : theme.palette.text.secondary, // Light theme color
+                ? alpha(theme.palette.primary.main, 0.8)
+                : alpha(theme.palette.accent.main, 0.7),
+        backdropFilter: "blur(5px)", // glass effect
+        color: theme.palette.text.primary,
         "& .MuiButton-startIcon": {
             margin: iconOnly ? 0 : undefined,
             marginRight: iconOnly ? 0 : "5px",

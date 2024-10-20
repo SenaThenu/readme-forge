@@ -1,32 +1,20 @@
-import { useColorScheme } from "@mui/material";
-
 // components
-import StyledButton from "./shared/components/UIElements/StyledButton";
+import NavLogo from "./shared/components/Navigation/NavLogo";
+import ToggleTheme from "./shared/components/Navigation/ToggleTheme";
 import Block from "./forge/components/Block";
 import ExportButton from "./forge/components/ExportButton";
 import SearchField from "./forge/components/SearchField";
 
+// styles
+// import "./styles/global.scss";
+
 export default function App() {
-    const { mode, setMode } = useColorScheme();
-
-    if (!mode) {
-        return null;
-    }
-
-    const themeToggler = () => {
-        if (mode == "dark") {
-            setMode("light");
-        } else {
-            setMode("dark");
-        }
-    };
-
     return (
         <div id="app">
             <div className="nav-bar">
-                <StyledButton variant="contained" onClick={themeToggler}>
-                    Toggle Theme
-                </StyledButton>
+                <ToggleTheme />
+                <NavLogo includeTitle />
+                <ExportButton />
             </div>
             <div className="forge-area">
                 <div className="left-pane">
@@ -35,7 +23,6 @@ export default function App() {
                             Senash
                         </Block>
                         <SearchField />
-                        <ExportButton />
                     </div>
                     <div className="available-components"></div>
                 </div>
