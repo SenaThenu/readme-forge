@@ -1,0 +1,28 @@
+.nav-logo-container {
+  width: fit-content;
+  max-width: 300px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.nav-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 15px;
+
+  height: 65px;
+  border-radius: 50px;
+  backdrop-filter: blur(5px);
+
+  h1 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  img {
+    height: 100%;
+  }
+}
