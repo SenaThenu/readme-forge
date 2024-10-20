@@ -24,6 +24,7 @@ export default function NavLogo(props: NavLogoProps) {
                                 ? alpha(theme.palette.primary.main, 0.4)
                                 : alpha(theme.palette.accent.main, 0.4),
                         color: theme.palette.text.primary,
+                        padding: props.includeTitle ? "3px 20px" : "3px 10px",
                     }}>
                     <img
                         src={logo}
