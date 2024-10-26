@@ -21,10 +21,10 @@ export default function NavLogo(props: NavLogoProps) {
                     style={{
                         backgroundColor:
                             theme.palette.mode === "dark"
-                                ? alpha(theme.palette.primary.main, 0.4)
-                                : alpha(theme.palette.accent.main, 0.4),
+                                ? alpha(theme.palette.primary.main, 0.6)
+                                : alpha(theme.palette.accent.main, 0.5),
                         color: theme.palette.text.primary,
-                        padding: props.includeTitle ? "3px 20px" : "3px 10px",
+                        padding: props.includeTitle ? "1px 20px" : "5px",
                     }}>
                     <img
                         src={logo}

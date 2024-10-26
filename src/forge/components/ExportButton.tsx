@@ -5,6 +5,7 @@ import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
 import StyledButton from "../../shared/components/UIElements/StyledButton";
 
 interface ExportButtonProps {
+    includeText?: boolean;
     onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -14,7 +15,7 @@ export default function ExportButton(props: ExportButtonProps) {
             onClick={props.onClick}
             startIcon={<FileDownloadRoundedIcon />}
             variant="contained">
-            Export
+            {props.includeText && "Export"}
         </StyledButton>
     );
 }

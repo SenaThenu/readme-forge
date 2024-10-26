@@ -1,0 +1,56 @@
+@mixin scroll-enabled() {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#forge-root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  row-gap: 15px;
+  flex-grow: 1;
+}
+
+.forge-area {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  justify-content: space-between;
+  column-gap: 15px;
+
+  @include scroll-enabled()
+}
+
+.components-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-direction: column;
+  row-gap: 10px;
+  min-width: 250px;
+
+  padding-right: 5px;
+
+  @include scroll-enabled();
+
+  .selected-components, .available-components {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    row-gap: 5px;
+  }
+}
+
+.component-form {
+  width: 100%;
+  @include scroll-enabled()
+}
+
+.markdown-preview {
+  width: 100%;
+  @include scroll-enabled()
+}
