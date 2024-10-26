@@ -1,21 +1,23 @@
 // components
-import NavLogo from "./shared/components/Navigation/NavLogo";
-import ToggleTheme from "./shared/components/Navigation/ToggleTheme";
+import NavLayout from "./shared/components/Navigation/NavLayout";
 import Block from "./forge/components/Block";
-import ExportButton from "./forge/components/ExportButton";
 import SearchField from "./forge/components/SearchField";
 
 // styles
-// import "./styles/global.scss";
+import "./styles/global.scss";
 
 export default function App() {
     return (
         <div id="app">
-            <div className="nav-bar">
-                <ToggleTheme />
-                <NavLogo includeTitle />
-                <ExportButton />
-            </div>
+            <NavLayout
+                navBarMode="forge"
+                currentNavLinkText="Forge"
+                navLinks={[
+                    { text: "Home", link: "/" },
+                    { text: "Templates", link: "/" },
+                    { text: "Forge", link: "/" },
+                ]}
+            />
             <div className="forge-area">
                 <div className="left-pane">
                     <div className="selected-components">

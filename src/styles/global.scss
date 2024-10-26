@@ -1,3 +1,7 @@
+#root {
+  width: 100%;
+}
+
 #app {
   display: flex;
   flex-direction: column;
@@ -5,8 +9,7 @@
   justify-content: center;
   row-gap: 15px;
 
-  width: 100%;
-  margin: 25px 30px;
+  margin: 15px 20px;
 }
 
 .forge-area {

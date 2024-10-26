@@ -4,11 +4,12 @@ import { styled, alpha } from "@mui/material/styles";
 function getCustomButton(iconOnly: boolean) {
     return styled(Button)<ButtonProps>(({ theme }) => ({
         padding: iconOnly ? 0 : undefined,
-        height: "45px",
-        minWidth: iconOnly ? "45px" : undefined,
-        borderRadius: "25px",
+        height: "50px",
+        minWidth: iconOnly ? "50px" : undefined,
+        borderRadius: "50px",
         boxShadow: "none !important",
         textTransform: "none",
+        transition: "none",
         fontSize: "1rem",
         backgroundColor:
             theme.palette.mode === "dark"
