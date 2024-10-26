@@ -24,6 +24,7 @@ export default function SearchField() {
                 borderRadius: "25px",
                 backgroundColor: theme.palette.secondary.main,
                 padding: "5px 10px",
+                width: "100%",
             }}>
             <TextField
                 id="standard-basic"
