@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // material ui components
 import Divider from "@mui/material/Divider";
 
@@ -5,11 +7,15 @@ import Divider from "@mui/material/Divider";
 import NavLayout from "../../shared/components/Navigation/NavLayout";
 import Block from "../components/Block";
 import SearchField from "../components/SearchField";
+import MarkdownEditor from "../components/MarkdownEditor";
+import MarkdownPreview from "../components/MarkdownPreview";
 
 // styles
 import "./Forge.scss";
 
 export default function Forge() {
+    const [markdown, setMarkdown] = useState("");
+
     return (
         <div id="forge-root">
             <NavLayout
@@ -91,8 +97,15 @@ export default function Forge() {
                         </Block>
                     </div>
                 </div>
-                <div className="component-form"></div>
-                <div className="markdown-preview"></div>
+                <div className="component-form">
+                    <MarkdownEditor
+                        markdownInput={markdown}
+                        handleChange={(value) => setMarkdown(value)}
+                    />
+                </div>
+                <div className="markdown-preview">
+                    <MarkdownPreview markdownInput={markdown} />
+                </div>
             </div>
         </div>
     );

@@ -1,0 +1,30 @@
+.editor {
+  height: 100%;
+  width: 100%;
+
+  &.dark {
+    .cm-editor {
+      background-color: #0d1b2e;
+    }
+  }
+
+  &.light {
+    .cm-editor {
+      background-color: #d9e5ed;
+    }
+  }
+
+  .cm-editor {
+    height: 100%;
+    border-radius: 15px;
+    outline: none;
+    
+    .cm-scroller {
+      border-radius: 15px 0 0 15px;
+    }
+
+    .cm-activeLine {
+      border-radius: 0 15px 15px 0;
+    }
+  }
+}
