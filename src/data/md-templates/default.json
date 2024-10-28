@@ -1,0 +1,6 @@
+{
+    "displayName": "Default Template",
+    "description": "The default README template used by Readme Forge",
+    "usedBlocks": ["basic/title"],
+    "availableBlockCategories": ["basic", "profile"]
+}

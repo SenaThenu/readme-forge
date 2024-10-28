@@ -24,10 +24,10 @@
   @include scroll-enabled()
 }
 
-.components-container {
+.blocks-container {
   display: flex;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: center;
   flex-direction: column;
   row-gap: 10px;
   min-width: 250px;
@@ -36,12 +36,13 @@
 
   @include scroll-enabled();
 
-  .selected-components, .available-components {
+  .used-blocks, .available-blocks {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    row-gap: 5px;
+    row-gap: 10px;
   }
 }
 

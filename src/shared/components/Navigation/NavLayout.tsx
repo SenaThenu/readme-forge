@@ -21,12 +21,15 @@ interface NavLayoutProps {
     currentNavLinkText?: string;
     navLinks?: { text: string; link: string }[];
     drawerComponents?: ReactNode;
+    mobileWidthBreakpoint?: number;
 }
 
 export default function NavLayout(props: NavLayoutProps) {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const theme = useTheme();
-    const isMobile = useMediaQuery("(max-width:600px)");
+    const isMobile = useMediaQuery(
+        `(max-width:${props.mobileWidthBreakpoint || 600}px)`
+    );
 
     const handleDrawerToggle = () => {
         setDrawerOpen((prev) => !prev);

@@ -21,7 +21,7 @@ export default function SearchField() {
         <div
             className="search-field-container"
             style={{
-                borderRadius: "25px",
+                borderRadius: "15px",
                 backgroundColor: theme.palette.secondary.main,
                 padding: "5px 10px",
                 width: "100%",
@@ -35,8 +35,8 @@ export default function SearchField() {
                 fullWidth
                 sx={{
                     "& .MuiInputBase-input": {
-                        fontSize: "1.1rem",
-                        fontWeight: "500",
+                        fontSize: "1rem",
+                        fontWeight: "400",
                     },
                 }}
                 slotProps={{

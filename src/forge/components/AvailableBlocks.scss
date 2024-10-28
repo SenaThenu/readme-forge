@@ -1,0 +1,12 @@
+.block-category-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  row-gap: 5px;
+}
+
+.block-category-name {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
