@@ -3,34 +3,40 @@
     "displayName": "Basic",
     "blocks": [
         {
-            "name": "Title",
+            "name": "title",
+            "displayName": "Title",
             "description": "The title of the README.md",
             "markdown": "# Project Name"
         },
         {
-            "name": "Description",
+            "name": "description",
+            "displayName": "Description",
             "description": "A brief description of the project",
-            "markdown": "## Description\nThis project does amazing things!"
+            "markdown": "A short project description goes here."
         },
         {
-            "name": "Installation",
-            "description": "Installation instructions",
-            "markdown": "## Installation\nTo install the project, run:\n\n```bash\nnpm install\n```"
+            "name": "installation",
+            "displayName": "Installation",
+            "description": "Instructions to install the project",
+            "markdown": "```bash\nnpm install\n```"
         },
         {
-            "name": "Usage",
-            "description": "Instructions on how to use the project",
-            "markdown": "## Usage\nTo run the project, use:\n\n```bash\nnpm start\n```"
+            "name": "usage",
+            "displayName": "Usage",
+            "description": "How to use the project",
+            "markdown": "```bash\nnpm start\n```"
         },
         {
-            "name": "Contributing",
+            "name": "contributing",
+            "displayName": "Contributing",
             "description": "Guidelines for contributing to the project",
-            "markdown": "## Contributing\nPlease read the [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests."
+            "markdown": "Contributions are welcome! Please open an issue or submit a pull request."
         },
         {
-            "name": "License",
-            "description": "Project license information",
-            "markdown": "## License\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details."
+            "name": "license",
+            "displayName": "License",
+            "description": "The license for the project",
+            "markdown": "This project is licensed under the MIT License."
         }
     ]
 }

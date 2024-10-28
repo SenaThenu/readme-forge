@@ -6,7 +6,7 @@ import "./styles/global.scss";
 export default function App() {
     return (
         <div id="app">
-            <Forge />
+            <Forge templateName="default" />
         </div>
     );
 }

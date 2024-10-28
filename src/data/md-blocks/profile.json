@@ -1,0 +1,42 @@
+{
+    "name": "profile",
+    "displayName": "Profile",
+    "blocks": [
+        {
+            "name": "intro",
+            "displayName": "Introduction",
+            "description": "A brief introduction about yourself",
+            "markdown": "# Hi, I'm [Your Name] 👋\nI'm a passionate developer with a focus on [Your Specializations]."
+        },
+        {
+            "name": "skills",
+            "displayName": "Skills",
+            "description": "A list of your key skills",
+            "markdown": "### Skills\n- JavaScript\n- React\n- Node.js\n- CSS/SCSS\n- TypeScript"
+        },
+        {
+            "name": "projects",
+            "displayName": "Projects",
+            "description": "Showcase some of your projects",
+            "markdown": "### Projects\n- **Project 1** - [Link to Project 1](#)\n- **Project 2** - [Link to Project 2](#)"
+        },
+        {
+            "name": "experience",
+            "displayName": "Experience",
+            "description": "Your professional experience or previous work",
+            "markdown": "### Experience\n- **Company Name** - Software Developer (YYYY-MM to YYYY-MM)\n  - Developed and maintained features for [Product/Platform]."
+        },
+        {
+            "name": "education",
+            "displayName": "Education",
+            "description": "Your educational background",
+            "markdown": "### Education\n- **Degree**, [University/Institution Name], (YYYY-MM to YYYY-MM)"
+        },
+        {
+            "name": "contact",
+            "displayName": "Contact",
+            "description": "Contact information and links to your social profiles",
+            "markdown": "### Contact\n- Email: [your-email@example.com](mailto:your-email@example.com)\n- LinkedIn: [LinkedIn Profile](#)\n- GitHub: [GitHub Profile](#)"
+        }
+    ]
+}

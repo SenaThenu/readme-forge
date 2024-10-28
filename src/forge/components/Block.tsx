@@ -18,8 +18,8 @@ const StyledCard = styled(Card)<CardProps>(({ theme }) => ({
 }));
 
 const StyledCardContent = styled(CardContent)<CardContentProps>(() => ({
-    fontSize: "1.1rem",
-    fontWeight: 500,
+    fontSize: "1rem",
+    fontWeight: 400,
     textAlign: "left",
     padding: "5px 10px !important",
 }));
