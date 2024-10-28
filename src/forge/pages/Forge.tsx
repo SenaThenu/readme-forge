@@ -79,7 +79,7 @@ export default function Forge({ templateName }: ForgeProps) {
             />
             <div className="forge-area">
                 {!isMobile && markdownBlocks}
-                <div className="component-form">
+                <div className="markdown-editor">
                     <MarkdownEditor
                         markdownInput={markdown}
                         handleChange={(value) => setMarkdown(value)}
