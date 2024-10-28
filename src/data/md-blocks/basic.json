@@ -1,0 +1,36 @@
+{
+    "name": "basic",
+    "displayName": "Basic",
+    "blocks": [
+        {
+            "name": "Title",
+            "description": "The title of the README.md",
+            "markdown": "# Project Name"
+        },
+        {
+            "name": "Description",
+            "description": "A brief description of the project",
+            "markdown": "## Description\nThis project does amazing things!"
+        },
+        {
+            "name": "Installation",
+            "description": "Installation instructions",
+            "markdown": "## Installation\nTo install the project, run:\n\n```bash\nnpm install\n```"
+        },
+        {
+            "name": "Usage",
+            "description": "Instructions on how to use the project",
+            "markdown": "## Usage\nTo run the project, use:\n\n```bash\nnpm start\n```"
+        },
+        {
+            "name": "Contributing",
+            "description": "Guidelines for contributing to the project",
+            "markdown": "## Contributing\nPlease read the [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests."
+        },
+        {
+            "name": "License",
+            "description": "Project license information",
+            "markdown": "## License\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details."
+        }
+    ]
+}
