@@ -46,12 +46,16 @@
   }
 }
 
-.component-form {
+.markdown-editor {
   width: 100%;
   @include scroll-enabled()
 }
 
 .markdown-preview {
   width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
   @include scroll-enabled()
 }
