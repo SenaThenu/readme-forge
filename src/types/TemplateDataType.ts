@@ -1,8 +1,8 @@
 interface TemplateDataType {
     name: string;
-    "display-title": string;
-    "used-blocks": string[];
-    "available-block-categories": string[];
+    displayTitle: string;
+    usedBlocks: string[];
+    availableBlockCategories: string[];
 }
 
 export default TemplateDataType
