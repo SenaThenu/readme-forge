@@ -10,8 +10,12 @@ interface BlockProps extends CardProps {
 }
 
 const StyledCard = styled(Card)<CardProps>(({ theme }) => ({
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
     width: "100%",
-    borderRadius: "25px",
+    minHeight: "45px",
+    borderRadius: "15px",
     cursor: "pointer",
     boxShadow: "none",
     backgroundColor: theme.palette.secondary.main,
