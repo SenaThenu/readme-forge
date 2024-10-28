@@ -2,4 +2,31 @@
   code {
     border-radius: 25px !important;
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  th,
+  td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #0163af;
+  }
+
+  th {
+    background-color: #35b7fd82;
+    font-weight: bold;
+  }
+
+  tr:hover {
+    background-color: #066fbb63; /* Highlight on hover */
+  }
+
+  tr:last-child td {
+    border-bottom: none; /* Remove bottom border for the last row */
+  }
 }
