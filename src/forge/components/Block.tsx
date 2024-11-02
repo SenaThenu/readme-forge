@@ -26,6 +26,10 @@ const StyledCardContent = styled(CardContent)<CardContentProps>(() => ({
     fontWeight: 400,
     textAlign: "left",
     padding: "5px 10px !important",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
 }));
 
 export default function Block(props: BlockProps) {
