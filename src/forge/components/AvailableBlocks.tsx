@@ -11,7 +11,7 @@ import Block from "./Block";
 import "./AvailableBlocks.scss";
 
 interface AvailableBlocksProps {
-    blockCategories: string[];
+    blockCategories: string[]; // the names of the block categories available in the template
 }
 
 export default function AvailableBlocks(props: AvailableBlocksProps) {

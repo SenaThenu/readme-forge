@@ -1,0 +1,20 @@
+.sortable-block-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5px;
+}
+
+.drag-handle-container {
+  width: 30px;
+  cursor: grab;
+
+  .block-card {
+    cursor: grab;
+
+    .block-card-content {
+      padding: 2px !important;
+      width: fit-content;
+    }
+  }
+}

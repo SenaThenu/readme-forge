@@ -55,7 +55,9 @@ export default function Forge({ templateName }: ForgeProps) {
                 <>
                     <SearchField />
                     <Divider flexItem />
-                    <div className="used-blocks"></div>
+                    <div className="used-blocks">
+                        <UsedBlocks usedBlockNames={templateData.usedBlocks} />
+                    </div>
                     <Divider flexItem />
                     <div className="available-blocks">
                         <AvailableBlocks
