@@ -19,26 +19,32 @@ interface UsedBlocksProps {
     onBlockSelected: (selectedBlockId: string) => void;
 }
 
-export default function UsedBlocks(props: UsedBlocksProps) {
-    const handleDragEnd = useCallback((event: DragEndEvent) => {
-        const { active, over } = event;
-        if (active.id !== over?.id) {
-            // rearranging the blocks order
-            // if the block is moved away from its initial position
-            let blocksOrder = [...props.usedBlocksList];
+export default function UsedBlocks({
+    usedBlocksList,
+    onBlockOrderChanged,
+    onBlockSelected,
+}: UsedBlocksProps) {
+    const handleDragEnd = useCallback(
+        (event: DragEndEvent) => {
+            const { active, over } = event;
+            if (active.id !== over?.id) {
+                let blocksOrder = [...usedBlocksList];
+                const oldIndex = blocksOrder.findIndex(
+                    (block) => active.id === block.id
+                );
+                const newIndex = blocksOrder.findIndex(
+                    (block) => over!.id === block.id
+                );
 
-            const oldIndex = blocksOrder.findIndex(
-                (block) => active.id === block.id
-            );
-            const newIndex = blocksOrder.findIndex(
-                (block) => over!.id === block.id
-            );
-
-            blocksOrder = arrayMove(blocksOrder, oldIndex, newIndex);
-
-            props.onBlockOrderChanged(blocksOrder);
-        }
-    }, []);
+                // Only update if the order has changed
+                if (oldIndex !== newIndex) {
+                    blocksOrder = arrayMove(blocksOrder, oldIndex, newIndex);
+                    onBlockOrderChanged(blocksOrder);
+                }
+            }
+        },
+        [usedBlocksList, onBlockOrderChanged]
+    );
 
     return (
         <DndContext
@@ -46,14 +52,14 @@ export default function UsedBlocks(props: UsedBlocksProps) {
             onDragEnd={handleDragEnd}
             modifiers={[restrictToVerticalAxis]}>
             <SortableContext
-                items={props.usedBlocksList.map((block) => block.id)}
+                items={usedBlocksList.map((block) => block.id)}
                 strategy={verticalListSortingStrategy}>
-                {props.usedBlocksList.map((block) => (
+                {usedBlocksList.map((block) => (
                     <SortableBlock
                         key={block.id}
                         id={block.id}
                         blockDescription={block.description}
-                        onBlockSelected={props.onBlockSelected}>
+                        onBlockSelected={onBlockSelected}>
                         {block.displayName}
                     </SortableBlock>
                 ))}

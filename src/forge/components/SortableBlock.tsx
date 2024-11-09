@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { useSortable, defaultAnimateLayoutChanges } from "@dnd-kit/sortable";
+import { ReactNode, memo } from "react";
+import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // material ui components
@@ -18,11 +18,10 @@ interface SortableBlockProps {
     children: ReactNode;
 }
 
-export default function SortableBlock(props: SortableBlockProps) {
+const SortableBlock = (props: SortableBlockProps) => {
     const { attributes, listeners, setNodeRef, transform, transition } =
         useSortable({
             id: props.id,
-            animateLayoutChanges: defaultAnimateLayoutChanges,
         });
 
     const style = {
@@ -51,4 +50,6 @@ export default function SortableBlock(props: SortableBlockProps) {
             </Block>
         </div>
     );
-}
+};
+
+export default SortableBlock;

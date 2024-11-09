@@ -47,7 +47,9 @@ export default function Forge({ templateName }: ForgeProps) {
             const fetchedTemplateData = await fetchTemplateData(templateName);
             if (fetchedTemplateData !== null) {
                 setTemplateData(fetchedTemplateData);
-                setUsedBlocksList(fetchedTemplateData.usedBlocks);
+                if (!usedBlocksList.length && templateData) {
+                    setUsedBlocksList(fetchedTemplateData.usedBlocks);
+                }
             } else {
                 console.log(
                     `Error fetching the template data from ${templateName}`
@@ -88,19 +90,8 @@ export default function Forge({ templateName }: ForgeProps) {
 
     const onUsedBlocksOrderChanged = useCallback(
         (newOrder: BlockDataType[]) => {
+            console.log(newOrder);
             setUsedBlocksList(newOrder);
-            // if (templateData) {
-            //     setTemplateData((prev) => {
-            //         if (prev) {
-            //             return {
-            //                 ...prev,
-            //                 usedBlocks: newOrder,
-            //             };
-            //         } else {
-            //             return null;
-            //         }
-            //     });
-            // }
         },
         []
     );
@@ -110,20 +101,11 @@ export default function Forge({ templateName }: ForgeProps) {
     }, []);
 
     const onAddBlock = useCallback((newBlock: BlockDataType) => {
-        console.log(newBlock);
         setUsedBlocksList((prev) => [...prev, newBlock]);
-        // if (templateData) {
-        //     setTemplateData((prev) => {
-        //         if (prev) {
-        //             return {
-        //                 ...prev,
-        //                 usedBlocks: [...prev.usedBlocks, newBlock],
-        //             };
-        //         } else {
-        //             return null;
-        //         }
-        //     });
-        // }
+        setTemplateData(
+            (prev) =>
+                prev && { ...prev, usedBlocks: [...prev.usedBlocks, newBlock] }
+        );
     }, []);
 
     const markdownBlocks = (

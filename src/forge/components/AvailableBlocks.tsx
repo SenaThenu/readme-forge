@@ -66,8 +66,8 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
                         key={index}
                         onClick={(e) => {
                             e.preventDefault();
-                            block.id = uuidv4();
-                            props.onAddBlock(block);
+                            const newBlock = { ...block, id: uuidv4() }; // duplicate the block
+                            props.onAddBlock(newBlock);
                         }}>
                         {block.displayName}
                     </Block>
