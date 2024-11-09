@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useCallback } from "react";
 import { DragEndEvent, DndContext, closestCenter } from "@dnd-kit/core";
 import {
     arrayMove,
@@ -6,7 +6,6 @@ import {
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
-import { v4 as uuidv4 } from "uuid";
 
 // types
 import BlockDataType from "../../types/BlockDataType";
@@ -14,61 +13,32 @@ import BlockDataType from "../../types/BlockDataType";
 // components
 import SortableBlock from "./SortableBlock";
 
-interface UsedBlockDataType extends BlockDataType {
-    id: string;
-}
 interface UsedBlocksProps {
-    usedBlockNames: string[]; // names of the used blocks (in the format: category/name)
+    usedBlocksList: BlockDataType[];
+    onBlockOrderChanged: (newBlockOrder: BlockDataType[]) => void;
+    onBlockSelected: (selectedBlockId: string) => void;
 }
 
 export default function UsedBlocks(props: UsedBlocksProps) {
-    const [usedBlocksList, setUsedBlocksList] = useState<UsedBlockDataType[]>(
-        []
-    );
-    useEffect(() => {
-        const fetchBlockCatData = async () => {
-            const loadedBlocks: UsedBlockDataType[] = [];
-
-            for (let blockName of props.usedBlockNames) {
-                const [category, name] = blockName.split("/");
-
-                try {
-                    const jsonData = await import(
-                        `../../data/md-blocks/${category}.json`
-                    );
-
-                    const blockData = jsonData.default.blocks.find(
-                        (block: BlockDataType) => block.name === name
-                    ) as UsedBlockDataType;
-
-                    blockData["id"] = uuidv4();
-
-                    loadedBlocks.push(blockData);
-                } catch (error) {
-                    console.error("Error loading JSON file:", error);
-                }
-            }
-
-            setUsedBlocksList(loadedBlocks);
-        };
-
-        fetchBlockCatData();
-    }, [props.usedBlockNames]);
-
-    const handleDragEnd = (event: DragEndEvent) => {
+    const handleDragEnd = useCallback((event: DragEndEvent) => {
         const { active, over } = event;
         if (active.id !== over?.id) {
-            setUsedBlocksList((blocksList) => {
-                const oldIndex = blocksList.findIndex(
-                    (block) => active.id === block.id
-                );
-                const newIndex = blocksList.findIndex(
-                    (block) => over!.id === block.id
-                );
-                return arrayMove(blocksList, oldIndex, newIndex);
-            });
+            // rearranging the blocks order
+            // if the block is moved away from its initial position
+            let blocksOrder = [...props.usedBlocksList];
+
+            const oldIndex = blocksOrder.findIndex(
+                (block) => active.id === block.id
+            );
+            const newIndex = blocksOrder.findIndex(
+                (block) => over!.id === block.id
+            );
+
+            blocksOrder = arrayMove(blocksOrder, oldIndex, newIndex);
+
+            props.onBlockOrderChanged(blocksOrder);
         }
-    };
+    }, []);
 
     return (
         <DndContext
@@ -76,13 +46,14 @@ export default function UsedBlocks(props: UsedBlocksProps) {
             onDragEnd={handleDragEnd}
             modifiers={[restrictToVerticalAxis]}>
             <SortableContext
-                items={usedBlocksList}
+                items={props.usedBlocksList.map((block) => block.id)}
                 strategy={verticalListSortingStrategy}>
-                {usedBlocksList.map((block) => (
+                {props.usedBlocksList.map((block) => (
                     <SortableBlock
                         key={block.id}
                         id={block.id}
-                        blockDescription={block.description}>
+                        blockDescription={block.description}
+                        onBlockSelected={props.onBlockSelected}>
                         {block.displayName}
                     </SortableBlock>
                 ))}

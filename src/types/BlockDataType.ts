@@ -1,4 +1,5 @@
 interface BlockDataType {
+    id: string;
     name: string;
     displayName: string;
     description: string;

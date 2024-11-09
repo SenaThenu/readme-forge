@@ -1,6 +1,21 @@
 {
     "displayName": "Default Template",
     "description": "The default README template used by Readme Forge",
-    "usedBlocks": ["basic/title", "basic/description"],
+    "usedBlocks": [
+        {
+            "id": "af7c1fe6-d669-414e-b066-e9733f0de7a8",
+            "name": "title",
+            "displayName": "Title",
+            "description": "The title of the README.md",
+            "markdown": "# Project Name"
+        },
+        {
+            "id": "08c71152-c552-42e7-b094-f510ff44e9cb",
+            "name": "description",
+            "displayName": "Description",
+            "description": "A brief description of the project",
+            "markdown": "A short project description goes here."
+        }
+    ],
     "availableBlockCategories": ["basic", "profile"]
 }

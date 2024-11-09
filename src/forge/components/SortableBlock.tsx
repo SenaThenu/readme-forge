@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useSortable } from "@dnd-kit/sortable";
+import { useSortable, defaultAnimateLayoutChanges } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // material ui components
@@ -14,12 +14,16 @@ import "./SortableBlock.scss";
 interface SortableBlockProps {
     id: string;
     blockDescription: string;
+    onBlockSelected: (selectedBlockId: string) => void;
     children: ReactNode;
 }
 
 export default function SortableBlock(props: SortableBlockProps) {
     const { attributes, listeners, setNodeRef, transform, transition } =
-        useSortable({ id: props.id });
+        useSortable({
+            id: props.id,
+            animateLayoutChanges: defaultAnimateLayoutChanges,
+        });
 
     const style = {
         transform: CSS.Transform.toString(transform),
@@ -37,7 +41,12 @@ export default function SortableBlock(props: SortableBlockProps) {
                     <DragIndicatorRoundedIcon />
                 </Block>
             </div>
-            <Block blockDescription={props.blockDescription}>
+            <Block
+                blockDescription={props.blockDescription}
+                onClick={(e) => {
+                    e.preventDefault();
+                    props.onBlockSelected(props.id);
+                }}>
                 {props.children}
             </Block>
         </div>

@@ -1,7 +1,7 @@
 // types
 import TemplateDataType from "../../types/TemplateDataType";
 
-export default async function fetchBlockData(templateName: string) {
+export default async function fetchTemplateData(templateName: string) {
     let templateData: TemplateDataType | null = null;
 
     try {

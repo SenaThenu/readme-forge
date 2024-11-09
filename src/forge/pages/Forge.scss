@@ -21,7 +21,7 @@
   justify-content: space-between;
   column-gap: 15px;
 
-  @include scroll-enabled()
+  @include scroll-enabled();
 }
 
 .blocks-container {
@@ -36,7 +36,8 @@
 
   @include scroll-enabled();
 
-  .used-blocks, .available-blocks {
+  .used-blocks,
+  .available-blocks {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -46,12 +47,12 @@
   }
 }
 
-.component-form {
+.markdown-editor {
   width: 100%;
-  @include scroll-enabled()
+  @include scroll-enabled();
 }
 
 .markdown-preview {
   width: 100%;
-  @include scroll-enabled()
+  @include scroll-enabled();
 }

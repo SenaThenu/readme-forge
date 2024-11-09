@@ -1,7 +1,9 @@
+import BlockDataType from "./BlockDataType";
+
 interface TemplateDataType {
     name: string;
     displayTitle: string;
-    usedBlocks: string[];
+    usedBlocks: BlockDataType[];
     availableBlockCategories: string[];
 }
 

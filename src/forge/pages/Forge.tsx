@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 // custom types
 import TemplateDataType from "../../types/TemplateDataType";
+import BlockDataType from "../../types/BlockDataType";
 
 // material ui components
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -16,6 +17,9 @@ import MarkdownPreview from "../components/MarkdownPreview";
 import AvailableBlocks from "../components/AvailableBlocks";
 import UsedBlocks from "../components/UsedBlocks";
 
+// utils
+import fetchTemplateData from "../../shared/utils/fetchTemplateData";
+
 // styles
 import "./Forge.scss";
 
@@ -26,26 +30,101 @@ interface ForgeProps {
 const mobileWidthBreakpoint = 900; // in px
 
 export default function Forge({ templateName }: ForgeProps) {
+    const isMobile = useMediaQuery(`(max-width:${mobileWidthBreakpoint}px)`);
+
     const [markdown, setMarkdown] = useState("");
     const [templateData, setTemplateData] = useState<TemplateDataType | null>(
         null
     );
-    const isMobile = useMediaQuery(`(max-width:${mobileWidthBreakpoint}px)`);
 
+    // block related states
+    const [usedBlocksList, setUsedBlocksList] = useState<BlockDataType[]>([]);
+    const [activeBlockId, setActiveBlockId] = useState<string | null>(null);
+
+    // setting up the forge workspace based on the template
     useEffect(() => {
-        const fetchTemplateData = async () => {
-            try {
-                const jsonData = await import(
-                    `../../data/md-templates/${templateName}.json`
+        const fetchTemplate = async () => {
+            const fetchedTemplateData = await fetchTemplateData(templateName);
+            if (fetchedTemplateData !== null) {
+                setTemplateData(fetchedTemplateData);
+                setUsedBlocksList(fetchedTemplateData.usedBlocks);
+            } else {
+                console.log(
+                    `Error fetching the template data from ${templateName}`
                 );
-                setTemplateData(jsonData.default as TemplateDataType);
-            } catch (error) {
-                console.error("Error loading JSON file:", error);
             }
         };
 
-        fetchTemplateData();
+        // checking for a saved local version
+        const localSavedTemplateData = localStorage.getItem(
+            `${templateName}-template-latest-save`
+        );
+        if (localSavedTemplateData) {
+            try {
+                const parsedTemplateData = JSON.parse(
+                    localSavedTemplateData
+                ) as TemplateDataType;
+                setTemplateData(parsedTemplateData);
+                setUsedBlocksList(parsedTemplateData.usedBlocks);
+            } catch (error) {
+                console.error("Error parsing data:", error);
+                fetchTemplate();
+            }
+        } else {
+            fetchTemplate();
+        }
     }, [templateName]);
+
+    useEffect(() => {
+        if (templateData) {
+            // saving template data in local storage
+            const parsedTemplateData = JSON.stringify(templateData);
+            localStorage.setItem(
+                `${templateName}-template-latest-save`,
+                parsedTemplateData
+            );
+        }
+    }, [templateData]);
+
+    const onUsedBlocksOrderChanged = useCallback(
+        (newOrder: BlockDataType[]) => {
+            setUsedBlocksList(newOrder);
+            // if (templateData) {
+            //     setTemplateData((prev) => {
+            //         if (prev) {
+            //             return {
+            //                 ...prev,
+            //                 usedBlocks: newOrder,
+            //             };
+            //         } else {
+            //             return null;
+            //         }
+            //     });
+            // }
+        },
+        []
+    );
+
+    const onBlockSelected = useCallback((selectedBlockId: string) => {
+        setActiveBlockId(selectedBlockId);
+    }, []);
+
+    const onAddBlock = useCallback((newBlock: BlockDataType) => {
+        console.log(newBlock);
+        setUsedBlocksList((prev) => [...prev, newBlock]);
+        // if (templateData) {
+        //     setTemplateData((prev) => {
+        //         if (prev) {
+        //             return {
+        //                 ...prev,
+        //                 usedBlocks: [...prev.usedBlocks, newBlock],
+        //             };
+        //         } else {
+        //             return null;
+        //         }
+        //     });
+        // }
+    }, []);
 
     const markdownBlocks = (
         <div className="blocks-container">
@@ -56,7 +135,11 @@ export default function Forge({ templateName }: ForgeProps) {
                     <SearchField />
                     <Divider flexItem />
                     <div className="used-blocks">
-                        <UsedBlocks usedBlockNames={templateData.usedBlocks} />
+                        <UsedBlocks
+                            usedBlocksList={usedBlocksList}
+                            onBlockOrderChanged={onUsedBlocksOrderChanged}
+                            onBlockSelected={onBlockSelected}
+                        />
                     </div>
                     <Divider flexItem />
                     <div className="available-blocks">
@@ -64,6 +147,7 @@ export default function Forge({ templateName }: ForgeProps) {
                             blockCategories={
                                 templateData.availableBlockCategories
                             }
+                            onAddBlock={onAddBlock}
                         />
                     </div>
                 </>
@@ -81,7 +165,7 @@ export default function Forge({ templateName }: ForgeProps) {
             />
             <div className="forge-area">
                 {!isMobile && markdownBlocks}
-                <div className="component-form">
+                <div className="markdown-editor">
                     <MarkdownEditor
                         markdownInput={markdown}
                         handleChange={(value) => setMarkdown(value)}

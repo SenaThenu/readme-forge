@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 // types
 import BlockCategoryType from "../../types/BlockCategoryType";
@@ -7,11 +8,15 @@ import BlockDataType from "../../types/BlockDataType";
 // components
 import Block from "./Block";
 
+// utils
+import fetchBlockCatData from "../../shared/utils/fetchBlockCatData";
+
 // styles
 import "./AvailableBlocks.scss";
 
 interface AvailableBlocksProps {
     blockCategories: string[]; // the names of the block categories available in the template
+    onAddBlock: (newBlock: BlockDataType) => void;
 }
 
 export default function AvailableBlocks(props: AvailableBlocksProps) {
@@ -20,18 +25,16 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
     );
 
     useEffect(() => {
-        const fetchBlockCatData = async () => {
+        const fetchAndOrderCats = async () => {
             const loadedCategories: BlockCategoryType[] = [];
 
             for (let blockCatName of props.blockCategories) {
                 try {
-                    const jsonData = await import(
-                        `../../data/md-blocks/${blockCatName}.json`
-                    );
+                    const blockCatData = await fetchBlockCatData(blockCatName);
 
-                    loadedCategories.push(
-                        jsonData.default as BlockCategoryType
-                    );
+                    if (blockCatData !== null) {
+                        loadedCategories.push(blockCatData);
+                    }
                 } catch (error) {
                     console.error("Error loading JSON file:", error);
                 }
@@ -46,7 +49,7 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
             setBlockCategories(loadedCategories);
         };
 
-        fetchBlockCatData();
+        fetchAndOrderCats();
     }, [props.blockCategories]);
 
     return blockCategories.map((category, index) => (
@@ -58,7 +61,14 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
                     a.name.localeCompare(b.name)
                 )
                 .map((block, index) => (
-                    <Block blockDescription={block.description} key={index}>
+                    <Block
+                        blockDescription={block.description}
+                        key={index}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            block.id = uuidv4();
+                            props.onAddBlock(block);
+                        }}>
                         {block.displayName}
                     </Block>
                 ))}
