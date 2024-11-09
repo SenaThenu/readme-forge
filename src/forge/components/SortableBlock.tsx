@@ -1,4 +1,4 @@
-import { ReactNode, memo } from "react";
+import { ReactNode } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
@@ -18,7 +18,7 @@ interface SortableBlockProps {
     children: ReactNode;
 }
 
-const SortableBlock = (props: SortableBlockProps) => {
+export default function SortableBlock(props: SortableBlockProps) {
     const { attributes, listeners, setNodeRef, transform, transition } =
         useSortable({
             id: props.id,
@@ -50,6 +50,4 @@ const SortableBlock = (props: SortableBlockProps) => {
             </Block>
         </div>
     );
-};
-
-export default SortableBlock;
+}

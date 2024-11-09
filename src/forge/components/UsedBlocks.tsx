@@ -1,9 +1,20 @@
 import { useCallback } from "react";
-import { DragEndEvent, DndContext, closestCenter } from "@dnd-kit/core";
+import {
+    DragEndEvent,
+    DndContext,
+    closestCenter,
+    KeyboardSensor,
+    PointerSensor,
+    MouseSensor,
+    TouchSensor,
+    useSensor,
+    useSensors,
+} from "@dnd-kit/core";
 import {
     arrayMove,
     SortableContext,
     verticalListSortingStrategy,
+    sortableKeyboardCoordinates,
 } from "@dnd-kit/sortable";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
@@ -24,6 +35,15 @@ export default function UsedBlocks({
     onBlockOrderChanged,
     onBlockSelected,
 }: UsedBlocksProps) {
+    const sensors = useSensors(
+        useSensor(MouseSensor),
+        useSensor(TouchSensor),
+        useSensor(PointerSensor),
+        useSensor(KeyboardSensor, {
+            coordinateGetter: sortableKeyboardCoordinates,
+        })
+    );
+
     const handleDragEnd = useCallback(
         (event: DragEndEvent) => {
             const { active, over } = event;
@@ -50,9 +70,10 @@ export default function UsedBlocks({
         <DndContext
             collisionDetection={closestCenter}
             onDragEnd={handleDragEnd}
-            modifiers={[restrictToVerticalAxis]}>
+            modifiers={[restrictToVerticalAxis]}
+            sensors={sensors}>
             <SortableContext
-                items={usedBlocksList.map((block) => block.id)}
+                items={usedBlocksList}
                 strategy={verticalListSortingStrategy}>
                 {usedBlocksList.map((block) => (
                     <SortableBlock
