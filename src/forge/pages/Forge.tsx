@@ -77,6 +77,7 @@ export default function Forge({ templateName }: ForgeProps) {
         }
     }, [templateName]);
 
+    // saving the updated template locally for future use
     useEffect(() => {
         if (templateData) {
             // saving template data in local storage
@@ -87,6 +88,29 @@ export default function Forge({ templateName }: ForgeProps) {
             );
         }
     }, [templateData]);
+
+    // setting up the markdown based on the activeBlockId
+    useEffect(() => {
+        if (activeBlockId !== null) {
+            const activeBlockData = usedBlocksList.find(
+                (block) => block.id === activeBlockId
+            );
+            if (activeBlockData) {
+                setMarkdown(activeBlockData?.markdown);
+            }
+        }
+    }, [activeBlockId]);
+
+    // updating the active block markdown when the markdown gets updated
+    useEffect(() => {
+        if (activeBlockId) {
+            setUsedBlocksList((prev) =>
+                prev.map((block) =>
+                    block.id === activeBlockId ? { ...block, markdown } : block
+                )
+            );
+        }
+    }, [markdown]);
 
     const onUsedBlocksOrderChanged = useCallback(
         (newOrder: BlockDataType[]) => {
@@ -148,10 +172,16 @@ export default function Forge({ templateName }: ForgeProps) {
             <div className="forge-area">
                 {!isMobile && markdownBlocks}
                 <div className="markdown-editor">
-                    <MarkdownEditor
-                        markdownInput={markdown}
-                        handleChange={(value) => setMarkdown(value)}
-                    />
+                    {activeBlockId ? (
+                        <MarkdownEditor
+                            markdownInput={markdown}
+                            handleChange={(value) => setMarkdown(value)}
+                        />
+                    ) : (
+                        <div>
+                            Please select a block from the blocks pane to edit!
+                        </div>
+                    )}
                 </div>
                 <div className="markdown-preview">
                     <MarkdownPreview markdownInput={markdown} />
