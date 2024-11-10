@@ -89,6 +89,19 @@ export default function Forge({ templateName }: ForgeProps) {
         }
     }, [templateData]);
 
+    // update the template data based on usedBlocks
+    useEffect(() => {
+        if (usedBlocksList.length > 0) {
+            setTemplateData(
+                (prev) =>
+                    prev && {
+                        ...prev,
+                        usedBlocks: usedBlocksList,
+                    }
+            );
+        }
+    }, [usedBlocksList]);
+
     // setting up the markdown based on the activeBlockId
     useEffect(() => {
         if (activeBlockId !== null) {
@@ -96,7 +109,7 @@ export default function Forge({ templateName }: ForgeProps) {
                 (block) => block.id === activeBlockId
             );
             if (activeBlockData) {
-                setMarkdown(activeBlockData?.markdown);
+                setMarkdown(activeBlockData.markdown);
             }
         }
     }, [activeBlockId]);
@@ -125,10 +138,6 @@ export default function Forge({ templateName }: ForgeProps) {
 
     const onAddBlock = useCallback((newBlock: BlockDataType) => {
         setUsedBlocksList((prev) => [...prev, newBlock]);
-        setTemplateData(
-            (prev) =>
-                prev && { ...prev, usedBlocks: [...prev.usedBlocks, newBlock] }
-        );
     }, []);
 
     const markdownBlocks = (
