@@ -29,3 +29,22 @@
     }
   }
 }
+
+#toggle-block-menu-btn {
+  height: 24px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+#block-menu {
+  .MuiPaper-root {
+    border-radius: 15px;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    font-size: 5rem;
+  }
+}
