@@ -3,6 +3,14 @@
   align-items: center;
   justify-content: center;
   column-gap: 5px;
+
+  &.is-active .block-card {
+    background-color: rgba(34, 137, 201, 0.7);
+
+    .block-card-content {
+      font-weight: 700;
+    }
+  }
 }
 
 .drag-handle-container {

@@ -14,6 +14,7 @@ import "./SortableBlock.scss";
 interface SortableBlockProps {
     id: string;
     onBlockSelected: (selectedBlockId: string) => void;
+    activatedBlock: boolean;
     children: ReactNode;
 }
 
@@ -40,7 +41,9 @@ export default function SortableBlock(props: SortableBlockProps) {
             ref={setNodeRef}
             style={style}
             {...attributes}
-            className="sortable-block-container">
+            className={`sortable-block-container ${
+                props.activatedBlock && "is-active"
+            }`}>
             <div {...listeners} className="drag-handle-container">
                 <Block>
                     <DragIndicatorRoundedIcon />

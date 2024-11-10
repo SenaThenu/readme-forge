@@ -25,12 +25,14 @@ import SortableBlock from "./SortableBlock";
 
 interface UsedBlocksProps {
     usedBlocksList: BlockDataType[];
+    activeBlockId: string | null;
     onBlockOrderChanged: (newBlockOrder: BlockDataType[]) => void;
     onBlockSelected: (selectedBlockId: string) => void;
 }
 
 export default function UsedBlocks({
     usedBlocksList,
+    activeBlockId,
     onBlockOrderChanged,
     onBlockSelected,
 }: UsedBlocksProps) {
@@ -77,6 +79,7 @@ export default function UsedBlocks({
                     <SortableBlock
                         key={block.id}
                         id={block.id}
+                        activatedBlock={block.id === activeBlockId}
                         onBlockSelected={onBlockSelected}>
                         {block.displayName}
                     </SortableBlock>

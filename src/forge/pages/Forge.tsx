@@ -151,6 +151,7 @@ export default function Forge({ templateName }: ForgeProps) {
                     <div className="used-blocks">
                         <UsedBlocks
                             usedBlocksList={usedBlocksList}
+                            activeBlockId={activeBlockId}
                             onBlockOrderChanged={onUsedBlocksOrderChanged}
                             onBlockSelected={onBlockSelected}
                         />
