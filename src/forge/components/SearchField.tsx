@@ -5,12 +5,16 @@ import InputAdornment from "@mui/material/InputAdornment";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { useTheme } from "@mui/material/styles";
 
-export default function SearchField() {
+interface SearchFieldProps {
+    onSearchQueryChange: (newSearchQuery: string) => void;
+}
+
+export default function SearchField(props: SearchFieldProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const theme = useTheme(); // Get current theme
 
     useEffect(() => {
-        console.log(searchQuery);
+        props.onSearchQueryChange(searchQuery);
     }, [searchQuery]);
 
     const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {

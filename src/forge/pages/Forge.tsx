@@ -32,6 +32,7 @@ const mobileWidthBreakpoint = 900; // in px
 export default function Forge({ templateName }: ForgeProps) {
     const isMobile = useMediaQuery(`(max-width:${mobileWidthBreakpoint}px)`);
 
+    const [searchQuery, setSearchQuery] = useState("");
     const [markdown, setMarkdown] = useState("");
     const [templateData, setTemplateData] = useState<TemplateDataType | null>(
         null
@@ -146,8 +147,6 @@ export default function Forge({ templateName }: ForgeProps) {
                 <CircularProgress />
             ) : (
                 <>
-                    <SearchField />
-                    <Divider flexItem />
                     <div className="used-blocks">
                         <UsedBlocks
                             usedBlocksList={usedBlocksList}
@@ -157,12 +156,18 @@ export default function Forge({ templateName }: ForgeProps) {
                         />
                     </div>
                     <Divider flexItem />
+                    <SearchField
+                        onSearchQueryChange={(newQuery) =>
+                            setSearchQuery(newQuery)
+                        }
+                    />
                     <div className="available-blocks">
                         <AvailableBlocks
                             blockCategories={
                                 templateData.availableBlockCategories
                             }
                             onAddBlock={onAddBlock}
+                            searchQuery={searchQuery}
                         />
                     </div>
                 </>
