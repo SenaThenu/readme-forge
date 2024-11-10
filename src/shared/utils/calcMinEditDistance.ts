@@ -6,6 +6,9 @@ export default function calcMinEditDistance(searchQuery: string, blockName: stri
     } else if (searchQuery === blockName) {
         return 0;
     } else {
+        searchQuery = searchQuery.toLowerCase()
+        blockName = blockName.toLowerCase()
+
         let prevRow = new Array(blockName.length + 1).fill(0).map((_, i) => i)
 
         for (let s_i = 0; s_i < searchQuery.length; s_i++) {

@@ -11,10 +11,6 @@ describe("calcMinEditDistance", () => {
         expect(calcMinEditDistance("world", "")).toBe(5);
     });
 
-    it("handles case differences correctly", () => {
-        expect(calcMinEditDistance("Hello", "hello")).toBe(1);
-    });
-
     it("calculates edit distance with substitutions", () => {
         expect(calcMinEditDistance("kitten", "sitting")).toBe(3); // k->s, e->i, insert g
         expect(calcMinEditDistance("flaw", "lawn")).toBe(2); // f->l, insert n
