@@ -2,39 +2,37 @@ import { describe, it, expect } from "vitest";
 import calcMinEditDistance from "../calcMinEditDistance";
 
 describe("calcMinEditDistance", () => {
-  
-  it("should return 0 for identical strings", () => {
-    expect(calcMinEditDistance("hello", "hello")).toBe(0);
-  });
+    it("returns 0 when both strings are identical", () => {
+        expect(calcMinEditDistance("hello", "hello")).toBe(0);
+    });
 
-  it("should return the length of the second string if the first is empty", () => {
-    expect(calcMinEditDistance("", "hello")).toBe(5);
-  });
+    it("returns the length of the non-empty string when one string is empty", () => {
+        expect(calcMinEditDistance("", "hello")).toBe(5);
+        expect(calcMinEditDistance("world", "")).toBe(5);
+    });
 
-  it("should return the length of the first string if the second is empty", () => {
-    expect(calcMinEditDistance("hello", "")).toBe(5);
-  });
+    it("handles case differences correctly", () => {
+        expect(calcMinEditDistance("Hello", "hello")).toBe(1);
+    });
 
-  it("should return the minimum edit distance for single character difference", () => {
-    expect(calcMinEditDistance("kitten", "sitten")).toBe(1);
-  });
+    it("calculates edit distance with substitutions", () => {
+        expect(calcMinEditDistance("kitten", "sitting")).toBe(3); // k->s, e->i, insert g
+        expect(calcMinEditDistance("flaw", "lawn")).toBe(2); // f->l, insert n
+    });
 
-  it("should handle insertions, deletions, and substitutions correctly", () => {
-    expect(calcMinEditDistance("kitten", "sitting")).toBe(3);
-  });
+    it("calculates edit distance with insertions and deletions", () => {
+        expect(calcMinEditDistance("abc", "abcd")).toBe(1); // one insertion
+        expect(calcMinEditDistance("abcd", "abc")).toBe(1); // one deletion
+    });
 
-  it("should return correct distance for completely different strings of the same length", () => {
-    expect(calcMinEditDistance("abc", "xyz")).toBe(3);
-  });
+    it("handles completely different strings with no common characters", () => {
+        expect(calcMinEditDistance("abc", "xyz")).toBe(3);
+        expect(calcMinEditDistance("short", "longer")).toBe(6);
+    });
 
-  it("should handle case sensitivity correctly", () => {
-    expect(calcMinEditDistance("Hello", "hello")).toBe(1);
-  });
-  
-  it("should handle long strings accurately", () => {
-    const str1 = "a".repeat(100);
-    const str2 = "b".repeat(100);
-    expect(calcMinEditDistance(str1, str2)).toBe(100);
-  });
-
+    it("handles large strings efficiently", () => {
+        const longStr1 = "a".repeat(1000);
+        const longStr2 = "a".repeat(999) + "b";
+        expect(calcMinEditDistance(longStr1, longStr2)).toBe(1);
+    });
 });
