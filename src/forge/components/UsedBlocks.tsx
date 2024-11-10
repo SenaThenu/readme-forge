@@ -5,7 +5,6 @@ import {
     closestCenter,
     KeyboardSensor,
     PointerSensor,
-    MouseSensor,
     TouchSensor,
     useSensor,
     useSensors,
@@ -36,7 +35,6 @@ export default function UsedBlocks({
     onBlockSelected,
 }: UsedBlocksProps) {
     const sensors = useSensors(
-        useSensor(MouseSensor),
         useSensor(TouchSensor),
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -79,7 +77,6 @@ export default function UsedBlocks({
                     <SortableBlock
                         key={block.id}
                         id={block.id}
-                        blockDescription={block.description}
                         onBlockSelected={onBlockSelected}>
                         {block.displayName}
                     </SortableBlock>

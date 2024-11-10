@@ -13,18 +13,24 @@ import "./SortableBlock.scss";
 
 interface SortableBlockProps {
     id: string;
-    blockDescription: string;
     onBlockSelected: (selectedBlockId: string) => void;
     children: ReactNode;
 }
 
 export default function SortableBlock(props: SortableBlockProps) {
-    const { attributes, listeners, setNodeRef, transform, transition } =
-        useSortable({
-            id: props.id,
-        });
+    const {
+        attributes,
+        isDragging,
+        listeners,
+        setNodeRef,
+        transform,
+        transition,
+    } = useSortable({
+        id: props.id,
+    });
 
     const style = {
+        opacity: isDragging ? 0.5 : undefined,
         transform: CSS.Transform.toString(transform),
         transition,
     };
@@ -41,7 +47,6 @@ export default function SortableBlock(props: SortableBlockProps) {
                 </Block>
             </div>
             <Block
-                blockDescription={props.blockDescription}
                 onClick={(e) => {
                     e.preventDefault();
                     props.onBlockSelected(props.id);

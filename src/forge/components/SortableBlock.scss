@@ -8,6 +8,9 @@
 .drag-handle-container {
   width: 30px;
   cursor: grab;
+  background: none;
+  border: none;
+  outline: none;
 
   .block-card {
     cursor: grab;

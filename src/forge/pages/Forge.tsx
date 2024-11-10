@@ -114,7 +114,6 @@ export default function Forge({ templateName }: ForgeProps) {
 
     const onUsedBlocksOrderChanged = useCallback(
         (newOrder: BlockDataType[]) => {
-            console.log(newOrder);
             setUsedBlocksList(newOrder);
         },
         []

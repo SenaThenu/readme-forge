@@ -33,15 +33,25 @@ const StyledCardContent = styled(CardContent)<CardContentProps>(() => ({
 }));
 
 export default function Block(props: BlockProps) {
+    const blockCard = (
+        <StyledCard
+            onClick={props.onClick}
+            className={`block-card ${props.className}`}>
+            <StyledCardContent className="block-card-content">
+                {props.children}
+            </StyledCardContent>
+        </StyledCard>
+    );
+
     return (
-        <StyledTooltip title={props.blockDescription}>
-            <StyledCard
-                onClick={props.onClick}
-                className={`block-card ${props.className}`}>
-                <StyledCardContent className="block-card-content">
-                    {props.children}
-                </StyledCardContent>
-            </StyledCard>
-        </StyledTooltip>
+        <>
+            {props.blockDescription ? (
+                <StyledTooltip title={props.blockDescription}>
+                    {blockCard}
+                </StyledTooltip>
+            ) : (
+                blockCard
+            )}
+        </>
     );
 }
