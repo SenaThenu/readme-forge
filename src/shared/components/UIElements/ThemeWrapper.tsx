@@ -5,6 +5,9 @@ import {
     useColorScheme,
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { StyledEngineProvider } from "@mui/material/styles";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
 
 // configuring the color palette type to add a custom "accent" color
 declare module "@mui/material/styles" {
@@ -70,6 +73,11 @@ const theme = createTheme({
     },
 });
 
+const cache = createCache({
+    key: "css",
+    prepend: true,
+});
+
 interface ThemeWrapperProps {
     children?: ReactNode;
 }
@@ -79,8 +87,12 @@ export default function ThemeWrapper({ children }: ThemeWrapperProps) {
 
     return (
         <ThemeProvider theme={theme} defaultMode={mode ?? "dark"}>
-            <CssBaseline />
-            {children}
+            <StyledEngineProvider injectFirst>
+                <CacheProvider value={cache}>
+                    <CssBaseline />
+                    {children}
+                </CacheProvider>
+            </StyledEngineProvider>
         </ThemeProvider>
     );
 }

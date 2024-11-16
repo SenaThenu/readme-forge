@@ -21,7 +21,7 @@
   justify-content: space-between;
   column-gap: 15px;
 
-  @include scroll-enabled()
+  @include scroll-enabled();
 }
 
 .blocks-container {
@@ -36,7 +36,8 @@
 
   @include scroll-enabled();
 
-  .used-blocks, .available-blocks {
+  .used-blocks,
+  .available-blocks {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -48,7 +49,7 @@
 
 .markdown-editor {
   width: 100%;
-  @include scroll-enabled()
+  @include scroll-enabled();
 }
 
 .markdown-preview {
@@ -57,5 +58,5 @@
   word-wrap: break-word;
   hyphens: auto;
   white-space: normal;
-  @include scroll-enabled()
+  @include scroll-enabled();
 }

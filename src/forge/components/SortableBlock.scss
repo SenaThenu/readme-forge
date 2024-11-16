@@ -1,0 +1,50 @@
+.sortable-block-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5px;
+
+  &.is-active .block-card {
+    background-color: rgba(34, 137, 201, 0.7);
+
+    .block-card-content {
+      font-weight: 700;
+    }
+  }
+}
+
+.drag-handle-container {
+  width: 30px;
+  cursor: grab;
+  background: none;
+  border: none;
+  outline: none;
+
+  .block-card {
+    cursor: grab;
+
+    .block-card-content {
+      padding: 2px !important;
+      width: fit-content;
+    }
+  }
+}
+
+#toggle-block-menu-btn {
+  height: 24px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+#block-menu {
+  .MuiPaper-root {
+    border-radius: 15px;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    font-size: 5rem;
+  }
+}

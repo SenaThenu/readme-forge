@@ -54,6 +54,7 @@ export default function NavLayout(props: NavLayoutProps) {
                     minWidth: "200px",
                     backgroundColor: theme.palette.background.default,
                     padding: "15px 20px",
+                    borderRadius: "0 25px 25px 0",
                 },
             }}>
             <>

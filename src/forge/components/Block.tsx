@@ -6,7 +6,7 @@ import { styled } from "@mui/material/styles";
 import StyledTooltip from "../../shared/components/UIElements/StyledTooltip";
 
 interface BlockProps extends CardProps {
-    blockDescription: string;
+    blockDescription?: string;
 }
 
 const StyledCard = styled(Card)<CardProps>(({ theme }) => ({
@@ -26,14 +26,32 @@ const StyledCardContent = styled(CardContent)<CardContentProps>(() => ({
     fontWeight: 400,
     textAlign: "left",
     padding: "5px 10px !important",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
 }));
 
 export default function Block(props: BlockProps) {
+    const blockCard = (
+        <StyledCard
+            onClick={props.onClick}
+            className={`block-card ${props.className}`}>
+            <StyledCardContent className="block-card-content">
+                {props.children}
+            </StyledCardContent>
+        </StyledCard>
+    );
+
     return (
-        <StyledTooltip title={props.blockDescription}>
-            <StyledCard onClick={props.onClick}>
-                <StyledCardContent>{props.children}</StyledCardContent>
-            </StyledCard>
-        </StyledTooltip>
+        <>
+            {props.blockDescription ? (
+                <StyledTooltip title={props.blockDescription}>
+                    {blockCard}
+                </StyledTooltip>
+            ) : (
+                blockCard
+            )}
+        </>
     );
 }
