@@ -79,10 +79,21 @@ export default function UsedBlocks({
         );
     };
     const duplicateBlock = (blockId: string) => {
-        let focusedBlock = findBlockById(blockId);
-        if (focusedBlock) {
+        const blockIndex = usedBlocksList.findIndex(
+            (block) => block.id === blockId
+        );
+        if (blockIndex) {
+            const focusedBlock = usedBlocksList[blockIndex];
             const duplicatedBlock = { ...focusedBlock, id: uuidv4() };
-            onBlockOrderChanged([...usedBlocksList, duplicatedBlock]);
+
+            // adding the duplicated block right after the focused block
+            const updatedBlocks = [
+                ...usedBlocksList.slice(0, blockIndex + 1),
+                duplicatedBlock,
+                ...usedBlocksList.slice(blockIndex + 1),
+            ];
+
+            onBlockOrderChanged(updatedBlocks);
         }
     };
     const renameBlock = (blockId: string, newBlockName: string) => {
