@@ -52,9 +52,13 @@ export default function NavLayout(props: NavLayoutProps) {
             sx={{
                 "& .MuiDrawer-paper": {
                     minWidth: "200px",
-                    backgroundColor: theme.palette.background.default,
+                    backgroundColor:
+                        theme.palette.mode === "dark"
+                            ? "rgba(0, 0, 0, 0.4)"
+                            : "rgba(255, 255, 255, 0.7)",
                     padding: "15px 20px",
                     borderRadius: "0 25px 25px 0",
+                    backdropFilter: "blur(5px)",
                 },
             }}>
             <>
