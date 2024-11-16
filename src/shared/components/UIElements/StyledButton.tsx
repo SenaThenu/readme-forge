@@ -15,7 +15,6 @@ function getCustomButton(iconOnly: boolean) {
             theme.palette.mode === "dark"
                 ? alpha(theme.palette.primary.main, 0.6)
                 : alpha(theme.palette.accent.main, 0.5),
-        backdropFilter: "blur(5px)", // glass effect
         color: theme.palette.text.primary,
         "& .MuiButton-startIcon": {
             margin: iconOnly ? 0 : undefined,
