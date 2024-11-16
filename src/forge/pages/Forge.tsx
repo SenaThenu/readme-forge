@@ -133,6 +133,10 @@ export default function Forge({ templateName }: ForgeProps) {
         []
     );
 
+    const onUpdateMarkdown = (newMarkdown: string) => {
+        setMarkdown(newMarkdown);
+    };
+
     const onBlockSelected = useCallback((selectedBlockId: string) => {
         setActiveBlockId(selectedBlockId);
     }, []);
@@ -153,6 +157,7 @@ export default function Forge({ templateName }: ForgeProps) {
                             activeBlockId={activeBlockId}
                             onBlockOrderChanged={onUsedBlocksOrderChanged}
                             onBlockSelected={onBlockSelected}
+                            updateMarkdown={onUpdateMarkdown}
                         />
                     </div>
                     <Divider flexItem />
@@ -189,7 +194,7 @@ export default function Forge({ templateName }: ForgeProps) {
                     {activeBlockId ? (
                         <MarkdownEditor
                             markdownInput={markdown}
-                            handleChange={(value) => setMarkdown(value)}
+                            handleChange={onUpdateMarkdown}
                         />
                     ) : (
                         <div>

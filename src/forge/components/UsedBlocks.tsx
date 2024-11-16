@@ -29,6 +29,7 @@ interface UsedBlocksProps {
     activeBlockId: string | null;
     onBlockOrderChanged: (newBlockOrder: BlockDataType[]) => void;
     onBlockSelected: (selectedBlockId: string) => void;
+    updateMarkdown: (newMarkdown: string) => void;
 }
 
 export default function UsedBlocks({
@@ -36,6 +37,7 @@ export default function UsedBlocks({
     activeBlockId,
     onBlockOrderChanged,
     onBlockSelected,
+    updateMarkdown,
 }: UsedBlocksProps) {
     const sensors = useSensors(
         useSensor(TouchSensor),
@@ -94,8 +96,11 @@ export default function UsedBlocks({
     const resetBlock = (blockId: string) => {
         let updatedBlockList = usedBlocksList.map((block) =>
             block.id === blockId
-                ? { ...block, originalMarkdown: block.markdown }
+                ? { ...block, markdown: block.originalMarkdown as string }
                 : { ...block }
+        );
+        updateMarkdown(
+            updatedBlockList.find((block) => block.id === blockId)!.markdown
         );
         onBlockOrderChanged(updatedBlockList);
     };
