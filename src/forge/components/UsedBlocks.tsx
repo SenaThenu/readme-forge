@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { v4 as uuidv4 } from "uuid";
 import {
     DragEndEvent,
     DndContext,
@@ -66,6 +67,39 @@ export default function UsedBlocks({
         [usedBlocksList, onBlockOrderChanged]
     );
 
+    // block related actions
+    const findBlockById = (id: string) => {
+        return usedBlocksList.find((block) => block.id === id);
+    };
+    const deleteBlock = (blockId: string) => {
+        onBlockOrderChanged(
+            usedBlocksList.filter((block) => block.id !== blockId)
+        );
+    };
+    const duplicateBlock = (blockId: string) => {
+        let focusedBlock = findBlockById(blockId);
+        if (focusedBlock) {
+            const duplicatedBlock = { ...focusedBlock, id: uuidv4() };
+            onBlockOrderChanged([...usedBlocksList, duplicatedBlock]);
+        }
+    };
+    const renameBlock = (blockId: string, newBlockName: string) => {
+        let updatedBlockList = usedBlocksList.map((block) =>
+            block.id === blockId
+                ? { ...block, displayName: newBlockName }
+                : { ...block }
+        );
+        onBlockOrderChanged(updatedBlockList);
+    };
+    const resetBlock = (blockId: string) => {
+        let updatedBlockList = usedBlocksList.map((block) =>
+            block.id === blockId
+                ? { ...block, originalMarkdown: block.markdown }
+                : { ...block }
+        );
+        onBlockOrderChanged(updatedBlockList);
+    };
+
     return (
         <DndContext
             collisionDetection={closestCenter}
@@ -73,17 +107,30 @@ export default function UsedBlocks({
             modifiers={[restrictToVerticalAxis]}
             sensors={sensors}>
             <SortableContext
-                items={usedBlocksList}
+                items={usedBlocksList
+                    .map((block) => block.id)
+                    .filter((id) => id !== undefined)}
                 strategy={verticalListSortingStrategy}>
-                {usedBlocksList.map((block) => (
-                    <SortableBlock
-                        key={block.id}
-                        id={block.id}
-                        activatedBlock={block.id === activeBlockId}
-                        onBlockSelected={onBlockSelected}>
-                        {block.displayName}
-                    </SortableBlock>
-                ))}
+                {usedBlocksList.map((block) => {
+                    if (block.id) {
+                        return (
+                            <SortableBlock
+                                key={block.id}
+                                id={block.id}
+                                activatedBlock={block.id === activeBlockId}
+                                onBlockSelected={onBlockSelected}
+                                onDelete={deleteBlock}
+                                onDuplicate={duplicateBlock}
+                                onRename={renameBlock}
+                                onReset={resetBlock}>
+                                {block.displayName}
+                            </SortableBlock>
+                        );
+                    } else {
+                        console.error(`${block.displayName} id is not found!`);
+                        return <></>;
+                    }
+                })}
             </SortableContext>
         </DndContext>
     );

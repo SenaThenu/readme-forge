@@ -26,6 +26,7 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
         []
     );
 
+    // fetching the different block categories and sorting them alphabetically
     const fetchAndOrderCats = useCallback(async () => {
         try {
             const loadedCategories = await Promise.all(
@@ -56,6 +57,7 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
         fetchAndOrderCats();
     }, [fetchAndOrderCats]);
 
+    // sorting blocks based on the search query
     const sortBlocks = useCallback(
         (a: BlockDataType, b: BlockDataType) => {
             if (props.searchQuery === "") {
@@ -69,7 +71,7 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
                     props.searchQuery,
                     a.displayName
                 );
-                return distanceA - distanceB; // ascending order
+                return distanceA - distanceB; // ascending order of edit distance
             }
         },
         [props.searchQuery]
@@ -78,7 +80,11 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
     const createBlockClickHandler = useCallback(
         (block: BlockDataType) => (e: React.MouseEvent) => {
             e.preventDefault();
-            props.onAddBlock({ ...block, id: uuidv4() });
+            props.onAddBlock({
+                ...block,
+                id: uuidv4(),
+                originalMarkdown: block.markdown,
+            });
         },
         [props.onAddBlock]
     );
@@ -107,16 +113,22 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
         <div
             className="block-category-container"
             key={`${category.name}-${uuidv4()}`}>
-            <div className="block-category-name">{category.displayName}</div>
+            {category.filteredBlocks.length > 0 && (
+                <>
+                    <div className="block-category-name">
+                        {category.displayName}
+                    </div>
 
-            {category.filteredBlocks.map((block, index) => (
-                <Block
-                    blockDescription={block.description}
-                    key={index}
-                    onClick={createBlockClickHandler(block)}>
-                    {block.displayName}
-                </Block>
-            ))}
+                    {category.filteredBlocks.map((block, index) => (
+                        <Block
+                            blockDescription={block.description}
+                            key={index}
+                            onClick={createBlockClickHandler(block)}>
+                            {block.displayName}
+                        </Block>
+                    ))}
+                </>
+            )}
         </div>
     ));
 }

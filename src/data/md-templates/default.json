@@ -7,14 +7,16 @@
             "name": "title",
             "displayName": "Title",
             "description": "The title of the README.md",
-            "markdown": "# Project Name"
+            "markdown": "# Project Name",
+            "originalMarkdown": "# Project Name"
         },
         {
             "id": "08c71152-c552-42e7-b094-f510ff44e9cb",
             "name": "description",
             "displayName": "Description",
             "description": "A brief description of the project",
-            "markdown": "A short project description goes here."
+            "markdown": "A short project description goes here.",
+            "originalMarkdown": "A short project description goes here."
         }
     ],
     "availableBlockCategories": ["basic", "profile"]

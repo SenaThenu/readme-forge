@@ -24,8 +24,12 @@ import "./SortableBlock.scss";
 
 interface SortableBlockProps {
     id: string;
-    onBlockSelected: (selectedBlockId: string) => void;
     activatedBlock: boolean;
+    onBlockSelected: (selectedBlockId: string) => void;
+    onRename: (blockId: string, newName: string) => void;
+    onDuplicate: (blockId: string) => void;
+    onDelete: (blockId: string) => void;
+    onReset: (blockId: string) => void;
     children: ReactNode;
 }
 
@@ -54,15 +58,19 @@ export default function SortableBlock(props: SortableBlockProps) {
 
     // block menu button click handlers
     const handleRenameClick = () => {
+        props.onRename(props.id, "Narsil");
         handleBlockMenuClose();
     };
     const handleDuplicateClick = () => {
+        props.onDuplicate(props.id);
         handleBlockMenuClose();
     };
     const handleResetClick = () => {
+        props.onReset(props.id);
         handleBlockMenuClose();
     };
     const handleDeleteClick = () => {
+        props.onDelete(props.id);
         handleBlockMenuClose();
     };
 
