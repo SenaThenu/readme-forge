@@ -101,6 +101,15 @@ export default function Forge({ templateName }: ForgeProps) {
                     }
             );
         }
+
+        // checking if the active block is deleted
+        let activeBlock = usedBlocksList.find(
+            (block) => block.id === activeBlockId
+        );
+        if (activeBlock === undefined) {
+            setMarkdown("");
+            setActiveBlockId(null);
+        }
     }, [usedBlocksList]);
 
     // setting up the markdown based on the activeBlockId

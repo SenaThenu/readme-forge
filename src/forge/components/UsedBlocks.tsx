@@ -70,9 +70,6 @@ export default function UsedBlocks({
     );
 
     // block related actions
-    const findBlockById = (id: string) => {
-        return usedBlocksList.find((block) => block.id === id);
-    };
     const deleteBlock = (blockId: string) => {
         onBlockOrderChanged(
             usedBlocksList.filter((block) => block.id !== blockId)
@@ -82,7 +79,7 @@ export default function UsedBlocks({
         const blockIndex = usedBlocksList.findIndex(
             (block) => block.id === blockId
         );
-        if (blockIndex) {
+        if (blockIndex >= 0) {
             const focusedBlock = usedBlocksList[blockIndex];
             const duplicatedBlock = { ...focusedBlock, id: uuidv4() };
 
@@ -92,6 +89,8 @@ export default function UsedBlocks({
                 duplicatedBlock,
                 ...usedBlocksList.slice(blockIndex + 1),
             ];
+
+            console.log(updatedBlocks);
 
             onBlockOrderChanged(updatedBlocks);
         }
@@ -133,6 +132,7 @@ export default function UsedBlocks({
                             <SortableBlock
                                 key={block.id}
                                 id={block.id}
+                                displayName={block.displayName}
                                 activatedBlock={block.id === activeBlockId}
                                 onBlockSelected={onBlockSelected}
                                 onDelete={deleteBlock}

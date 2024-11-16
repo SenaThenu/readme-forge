@@ -13,7 +13,7 @@ interface StyledTextFieldProps {
 }
 
 export default function StyledTextField(props: StyledTextFieldProps) {
-    const theme = useTheme(); // Get current theme
+    const theme = useTheme(); // get current theme
 
     return (
         <div
