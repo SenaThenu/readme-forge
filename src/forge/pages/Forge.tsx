@@ -16,6 +16,7 @@ import MarkdownEditor from "../components/MarkdownEditor";
 import MarkdownPreview from "../components/MarkdownPreview";
 import AvailableBlocks from "../components/AvailableBlocks";
 import UsedBlocks from "../components/UsedBlocks";
+import SelectBlockImg from "../components/SelectBlockImg";
 
 // utils
 import fetchTemplateData from "../../shared/utils/fetchTemplateData";
@@ -199,21 +200,28 @@ export default function Forge({ templateName }: ForgeProps) {
             />
             <div className="forge-area">
                 {!isMobile && markdownBlocks}
-                <div className="markdown-editor">
-                    {activeBlockId ? (
-                        <MarkdownEditor
-                            markdownInput={markdown}
-                            handleChange={onUpdateMarkdown}
-                        />
-                    ) : (
-                        <div>
-                            Please select a block from the blocks pane to edit!
+                {activeBlockId ? (
+                    <>
+                        <div className="markdown-editor">
+                            <MarkdownEditor
+                                markdownInput={markdown}
+                                handleChange={onUpdateMarkdown}
+                            />
                         </div>
-                    )}
-                </div>
-                <div className="markdown-preview">
-                    <MarkdownPreview markdownInput={markdown} />
-                </div>
+                        <div className="markdown-preview">
+                            <MarkdownPreview markdownInput={markdown} />
+                        </div>
+                    </>
+                ) : (
+                    <div className="select-block-screen">
+                        <div className="select-block-image">
+                            <SelectBlockImg />
+                        </div>
+                        <div className="select-block-text">
+                            Please select a block from the blocks pane!
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

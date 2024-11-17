@@ -60,3 +60,55 @@
   white-space: normal;
   @include scroll-enabled();
 }
+
+.select-block-screen {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 10px;
+}
+
+.select-block-image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+  img {
+    width: 40%;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.select-block-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+  .select-block-image {
+    img {
+      width: 50%;
+    }
+  }
+
+  .select-block-text {
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .select-block-image {
+    img {
+      width: 80%;
+    }
+  }
+
+  .select-block-text {
+    font-size: 1.2rem;
+  }
+}
