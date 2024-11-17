@@ -5,6 +5,7 @@ import { languages } from "@codemirror/language-data";
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
 import { history, redo, undo } from "@codemirror/commands";
 import { keymap } from "@codemirror/view";
+import { EditorView } from "@codemirror/view";
 
 // material ui components
 import { useTheme } from "@mui/material/styles";
@@ -27,6 +28,7 @@ const baseExtensions = [
         { key: "Mod-y", run: redo },
         { key: "Shift-Mod-z", run: redo },
     ]),
+    EditorView.lineWrapping,
 ];
 
 export default function MarkdownEditor(props: MarkdownEditor) {
