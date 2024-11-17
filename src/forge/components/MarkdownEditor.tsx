@@ -3,7 +3,8 @@ import CodeMirror, { ReactCodeMirrorRef } from "@uiw/react-codemirror";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
 import { githubLight, githubDark } from "@uiw/codemirror-theme-github";
-import { history } from "@codemirror/commands";
+import { history, redo, undo } from "@codemirror/commands";
+import { keymap } from "@codemirror/view";
 
 // material ui components
 import { useTheme } from "@mui/material/styles";
@@ -21,6 +22,11 @@ interface MarkdownEditor {
 const baseExtensions = [
     markdown({ base: markdownLanguage, codeLanguages: languages }),
     history(),
+    keymap.of([
+        { key: "Mod-z", run: undo },
+        { key: "Mod-y", run: redo },
+        { key: "Shift-Mod-z", run: redo },
+    ]),
 ];
 
 export default function MarkdownEditor(props: MarkdownEditor) {
