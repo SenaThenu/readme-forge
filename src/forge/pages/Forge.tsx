@@ -34,10 +34,13 @@ export default function Forge({ templateName }: ForgeProps) {
     const isMobile = useMediaQuery(`(max-width:${mobileWidthBreakpoint}px)`);
 
     const [searchQuery, setSearchQuery] = useState("");
-    const [markdown, setMarkdown] = useState("");
     const [templateData, setTemplateData] = useState<TemplateDataType | null>(
         null
     );
+
+    // markdown editor related states
+    const [markdown, setMarkdown] = useState("");
+    const [resetEditHistory, setResetEditHistory] = useState(false);
 
     // block related states
     const [usedBlocksList, setUsedBlocksList] = useState<BlockDataType[]>([]);
@@ -122,6 +125,9 @@ export default function Forge({ templateName }: ForgeProps) {
             if (activeBlockData) {
                 setMarkdown(activeBlockData.markdown);
             }
+            setTimeout(() => {
+                setResetEditHistory(true);
+            }, 50);
         }
     }, [activeBlockId]);
 
@@ -206,6 +212,10 @@ export default function Forge({ templateName }: ForgeProps) {
                             <MarkdownEditor
                                 markdownInput={markdown}
                                 handleChange={onUpdateMarkdown}
+                                resetEditHistory={resetEditHistory}
+                                handleFinishReset={() =>
+                                    setResetEditHistory(false)
+                                }
                             />
                         </div>
                         <div className="markdown-preview">
