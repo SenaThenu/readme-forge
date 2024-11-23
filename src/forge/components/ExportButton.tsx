@@ -16,8 +16,9 @@ import StyledMenu from "../../shared/components/UIElements/StyeldMenu";
 import { Button } from "@mui/material";
 
 interface ExportButtonProps {
+    onExportAsJson: () => void;
+    onExportAsMarkdown: () => void;
     includeText?: boolean;
-    onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function ExportButton(props: ExportButtonProps) {
@@ -36,10 +37,12 @@ export default function ExportButton(props: ExportButtonProps) {
 
     // export options handlers
     const handleExportMarkdown = () => {
+        props.onExportAsMarkdown();
         handleExportMenuClose();
     };
 
     const handleExportJson = () => {
+        props.onExportAsJson();
         handleExportMenuClose();
     };
 
@@ -64,7 +67,7 @@ export default function ExportButton(props: ExportButtonProps) {
                     <ListItemIcon>
                         <DataObjectRoundedIcon fontSize="small" />
                     </ListItemIcon>
-                    <ListItemText>Export as JSON</ListItemText>
+                    <ListItemText>Export as Template</ListItemText>
                 </MenuItem>
             </StyledMenu>
             <StyledButton
