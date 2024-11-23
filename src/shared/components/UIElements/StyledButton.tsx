@@ -1,3 +1,6 @@
+import { useMemo } from "react";
+
+// material ui components
 import Button, { ButtonProps } from "@mui/material/Button";
 import { styled, alpha } from "@mui/material/styles";
 
@@ -24,6 +27,8 @@ function getCustomButton(iconOnly: boolean) {
 }
 
 export default function StyledButton(props: ButtonProps) {
-    const CustomButton = getCustomButton(props.children == null);
+    const CustomButton = useMemo(() => {
+        return getCustomButton(props.children == null);
+    }, [props.children]);
     return <CustomButton {...props} />;
 }
