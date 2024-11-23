@@ -37,6 +37,7 @@ interface SortableBlockProps {
 
 export default function SortableBlock(props: SortableBlockProps) {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    // rename dialog states
     const [renameDialogOpen, setRenameDialogOpen] = useState(false);
     const [renameDialogInput, setRenameDialogInput] = useState(
         props.displayName

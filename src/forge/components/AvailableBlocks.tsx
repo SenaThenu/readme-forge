@@ -158,7 +158,7 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
                                     onClick={() => {
                                         props.onRemoveBlockCat(category.name);
                                         setSnackbarMessage(
-                                            `Removed ${category.displayName} Block Category`
+                                            `Removed ${category.displayName} Block Category!`
                                         );
                                         openSnackbar();
                                         setRemoveBlockCatName(category.name);

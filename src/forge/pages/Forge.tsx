@@ -199,6 +199,7 @@ export default function Forge({ templateName }: ForgeProps) {
                             activeBlockId={activeBlockId}
                             onBlockOrderChanged={onUsedBlocksOrderChanged}
                             onBlockSelected={onBlockSelected}
+                            onAddBlock={onAddBlock}
                             updateMarkdown={onUpdateMarkdown}
                         />
                     </div>
