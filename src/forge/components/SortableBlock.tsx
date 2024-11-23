@@ -3,7 +3,6 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 // material ui components
-import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -19,6 +18,7 @@ import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 // components
 import Block from "./Block";
 import RenameDialog from "./RenameDialog";
+import StyledMenu from "../../shared/components/UIElements/StyeldMenu";
 
 // styles
 import "./SortableBlock.scss";
@@ -125,7 +125,7 @@ export default function SortableBlock(props: SortableBlockProps) {
                                 onClick={handleBlockMenuOpen}>
                                 <MoreHorizRoundedIcon />
                             </div>
-                            <Menu
+                            <StyledMenu
                                 id="block-menu"
                                 anchorEl={anchorEl}
                                 open={open}
@@ -157,7 +157,7 @@ export default function SortableBlock(props: SortableBlockProps) {
                                     </ListItemIcon>
                                     <ListItemText>Delete</ListItemText>
                                 </MenuItem>
-                            </Menu>
+                            </StyledMenu>
                         </>
                     )}
                 </Block>

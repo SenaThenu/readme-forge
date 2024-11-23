@@ -20,6 +20,8 @@ import SelectBlockImg from "../components/SelectBlockImg";
 
 // utils
 import fetchTemplateData from "../../shared/utils/fetchTemplateData";
+import exportAsMarkdown from "../../shared/utils/exportAsMarkdown";
+import exportAsJson from "../../shared/utils/exportAsJson";
 
 // styles
 import "./Forge.scss";
@@ -203,6 +205,12 @@ export default function Forge({ templateName }: ForgeProps) {
                 currentNavLinkText="Forge"
                 mobileWidthBreakpoint={mobileWidthBreakpoint}
                 drawerComponents={markdownBlocks}
+                onExportAsJson={() => {
+                    templateData && exportAsJson(templateData);
+                }}
+                onExportAsMarkdown={() => {
+                    templateData && exportAsMarkdown(templateData);
+                }}
             />
             <div className="forge-area">
                 {!isMobile && markdownBlocks}

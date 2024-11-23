@@ -18,6 +18,8 @@ import "./NavLayout.scss";
 
 interface NavLayoutProps {
     navBarMode: "default" | "forge";
+    onExportAsJson: () => void;
+    onExportAsMarkdown: () => void;
     currentNavLinkText?: string;
     navLinks?: { text: string; link: string }[];
     drawerComponents?: ReactNode;
@@ -101,12 +103,19 @@ export default function NavLayout(props: NavLayoutProps) {
                     {isMobile ? (
                         <div className="right-end-controls-container">
                             <NavLogo />
-                            <ExportButton />
+                            <ExportButton
+                                onExportAsJson={props.onExportAsJson}
+                                onExportAsMarkdown={props.onExportAsMarkdown}
+                            />
                         </div>
                     ) : (
                         <>
                             <NavLogo includeTitle />
-                            <ExportButton includeText />
+                            <ExportButton
+                                includeText
+                                onExportAsJson={props.onExportAsJson}
+                                onExportAsMarkdown={props.onExportAsMarkdown}
+                            />
                         </>
                     )}
                 </>
