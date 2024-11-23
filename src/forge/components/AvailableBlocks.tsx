@@ -5,8 +5,12 @@ import { v4 as uuidv4 } from "uuid";
 import BlockCategoryType from "../../types/BlockCategoryType";
 import BlockDataType from "../../types/BlockDataType";
 
+// material icons
+import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
+
 // components
 import Block from "./Block";
+import StyledButton from "../../shared/components/UIElements/StyledButton";
 
 // utils
 import fetchBlockCatData from "../../shared/utils/fetchBlockCatData";
@@ -19,6 +23,7 @@ interface AvailableBlocksProps {
     blockCategories: string[]; // the names of the block categories available in the template
     onAddBlock: (newBlock: BlockDataType) => void;
     searchQuery: string;
+    onRemoveBlockCat: (blockCatName: string) => void;
 }
 
 export default function AvailableBlocks(props: AvailableBlocksProps) {
@@ -117,6 +122,14 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
                 <>
                     <div className="block-category-name">
                         {category.displayName}
+                        <StyledButton
+                            onClick={() =>
+                                props.onRemoveBlockCat(category.name)
+                            }
+                            startIcon={<CancelRoundedIcon />}
+                            blurBg
+                            sx={{ minWidth: "28px", height: "28px" }}
+                        />
                     </div>
 
                     {category.filteredBlocks.map((block, index) => (

@@ -73,8 +73,8 @@ export default function Forge({ templateName }: ForgeProps) {
                 const parsedTemplateData = JSON.parse(
                     localSavedTemplateData
                 ) as TemplateDataType;
-                setTemplateData(parsedTemplateData);
                 setUsedBlocksList(parsedTemplateData.usedBlocks);
+                setTemplateData(parsedTemplateData);
             } catch (error) {
                 console.error("Error parsing data:", error);
                 fetchTemplate();
@@ -163,6 +163,19 @@ export default function Forge({ templateName }: ForgeProps) {
         setUsedBlocksList((prev) => [...prev, newBlock]);
     }, []);
 
+    const onRemoveAvailableBlockCat = useCallback((blockCatName: string) => {
+        setTemplateData(
+            (prev) =>
+                prev && {
+                    ...prev,
+                    availableBlockCategories:
+                        prev.availableBlockCategories.filter(
+                            (catName) => catName !== blockCatName
+                        ),
+                }
+        );
+    }, []);
+
     const markdownBlocks = (
         <div className="blocks-container">
             {!templateData ? (
@@ -189,6 +202,7 @@ export default function Forge({ templateName }: ForgeProps) {
                             blockCategories={
                                 templateData.availableBlockCategories
                             }
+                            onRemoveBlockCat={onRemoveAvailableBlockCat}
                             onAddBlock={onAddBlock}
                             searchQuery={searchQuery}
                         />

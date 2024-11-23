@@ -76,8 +76,7 @@ export default function ExportButton(props: ExportButtonProps) {
                 aria-controls={open ? "export-menu" : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
-                startIcon={<FileDownloadRoundedIcon />}
-                variant="contained">
+                startIcon={<FileDownloadRoundedIcon />}>
                 {props.includeText && "Export"}
             </StyledButton>
         </>
