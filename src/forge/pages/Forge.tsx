@@ -176,6 +176,19 @@ export default function Forge({ templateName }: ForgeProps) {
         );
     }, []);
 
+    const onAddAvailableBlockCat = useCallback((blockName: string) => {
+        setTemplateData(
+            (prev) =>
+                prev && {
+                    ...prev,
+                    availableBlockCategories: [
+                        ...prev.availableBlockCategories,
+                        blockName,
+                    ],
+                }
+        );
+    }, []);
+
     const markdownBlocks = (
         <div className="blocks-container">
             {!templateData ? (
@@ -203,6 +216,7 @@ export default function Forge({ templateName }: ForgeProps) {
                                 templateData.availableBlockCategories
                             }
                             onRemoveBlockCat={onRemoveAvailableBlockCat}
+                            onAddBlockCat={onAddAvailableBlockCat}
                             onAddBlock={onAddBlock}
                             searchQuery={searchQuery}
                         />

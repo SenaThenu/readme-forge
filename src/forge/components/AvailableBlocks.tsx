@@ -11,6 +11,7 @@ import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
 // components
 import Block from "./Block";
 import StyledButton from "../../shared/components/UIElements/StyledButton";
+import FeedbackSnackbar from "../../shared/components/UIElements/FeedbackSnackbar";
 
 // utils
 import fetchBlockCatData from "../../shared/utils/fetchBlockCatData";
@@ -24,9 +25,15 @@ interface AvailableBlocksProps {
     onAddBlock: (newBlock: BlockDataType) => void;
     searchQuery: string;
     onRemoveBlockCat: (blockCatName: string) => void;
+    onAddBlockCat: (blockCatName: string) => void;
 }
 
 export default function AvailableBlocks(props: AvailableBlocksProps) {
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState("Category removed!");
+    const [removeBlockCatName, setRemoveBlockCatName] = useState<string | null>(
+        null
+    );
     const [blockCategories, setBlockCategories] = useState<BlockCategoryType[]>(
         []
     );
@@ -114,34 +121,66 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
         }));
     }, [blockCategories, props.searchQuery, sortBlocks]);
 
-    return processedCategories.map((category) => (
-        <div
-            className="block-category-container"
-            key={`${category.name}-${uuidv4()}`}>
-            {category.filteredBlocks.length > 0 && (
-                <>
-                    <div className="block-category-name">
-                        {category.displayName}
-                        <StyledButton
-                            onClick={() =>
-                                props.onRemoveBlockCat(category.name)
-                            }
-                            startIcon={<CancelRoundedIcon />}
-                            blurBg
-                            sx={{ minWidth: "28px", height: "28px" }}
-                        />
-                    </div>
+    const openSnackbar = () => {
+        if (snackbarOpen) {
+            setSnackbarOpen(false);
+            setTimeout(() => {
+                setSnackbarOpen(true);
+            }, 100);
+        } else {
+            setSnackbarOpen(true);
+        }
+    };
 
-                    {category.filteredBlocks.map((block, index) => (
-                        <Block
-                            blockDescription={block.description}
-                            key={index}
-                            onClick={createBlockClickHandler(block)}>
-                            {block.displayName}
-                        </Block>
-                    ))}
-                </>
-            )}
-        </div>
-    ));
+    return (
+        <>
+            <FeedbackSnackbar
+                open={snackbarOpen}
+                message={snackbarMessage}
+                setOpen={setSnackbarOpen}
+                severity="warning"
+                includeUndo
+                onUndo={() => {
+                    if (removeBlockCatName) {
+                        props.onAddBlockCat(removeBlockCatName);
+                    }
+                }}
+            />
+            {processedCategories.map((category) => (
+                <div
+                    className="block-category-container"
+                    key={`${category.name}-${uuidv4()}`}>
+                    {category.filteredBlocks.length > 0 && (
+                        <>
+                            <div className="block-category-name">
+                                {category.displayName}
+                                <StyledButton
+                                    onClick={() => {
+                                        props.onRemoveBlockCat(category.name);
+                                        setSnackbarMessage(
+                                            `Removed ${category.displayName} Block Category`
+                                        );
+                                        openSnackbar();
+                                        setRemoveBlockCatName(category.name);
+                                    }}
+                                    startIcon={<CancelRoundedIcon />}
+                                    blurBg
+                                    sx={{ minWidth: "28px", height: "28px" }}
+                                />
+                            </div>
+
+                            {category.filteredBlocks.map((block, index) => (
+                                <Block
+                                    blockDescription={block.description}
+                                    key={index}
+                                    onClick={createBlockClickHandler(block)}>
+                                    {block.displayName}
+                                </Block>
+                            ))}
+                        </>
+                    )}
+                </div>
+            ))}
+        </>
+    );
 }
