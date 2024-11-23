@@ -54,9 +54,7 @@ export default function Forge({ templateName }: ForgeProps) {
             const fetchedTemplateData = await fetchTemplateData(templateName);
             if (fetchedTemplateData !== null) {
                 setTemplateData(fetchedTemplateData);
-                if (!usedBlocksList.length && templateData) {
-                    setUsedBlocksList(fetchedTemplateData.usedBlocks);
-                }
+                setUsedBlocksList(fetchedTemplateData.usedBlocks);
             } else {
                 console.log(
                     `Error fetching the template data from ${templateName}`
