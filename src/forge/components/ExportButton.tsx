@@ -1,4 +1,4 @@
-import { useState, MouseEventHandler } from "react";
+import { useState } from "react";
 import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
 
 // material ui components
@@ -12,8 +12,7 @@ import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 
 // components
 import StyledButton from "../../shared/components/UIElements/StyledButton";
-import StyledMenu from "../../shared/components/UIElements/StyeldMenu";
-import { Button } from "@mui/material";
+import StyledMenu from "../../shared/components/UIElements/StyledMenu";
 
 interface ExportButtonProps {
     onExportAsJson: () => void;

@@ -18,7 +18,7 @@ import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 // components
 import Block from "./Block";
 import RenameDialog from "./RenameDialog";
-import StyledMenu from "../../shared/components/UIElements/StyeldMenu";
+import StyledMenu from "../../shared/components/UIElements/StyledMenu";
 
 // styles
 import "./SortableBlock.scss";
