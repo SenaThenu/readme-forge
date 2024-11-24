@@ -1,6 +1,11 @@
 // material ui components
 import Dialog, { DialogProps } from "@mui/material/Dialog";
+import Slide, { SlideProps } from "@mui/material/Slide";
 import { styled } from "@mui/material/styles";
+
+function SlideTransition(props: SlideProps) {
+    return <Slide {...props} direction="up" />;
+}
 
 const CustomDialog = styled(Dialog)<DialogProps>(({ theme }) => ({
     ".MuiDialog-paper": {
@@ -16,5 +21,5 @@ const CustomDialog = styled(Dialog)<DialogProps>(({ theme }) => ({
 }));
 
 export default function StyledDialog(props: DialogProps) {
-    return <CustomDialog {...props} />;
+    return <CustomDialog {...props} TransitionComponent={SlideTransition} />;
 }

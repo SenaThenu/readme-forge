@@ -17,7 +17,7 @@ import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
 // components
 import Block from "./Block";
-import RenameDialog from "./RenameDialog";
+import TextFieldDialog from "./TextFieldDialog";
 import StyledMenu from "../../shared/components/UIElements/StyledMenu";
 
 // styles
@@ -32,6 +32,7 @@ interface SortableBlockProps {
     onDuplicate: (blockId: string) => void;
     onDelete: (blockId: string) => void;
     onReset: (blockId: string) => void;
+    resettable: boolean;
     children: ReactNode;
 }
 
@@ -146,12 +147,14 @@ export default function SortableBlock(props: SortableBlockProps) {
                                     </ListItemIcon>
                                     <ListItemText>Duplicate</ListItemText>
                                 </MenuItem>
-                                <MenuItem onClick={handleResetClick}>
-                                    <ListItemIcon>
-                                        <RotateLeftRoundedIcon fontSize="small" />
-                                    </ListItemIcon>
-                                    <ListItemText>Reset</ListItemText>
-                                </MenuItem>
+                                {props.resettable && (
+                                    <MenuItem onClick={handleResetClick}>
+                                        <ListItemIcon>
+                                            <RotateLeftRoundedIcon fontSize="small" />
+                                        </ListItemIcon>
+                                        <ListItemText>Reset</ListItemText>
+                                    </MenuItem>
+                                )}
                                 <MenuItem onClick={handleDeleteClick}>
                                     <ListItemIcon>
                                         <DeleteRoundedIcon fontSize="small" />
@@ -164,9 +167,12 @@ export default function SortableBlock(props: SortableBlockProps) {
                 </Block>
             </div>
             {/* rename dialog */}
-            <RenameDialog
-                renameInput={renameDialogInput}
-                onRenameInputChange={(newName) => {
+            <TextFieldDialog
+                dialogTitle={`Rename Block: ${props.displayName}`}
+                submitBtnName="Rename"
+                textFieldPlaceHolder="Enter a new name..."
+                textInput={renameDialogInput}
+                onTextInputChange={(newName) => {
                     setRenameDialogInput(newName);
                 }}
                 handleClose={() => {

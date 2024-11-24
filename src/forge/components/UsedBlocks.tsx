@@ -254,7 +254,10 @@ export default function UsedBlocks({
                                     onDelete={deleteBlock}
                                     onDuplicate={duplicateBlock}
                                     onRename={renameBlock}
-                                    onReset={resetBlock}>
+                                    onReset={resetBlock}
+                                    resettable={
+                                        block.originalMarkdown !== null
+                                    }>
                                     {block.displayName}
                                 </SortableBlock>
                             );
