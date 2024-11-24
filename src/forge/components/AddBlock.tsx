@@ -14,6 +14,8 @@ import AddBlockDialog from "./AddBlockDialog";
 import "./AddBlock.scss";
 
 interface AddBlockProps {
+    usedBlockCats: string[];
+    onAddBlockCat: (blockCatName: string) => void;
     onAddBlock: (newBlock: BlockDataType) => void;
 }
 
@@ -25,6 +27,8 @@ export default function AddBlock(props: AddBlockProps) {
             <AddBlockDialog
                 open={addBlockDialogOpen}
                 setOpen={setAddBlockDialogOpen}
+                usedBlockCats={props.usedBlockCats}
+                onAddBlockCat={props.onAddBlockCat}
                 onAddBlock={props.onAddBlock}
             />
             <Block

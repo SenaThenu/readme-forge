@@ -18,7 +18,6 @@ import AvailableBlocks from "../components/AvailableBlocks";
 import UsedBlocks from "../components/UsedBlocks";
 import SelectBlockImg from "../components/SelectBlockImg";
 import AddBlock from "../components/AddBlock";
-import TextualDivider from "../../shared/components/UIElements/TextualDivider";
 
 // utils
 import fetchTemplateData from "../../shared/utils/fetchTemplateData";
@@ -211,7 +210,11 @@ export default function Forge({ templateName }: ForgeProps) {
                             setSearchQuery(newQuery)
                         }
                     />
-                    <AddBlock onAddBlock={onAddBlock} />
+                    <AddBlock
+                        usedBlockCats={templateData.availableBlockCategories}
+                        onAddBlockCat={onAddAvailableBlockCat}
+                        onAddBlock={onAddBlock}
+                    />
                     <div className="available-blocks">
                         <AvailableBlocks
                             blockCategories={
@@ -223,7 +226,6 @@ export default function Forge({ templateName }: ForgeProps) {
                             searchQuery={searchQuery}
                         />
                     </div>
-                    <TextualDivider text="Custom" />
                 </>
             )}
         </div>

@@ -1,14 +1,20 @@
+import { ReactElement, forwardRef } from "react";
+
 // material ui components
 import Dialog, { DialogProps } from "@mui/material/Dialog";
-import Slide, { SlideProps } from "@mui/material/Slide";
+import Slide from "@mui/material/Slide";
 import { styled } from "@mui/material/styles";
+import { TransitionProps } from "@mui/material/transitions";
 
-function SlideTransition(props: SlideProps) {
-    return <Slide {...props} direction="up" />;
-}
+const SlideTransition = forwardRef(function SlideTransition(
+    props: TransitionProps & { children: ReactElement },
+    ref: React.Ref<unknown>
+) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
-const CustomDialog = styled(Dialog)<DialogProps>(({ theme }) => ({
-    ".MuiDialog-paper": {
+const CustomDialog = styled(Dialog)(({ theme }) => ({
+    "& .MuiDialog-paper": {
         backgroundColor:
             theme.palette.mode === "dark"
                 ? "rgba(0, 0, 0, 0.5)"
