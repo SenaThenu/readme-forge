@@ -1,0 +1,27 @@
+// TextualDivider.scss
+.textual-divider {
+  border: none;
+  border-top: 1px solid var(--line-color);
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.textual-divider-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  .textual-divider-line {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--line-color);
+  }
+
+  .textual-divider-text {
+    flex-shrink: 0;
+    padding: 0 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--line-color);
+  }
+}
