@@ -7,14 +7,11 @@ import BlockDataType from "../../types/BlockDataType";
 // material ui components
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 // components
 import StyledDialog from "../../shared/components/UIElements/StyledDialog";
 import StyledButton from "../../shared/components/UIElements/StyledButton";
+import StyledSelect from "../../shared/components/UIElements/StyledSelect";
 import Block from "./Block";
 import TextualDivider from "../../shared/components/UIElements/TextualDivider";
 import TextFieldDialog from "./TextFieldDialog";
@@ -79,8 +76,8 @@ export default function AddBlockDialog(props: AddBlockDialogProps) {
     const closeAddBlockCatDialog = () => {
         setAddBlockCatDialogOpen(false);
     };
-    const handleSelectedBlockCatChange = (event: SelectChangeEvent) => {
-        setSelectedBlockCat(event.target.value as string);
+    const handleSelectedBlockCatChange = (blockCat: string) => {
+        setSelectedBlockCat(blockCat);
     };
     const handleAddBlockCatSubmit = () => {
         if (selectedBlockCat !== "") {
@@ -134,26 +131,12 @@ export default function AddBlockDialog(props: AddBlockDialogProps) {
                 open={addBlockCatDialogOpen}
                 onClose={closeAddBlockCatDialog}>
                 <DialogContent>
-                    <FormControl fullWidth>
-                        <InputLabel id="block-cat-select-label">
-                            Block Category
-                        </InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            value={selectedBlockCat}
-                            label="Block Category"
-                            onChange={handleSelectedBlockCatChange}
-                            sx={{ minWidth: "200px" }}>
-                            {availableBlockCatsToAdd.map((blockCat, index) => {
-                                // displaying the options
-                                return (
-                                    <MenuItem value={blockCat} key={index}>
-                                        {blockCat}
-                                    </MenuItem>
-                                );
-                            })}
-                        </Select>
-                    </FormControl>
+                    <StyledSelect
+                        label="Select Block Category"
+                        menuItems={availableBlockCatsToAdd as string[]}
+                        selectedValue={selectedBlockCat}
+                        onSelectChange={handleSelectedBlockCatChange}
+                    />
                 </DialogContent>
                 <DialogActions>
                     <StyledButton onClick={closeAddBlockCatDialog}>
