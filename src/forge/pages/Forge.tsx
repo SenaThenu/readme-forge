@@ -211,7 +211,7 @@ export default function Forge({ templateName }: ForgeProps) {
                             setSearchQuery(newQuery)
                         }
                     />
-                    <AddBlock />
+                    <AddBlock onAddBlock={onAddBlock} />
                     <div className="available-blocks">
                         <AvailableBlocks
                             blockCategories={

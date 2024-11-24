@@ -1,18 +1,40 @@
+import { useState } from "react";
+
+// types
+import BlockDataType from "../../types/BlockDataType";
+
 // material ui components
-import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
+import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 
 // components
 import Block from "./Block";
-import StyledDialog from "../../shared/components/UIElements/StyledDialog";
+import AddBlockDialog from "./AddBlockDialog";
 
 // styles
 import "./AddBlock.scss";
 
-export default function AddBlock() {
+interface AddBlockProps {
+    onAddBlock: (newBlock: BlockDataType) => void;
+}
+
+export default function AddBlock(props: AddBlockProps) {
+    const [addBlockDialogOpen, setAddBlockDialogOpen] = useState(false);
+
     return (
-        <Block className="add-block">
-            <AddCircleRoundedIcon />
-            Add
-        </Block>
+        <>
+            <AddBlockDialog
+                open={addBlockDialogOpen}
+                setOpen={setAddBlockDialogOpen}
+                onAddBlock={props.onAddBlock}
+            />
+            <Block
+                className="add-block"
+                onClick={() => {
+                    setAddBlockDialogOpen(true);
+                }}>
+                <AddCircleOutlineRoundedIcon fontSize="small" />
+                Add
+            </Block>
+        </>
     );
 }
