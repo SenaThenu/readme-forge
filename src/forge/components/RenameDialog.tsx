@@ -1,6 +1,5 @@
 // material ui components
 import StyledButton from "../../shared/components/UIElements/StyledButton";
-import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -9,9 +8,7 @@ import { useTheme } from "@mui/material/styles";
 
 // components
 import StyledTextField from "../../shared/components/UIElements/StyledTextField";
-
-// styles
-import "./RenameDialog.scss";
+import StyledDialog from "../../shared/components/UIElements/StyledDialog";
 
 interface RenameDialogProps {
     renameInput: string;
@@ -25,7 +22,7 @@ export default function RenameDialog(props: RenameDialogProps) {
     const theme = useTheme(); // get current theme
 
     return (
-        <Dialog
+        <StyledDialog
             open={props.open}
             onClose={props.handleClose}
             PaperProps={{
@@ -33,14 +30,6 @@ export default function RenameDialog(props: RenameDialogProps) {
                 onSubmit: (e: React.FormEvent<HTMLFormElement>) => {
                     e.preventDefault();
                     props.onSubmit();
-                },
-            }}
-            sx={{
-                ".MuiDialog-paper": {
-                    backgroundColor:
-                        theme.palette.mode === "dark"
-                            ? "rgba(0, 0, 0, 0.5)"
-                            : "rgba(255, 255, 255, 0.7)",
                 },
             }}>
             <DialogTitle>Rename</DialogTitle>
@@ -57,6 +46,6 @@ export default function RenameDialog(props: RenameDialogProps) {
                 <StyledButton onClick={props.handleClose}>Cancel</StyledButton>
                 <StyledButton onClick={props.onSubmit}>Rename</StyledButton>
             </DialogActions>
-        </Dialog>
+        </StyledDialog>
     );
 }
