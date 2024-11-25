@@ -21,6 +21,7 @@ import AddBlock from "../components/AddBlock";
 import TextualDivider from "../../shared/components/UIElements/TextualDivider";
 import ImportTemplate from "../components/ImportTemplate";
 import BrowseTemplates from "../components/BrowseTemplates";
+import TopRowActions from "../components/TopRowActions";
 
 // utils
 import fetchTemplateData from "../../shared/utils/fetchTemplateData";
@@ -54,18 +55,6 @@ export default function Forge({ templateName }: ForgeProps) {
 
     // setting up the forge workspace based on the template
     useEffect(() => {
-        const fetchTemplate = async () => {
-            const fetchedTemplateData = await fetchTemplateData(templateName);
-            if (fetchedTemplateData !== null) {
-                setTemplateData(fetchedTemplateData);
-                setUsedBlocksList(fetchedTemplateData.usedBlocks);
-            } else {
-                console.log(
-                    `Error fetching the template data from ${templateName}`
-                );
-            }
-        };
-
         // checking for a saved local version
         const localSavedTemplateData = localStorage.getItem(
             `${templateName}-template-latest-save`
@@ -144,12 +133,30 @@ export default function Forge({ templateName }: ForgeProps) {
         }
     }, [markdown]);
 
+    const fetchTemplate = useCallback(async () => {
+        const fetchedTemplateData = await fetchTemplateData(templateName);
+        if (fetchedTemplateData !== null) {
+            setTemplateData(fetchedTemplateData);
+            setUsedBlocksList(fetchedTemplateData.usedBlocks);
+        } else {
+            console.log(
+                `Error fetching the template data from ${templateName}`
+            );
+        }
+    }, []);
+
     const onUsedBlocksOrderChanged = useCallback(
         (newOrder: BlockDataType[]) => {
             setUsedBlocksList(newOrder);
         },
         []
     );
+
+    const onReset = () => {
+        fetchTemplate();
+        setActiveBlockId(null);
+        setMarkdown("");
+    };
 
     const onUpdateMarkdown = (newMarkdown: string) => {
         setMarkdown(newMarkdown);
@@ -195,6 +202,8 @@ export default function Forge({ templateName }: ForgeProps) {
                 <CircularProgress />
             ) : (
                 <>
+                    <TopRowActions onReset={onReset} />
+                    <Divider flexItem />
                     <div className="used-blocks">
                         {usedBlocksList.length > 0 ? (
                             <UsedBlocks
