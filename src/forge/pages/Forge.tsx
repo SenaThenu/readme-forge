@@ -19,6 +19,7 @@ import UsedBlocks from "../components/UsedBlocks";
 import SelectBlockImg from "../components/SelectBlockImg";
 import AddBlock from "../components/AddBlock";
 import TextualDivider from "../../shared/components/UIElements/TextualDivider";
+import ImportTemplate from "../components/ImportTemplate";
 
 // utils
 import fetchTemplateData from "../../shared/utils/fetchTemplateData";
@@ -204,7 +205,17 @@ export default function Forge({ templateName }: ForgeProps) {
                                 updateMarkdown={onUpdateMarkdown}
                             />
                         ) : (
-                            <TextualDivider text="No Block is Used!" />
+                            <>
+                                <TextualDivider text="No Block is Used!" />
+                                <ImportTemplate
+                                    onTemplateLoaded={(loadedTemplate) => {
+                                        setUsedBlocksList(
+                                            loadedTemplate.usedBlocks
+                                        );
+                                        setTemplateData(loadedTemplate);
+                                    }}
+                                />
+                            </>
                         )}
                     </div>
                     <Divider flexItem />
