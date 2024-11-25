@@ -30,7 +30,8 @@
         "rehype-react": "^8.0.0",
         "remark-gfm": "^4.0.0",
         "remark-rehype": "^11.1.1",
-        "uuid": "^11.0.2"
+        "uuid": "^11.0.2",
+        "zod": "^3.23.8"
     },
     "devDependencies": {
         "@codemirror/lang-markdown": "^6.3.0",

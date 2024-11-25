@@ -1,12 +1,13 @@
 import Card, { CardProps } from "@mui/material/Card";
 import CardContent, { CardContentProps } from "@mui/material/CardContent";
-import { styled } from "@mui/material/styles";
+import { styled, Theme, alpha } from "@mui/material/styles";
 
 // components
 import StyledTooltip from "../../shared/components/UIElements/StyledTooltip";
 
 interface BlockProps extends CardProps {
     blockDescription?: string;
+    translucentBg?: boolean;
 }
 
 const StyledCard = styled(Card)<CardProps>(({ theme }) => ({
@@ -36,7 +37,18 @@ export default function Block(props: BlockProps) {
     const blockCard = (
         <StyledCard
             onClick={props.onClick}
-            className={`block-card ${props.className}`}>
+            className={`block-card ${props.className}`}
+            sx={
+                props.translucentBg
+                    ? (theme: Theme) => ({
+                          backgroundColor:
+                              theme.palette.mode === "dark"
+                                  ? alpha(theme.palette.secondary.light, 0.2)
+                                  : alpha(theme.palette.secondary.dark, 0.2),
+                          backdropFilter: "blur(10px)",
+                      })
+                    : undefined
+            }>
             <StyledCardContent className="block-card-content">
                 {props.children}
             </StyledCardContent>

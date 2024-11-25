@@ -18,6 +18,9 @@ import AvailableBlocks from "../components/AvailableBlocks";
 import UsedBlocks from "../components/UsedBlocks";
 import SelectBlockImg from "../components/SelectBlockImg";
 import AddBlock from "../components/AddBlock";
+import TextualDivider from "../../shared/components/UIElements/TextualDivider";
+import ImportTemplate from "../components/ImportTemplate";
+import BrowseTemplates from "../components/BrowseTemplates";
 
 // utils
 import fetchTemplateData from "../../shared/utils/fetchTemplateData";
@@ -97,15 +100,13 @@ export default function Forge({ templateName }: ForgeProps) {
 
     // update the template data based on usedBlocks
     useEffect(() => {
-        if (usedBlocksList.length > 0) {
-            setTemplateData(
-                (prev) =>
-                    prev && {
-                        ...prev,
-                        usedBlocks: usedBlocksList,
-                    }
-            );
-        }
+        setTemplateData(
+            (prev) =>
+                prev && {
+                    ...prev,
+                    usedBlocks: usedBlocksList,
+                }
+        );
 
         // checking if the active block is deleted
         let activeBlock = usedBlocksList.find(
@@ -195,14 +196,29 @@ export default function Forge({ templateName }: ForgeProps) {
             ) : (
                 <>
                     <div className="used-blocks">
-                        <UsedBlocks
-                            usedBlocksList={usedBlocksList}
-                            activeBlockId={activeBlockId}
-                            onBlockOrderChanged={onUsedBlocksOrderChanged}
-                            onBlockSelected={onBlockSelected}
-                            onAddBlock={onAddBlock}
-                            updateMarkdown={onUpdateMarkdown}
-                        />
+                        {usedBlocksList.length > 0 ? (
+                            <UsedBlocks
+                                usedBlocksList={usedBlocksList}
+                                activeBlockId={activeBlockId}
+                                onBlockOrderChanged={onUsedBlocksOrderChanged}
+                                onBlockSelected={onBlockSelected}
+                                onAddBlock={onAddBlock}
+                                updateMarkdown={onUpdateMarkdown}
+                            />
+                        ) : (
+                            <>
+                                <TextualDivider text="No Block is Used!" />
+                                <ImportTemplate
+                                    onTemplateLoaded={(loadedTemplate) => {
+                                        setUsedBlocksList(
+                                            loadedTemplate.usedBlocks
+                                        );
+                                        setTemplateData(loadedTemplate);
+                                    }}
+                                />
+                                <BrowseTemplates />
+                            </>
+                        )}
                     </div>
                     <Divider flexItem />
                     <SearchField
