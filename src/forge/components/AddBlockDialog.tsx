@@ -18,7 +18,7 @@ import TextFieldDialog from "./TextFieldDialog";
 
 // utils
 import toKebabCase from "../../shared/utils/toKebabCase";
-import getAllBlockCats from "../../shared/utils/getAllBlockCats";
+import fetchAllBlockCatNames from "../../shared/utils/fetchAllBlockCatNames";
 
 interface AddBlockDialogProps {
     open: boolean;
@@ -34,6 +34,9 @@ export default function AddBlockDialog(props: AddBlockDialogProps) {
 
     const [addBlockCatDialogOpen, setAddBlockCatDialogOpen] = useState(false);
     const [selectedBlockCat, setSelectedBlockCat] = useState("");
+    const [allAvailableBlockCats, setAllAvailableBlockCats] = useState<
+        Record<string, string>
+    >({});
 
     // clear up states on mount
     useEffect(() => {
@@ -41,15 +44,30 @@ export default function AddBlockDialog(props: AddBlockDialogProps) {
         setSelectedBlockCat("");
     }, [props.open]);
 
-    const allAvailableBlockCats = useMemo(() => {
-        return getAllBlockCats();
+    // fetch all available block cats
+    useEffect(() => {
+        const initAvailableAllBlockCatNames = async () => {
+            const blockCatNamesDict = await fetchAllBlockCatNames();
+            if (blockCatNamesDict) {
+                setAllAvailableBlockCats(blockCatNamesDict);
+            }
+        };
+
+        initAvailableAllBlockCatNames();
     }, []);
+
     const availableBlockCatsToAdd = useMemo(() => {
-        return allAvailableBlockCats.filter(
+        return Object.keys(allAvailableBlockCats).filter(
             // filtering non-used block cats
             (blockCat) => blockCat && !props.usedBlockCats.includes(blockCat)
         );
-    }, [props.usedBlockCats]);
+    }, [allAvailableBlockCats, props.usedBlockCats]);
+
+    const availableBlockCatsDisplayNames = useMemo(() => {
+        return availableBlockCatsToAdd.map(
+            (blockName) => allAvailableBlockCats[blockName]
+        );
+    }, [availableBlockCatsToAdd]);
 
     const handleClose = () => {
         props.setOpen(false);
@@ -84,6 +102,7 @@ export default function AddBlockDialog(props: AddBlockDialogProps) {
             props.onAddBlockCat(selectedBlockCat);
         }
         closeAddBlockCatDialog();
+        handleClose();
     };
 
     return (
@@ -133,7 +152,8 @@ export default function AddBlockDialog(props: AddBlockDialogProps) {
                 <DialogContent>
                     <StyledSelect
                         label="Select Block Category"
-                        menuItems={availableBlockCatsToAdd as string[]}
+                        menuItemValues={availableBlockCatsToAdd}
+                        menuItemsDisplayNames={availableBlockCatsDisplayNames}
                         selectedValue={selectedBlockCat}
                         onSelectChange={handleSelectedBlockCatChange}
                     />

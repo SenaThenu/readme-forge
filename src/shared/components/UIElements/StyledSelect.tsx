@@ -49,7 +49,8 @@ const CustomInputLabel = styled(InputLabel)(({ theme }) => ({
 
 interface StyledSelectProps {
     label: string;
-    menuItems: string[];
+    menuItemValues: string[];
+    menuItemsDisplayNames: string[];
     selectedValue: string;
     onSelectChange: (selectedValue: string) => void;
 }
@@ -68,10 +69,10 @@ export default function StyledSelect(props: StyledSelectProps) {
                 value={props.selectedValue}
                 onChange={handleChange}
                 MenuProps={CustomMenuProps}>
-                {props.menuItems.map((item, index) => {
+                {props.menuItemValues.map((item, index) => {
                     return (
                         <CustomMenuItem value={item} key={index}>
-                            {item}
+                            {props.menuItemsDisplayNames[index]}
                         </CustomMenuItem>
                     );
                 })}
