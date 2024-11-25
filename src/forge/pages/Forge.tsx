@@ -17,6 +17,7 @@ import MarkdownPreview from "../components/MarkdownPreview";
 import AvailableBlocks from "../components/AvailableBlocks";
 import UsedBlocks from "../components/UsedBlocks";
 import SelectBlockImg from "../components/SelectBlockImg";
+import AddBlock from "../components/AddBlock";
 
 // utils
 import fetchTemplateData from "../../shared/utils/fetchTemplateData";
@@ -54,9 +55,7 @@ export default function Forge({ templateName }: ForgeProps) {
             const fetchedTemplateData = await fetchTemplateData(templateName);
             if (fetchedTemplateData !== null) {
                 setTemplateData(fetchedTemplateData);
-                if (!usedBlocksList.length && templateData) {
-                    setUsedBlocksList(fetchedTemplateData.usedBlocks);
-                }
+                setUsedBlocksList(fetchedTemplateData.usedBlocks);
             } else {
                 console.log(
                     `Error fetching the template data from ${templateName}`
@@ -73,8 +72,8 @@ export default function Forge({ templateName }: ForgeProps) {
                 const parsedTemplateData = JSON.parse(
                     localSavedTemplateData
                 ) as TemplateDataType;
-                setTemplateData(parsedTemplateData);
                 setUsedBlocksList(parsedTemplateData.usedBlocks);
+                setTemplateData(parsedTemplateData);
             } catch (error) {
                 console.error("Error parsing data:", error);
                 fetchTemplate();
@@ -163,6 +162,32 @@ export default function Forge({ templateName }: ForgeProps) {
         setUsedBlocksList((prev) => [...prev, newBlock]);
     }, []);
 
+    const onRemoveAvailableBlockCat = useCallback((blockCatName: string) => {
+        setTemplateData(
+            (prev) =>
+                prev && {
+                    ...prev,
+                    availableBlockCategories:
+                        prev.availableBlockCategories.filter(
+                            (catName) => catName !== blockCatName
+                        ),
+                }
+        );
+    }, []);
+
+    const onAddAvailableBlockCat = useCallback((blockName: string) => {
+        setTemplateData(
+            (prev) =>
+                prev && {
+                    ...prev,
+                    availableBlockCategories: [
+                        ...prev.availableBlockCategories,
+                        blockName,
+                    ],
+                }
+        );
+    }, []);
+
     const markdownBlocks = (
         <div className="blocks-container">
             {!templateData ? (
@@ -175,6 +200,7 @@ export default function Forge({ templateName }: ForgeProps) {
                             activeBlockId={activeBlockId}
                             onBlockOrderChanged={onUsedBlocksOrderChanged}
                             onBlockSelected={onBlockSelected}
+                            onAddBlock={onAddBlock}
                             updateMarkdown={onUpdateMarkdown}
                         />
                     </div>
@@ -184,11 +210,18 @@ export default function Forge({ templateName }: ForgeProps) {
                             setSearchQuery(newQuery)
                         }
                     />
+                    <AddBlock
+                        usedBlockCats={templateData.availableBlockCategories}
+                        onAddBlockCat={onAddAvailableBlockCat}
+                        onAddBlock={onAddBlock}
+                    />
                     <div className="available-blocks">
                         <AvailableBlocks
                             blockCategories={
                                 templateData.availableBlockCategories
                             }
+                            onRemoveBlockCat={onRemoveAvailableBlockCat}
+                            onAddBlockCat={onAddAvailableBlockCat}
                             onAddBlock={onAddBlock}
                             searchQuery={searchQuery}
                         />

@@ -1,4 +1,4 @@
-import { useState, MouseEventHandler } from "react";
+import { useState } from "react";
 import FileDownloadRoundedIcon from "@mui/icons-material/FileDownloadRounded";
 
 // material ui components
@@ -12,8 +12,7 @@ import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 
 // components
 import StyledButton from "../../shared/components/UIElements/StyledButton";
-import StyledMenu from "../../shared/components/UIElements/StyeldMenu";
-import { Button } from "@mui/material";
+import StyledMenu from "../../shared/components/UIElements/StyledMenu";
 
 interface ExportButtonProps {
     onExportAsJson: () => void;
@@ -76,8 +75,7 @@ export default function ExportButton(props: ExportButtonProps) {
                 aria-controls={open ? "export-menu" : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
-                startIcon={<FileDownloadRoundedIcon />}
-                variant="contained">
+                startIcon={<FileDownloadRoundedIcon />}>
                 {props.includeText && "Export"}
             </StyledButton>
         </>

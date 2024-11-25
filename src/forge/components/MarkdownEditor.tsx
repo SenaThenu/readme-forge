@@ -41,7 +41,6 @@ export default function MarkdownEditor(props: MarkdownEditor) {
             setKey((prev) => prev + 1); // increment key to force remount
         }
 
-        console.log("reset success!");
         props.handleFinishReset();
     }, [props.resetEditHistory]);
 

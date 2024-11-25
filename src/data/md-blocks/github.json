@@ -1,0 +1,42 @@
+{
+    "name": "github",
+    "displayName": "GitHub (test)",
+    "blocks": [
+        {
+            "name": "title",
+            "displayName": "Title",
+            "description": "The title of the README.md",
+            "markdown": "# Project Name"
+        },
+        {
+            "name": "description",
+            "displayName": "Description",
+            "description": "A brief description of the project",
+            "markdown": "A short project description goes here."
+        },
+        {
+            "name": "installation",
+            "displayName": "Installation",
+            "description": "Instructions to install the project",
+            "markdown": "```bash\nnpm install\n```"
+        },
+        {
+            "name": "usage",
+            "displayName": "Usage",
+            "description": "How to use the project",
+            "markdown": "```bash\nnpm start\n```"
+        },
+        {
+            "name": "contributing",
+            "displayName": "Contributing",
+            "description": "Guidelines for contributing to the project",
+            "markdown": "Contributions are welcome! Please open an issue or submit a pull request."
+        },
+        {
+            "name": "license",
+            "displayName": "License",
+            "description": "The license for the project",
+            "markdown": "This project is licensed under the MIT License."
+        }
+    ]
+}

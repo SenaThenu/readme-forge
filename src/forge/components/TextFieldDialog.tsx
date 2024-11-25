@@ -1,31 +1,28 @@
 // material ui components
 import StyledButton from "../../shared/components/UIElements/StyledButton";
-import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import DriveFileRenameOutlineRoundedIcon from "@mui/icons-material/DriveFileRenameOutlineRounded";
-import { useTheme } from "@mui/material/styles";
 
 // components
 import StyledTextField from "../../shared/components/UIElements/StyledTextField";
+import StyledDialog from "../../shared/components/UIElements/StyledDialog";
 
-// styles
-import "./RenameDialog.scss";
-
-interface RenameDialogProps {
-    renameInput: string;
-    onRenameInputChange: (newName: string) => void;
+interface TextFieldDialogProps {
+    dialogTitle: string;
+    textFieldPlaceHolder: string;
+    textInput: string;
+    submitBtnName: string;
+    onTextInputChange: (newName: string) => void;
     open: boolean;
     handleClose: () => void;
     onSubmit: () => void;
 }
 
-export default function RenameDialog(props: RenameDialogProps) {
-    const theme = useTheme(); // get current theme
-
+export default function TextFieldDialog(props: TextFieldDialogProps) {
     return (
-        <Dialog
+        <StyledDialog
             open={props.open}
             onClose={props.handleClose}
             PaperProps={{
@@ -34,29 +31,24 @@ export default function RenameDialog(props: RenameDialogProps) {
                     e.preventDefault();
                     props.onSubmit();
                 },
-            }}
-            sx={{
-                ".MuiDialog-paper": {
-                    backgroundColor:
-                        theme.palette.mode === "dark"
-                            ? "rgba(0, 0, 0, 0.5)"
-                            : "rgba(255, 255, 255, 0.7)",
-                },
             }}>
-            <DialogTitle>Rename</DialogTitle>
+            <DialogTitle>{props.dialogTitle}</DialogTitle>
             <DialogContent>
                 <StyledTextField
-                    id="rename-field"
-                    placeholder="Enter a new name"
-                    value={props.renameInput}
-                    onChange={(e) => props.onRenameInputChange(e.target.value)}
+                    placeholder={props.textFieldPlaceHolder}
+                    value={props.textInput}
+                    onChange={(e) => props.onTextInputChange(e.target.value)}
                     startIcon={<DriveFileRenameOutlineRoundedIcon />}
                 />
             </DialogContent>
             <DialogActions>
                 <StyledButton onClick={props.handleClose}>Cancel</StyledButton>
-                <StyledButton onClick={props.onSubmit}>Rename</StyledButton>
+                <StyledButton
+                    onClick={props.onSubmit}
+                    disabled={props.textInput === ""}>
+                    {props.submitBtnName}
+                </StyledButton>
             </DialogActions>
-        </Dialog>
+        </StyledDialog>
     );
 }
