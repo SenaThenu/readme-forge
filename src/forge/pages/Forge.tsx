@@ -20,6 +20,7 @@ import SelectBlockImg from "../components/SelectBlockImg";
 import AddBlock from "../components/AddBlock";
 import TextualDivider from "../../shared/components/UIElements/TextualDivider";
 import ImportTemplate from "../components/ImportTemplate";
+import BrowseTemplates from "../components/BrowseTemplates";
 
 // utils
 import fetchTemplateData from "../../shared/utils/fetchTemplateData";
@@ -215,6 +216,7 @@ export default function Forge({ templateName }: ForgeProps) {
                                         setTemplateData(loadedTemplate);
                                     }}
                                 />
+                                <BrowseTemplates />
                             </>
                         )}
                     </div>
