@@ -15,6 +15,7 @@ import StyledSelect from "../../shared/components/UIElements/StyledSelect";
 import Block from "./Block";
 import TextualDivider from "../../shared/components/UIElements/TextualDivider";
 import TextFieldDialog from "./TextFieldDialog";
+import FeedbackSnackbar from "../../shared/components/UIElements/FeedbackSnackbar";
 
 // utils
 import toKebabCase from "../../shared/utils/toKebabCase";
@@ -29,6 +30,9 @@ interface AddBlockDialogProps {
 }
 
 export default function AddBlockDialog(props: AddBlockDialogProps) {
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState("Success!");
+
     const [customBlockDialogOpen, setCustomBlockDialogOpen] = useState(false);
     const [customBlockName, setCustomBlockName] = useState("");
 
@@ -73,6 +77,17 @@ export default function AddBlockDialog(props: AddBlockDialogProps) {
         props.setOpen(false);
     };
 
+    const openSnackbar = () => {
+        if (snackbarOpen) {
+            setSnackbarOpen(false);
+            setTimeout(() => {
+                setSnackbarOpen(true);
+            }, 100);
+        } else {
+            setSnackbarOpen(true);
+        }
+    };
+
     // child dialog handlers
     const closeCustomBlockDialog = () => {
         setCustomBlockDialogOpen(false);
@@ -86,6 +101,8 @@ export default function AddBlockDialog(props: AddBlockDialogProps) {
                 markdown: `## ${customBlockName}\n\n`,
                 description: `A custom block named ${customBlockName}`,
             });
+            setSnackbarMessage(`${customBlockName} Block Created`);
+            openSnackbar();
             closeCustomBlockDialog();
             handleClose();
         }
@@ -100,6 +117,10 @@ export default function AddBlockDialog(props: AddBlockDialogProps) {
     const handleAddBlockCatSubmit = () => {
         if (selectedBlockCat !== "") {
             props.onAddBlockCat(selectedBlockCat);
+            setSnackbarMessage(
+                `${allAvailableBlockCats[selectedBlockCat]} Block Category Added`
+            );
+            openSnackbar();
         }
         closeAddBlockCatDialog();
         handleClose();
@@ -132,6 +153,14 @@ export default function AddBlockDialog(props: AddBlockDialogProps) {
                     <StyledButton onClick={handleClose}>Cancel</StyledButton>
                 </DialogActions>
             </StyledDialog>
+
+            {/* feedback snackbar */}
+            <FeedbackSnackbar
+                open={snackbarOpen}
+                message={snackbarMessage}
+                setOpen={setSnackbarOpen}
+                severity="success"
+            />
 
             {/* add custom block dialog */}
             <TextFieldDialog
