@@ -1,14 +1,29 @@
 import { useRef, ChangeEvent } from "react";
+import { z } from "zod";
 
 // types
 import TemplateDataType from "../../types/TemplateDataType";
-import BlockDataType from "../../types/BlockDataType";
 
 // material ui components
 import CloudUploadRoundedIcon from "@mui/icons-material/CloudUploadRounded";
 
 // components
 import Block from "./Block";
+
+const BlockDataTypeSchema = z.object({
+    id: z.string(),
+    name: z.string(),
+    displayName: z.string(),
+    description: z.string(),
+    markdown: z.string(),
+    originalMarkdown: z.string().optional(),
+});
+
+const TemplateDataTypeSchema = z.object({
+    displayName: z.string(),
+    usedBlocks: z.array(BlockDataTypeSchema), // array of BlockDataType
+    availableBlockCategories: z.array(z.string()), // array of strings
+});
 
 interface ImportTemplateProps {
     onTemplateLoaded: (loadedTemplate: TemplateDataType) => void;
@@ -21,7 +36,7 @@ export default function ImportTemplate(props: ImportTemplateProps) {
         const file = event.target.files ? event.target.files[0] : null;
 
         if (!file || file.type !== "application/json") {
-            alert("Please select a valid JSON file.");
+            alert("Please select a valid template file.");
             return;
         }
 
@@ -31,16 +46,24 @@ export default function ImportTemplate(props: ImportTemplateProps) {
             try {
                 const jsonData = JSON.parse(reader.result as string);
 
-                if (jsonData) {
-                    console.log("Uploaded Template Data:", jsonData);
-                    props.onTemplateLoaded(jsonData as TemplateDataType);
-                    alert("File uploaded and validated successfully!");
+                const parsedTemplate =
+                    TemplateDataTypeSchema.safeParse(jsonData);
+
+                if (parsedTemplate.success) {
+                    console.log("Uploaded Template Data:", parsedTemplate.data);
+                    props.onTemplateLoaded(
+                        parsedTemplate.data as TemplateDataType
+                    );
+                    alert("Template Imported Successfully!");
                 } else {
                     throw new Error(
-                        "The file does not match the required template format."
+                        `The file does not match the required template format: ${
+                            parsedTemplate.error.format()._errors
+                        }`
                     );
                 }
             } catch (error) {
+                alert("Importing Failed. Make sure the file is not corrupted!");
                 console.error("Error parsing JSON:", error);
             }
 
