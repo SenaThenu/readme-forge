@@ -1,17 +1,16 @@
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
+
+const images = import.meta.glob("/src/assets/images/select-a-block/*.png");
+const imagePaths = Object.keys(images);
 
 export default function SelectBlockImg() {
-    const randomImagePath = useMemo(() => {
-        const images: string[] = [];
+    const [randomImagePath, setRandomImagePath] = useState<string>("");
 
-        // there are 4 random images to pick from
-        for (let i = 1; i <= 4; i++) {
-            images.push(`/images/select-a-block/${i}.png`);
-        }
+    useEffect(() => {
+        const randomImage =
+            imagePaths[Math.floor(Math.random() * imagePaths.length)];
 
-        const randomImg = images[Math.floor(Math.random() * images.length)];
-
-        return randomImg;
+        setRandomImagePath(randomImage);
     }, []);
 
     return (

@@ -1,0 +1,53 @@
+.congrats-dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 5px;
+
+  img {
+    width: 40%;
+  }
+}
+
+.congrats-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.congrats-para {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.support-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+
+  .block-card {
+    width: fit-content;
+  }
+
+  .block-card-content {
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    column-gap: 10px;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .congrats-dialog-content img {
+    width: 60%;
+  }
+
+  .support-actions {
+    flex-direction: column;
+    row-gap: 10px;
+  }
+}

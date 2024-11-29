@@ -13,6 +13,7 @@ import DescriptionRoundedIcon from "@mui/icons-material/DescriptionRounded";
 // components
 import StyledButton from "../../shared/components/UIElements/StyledButton";
 import StyledMenu from "../../shared/components/UIElements/StyledMenu";
+import CongratsDialog from "./CongratsDialog";
 
 interface ExportButtonProps {
     onExportAsJson: () => void;
@@ -21,6 +22,7 @@ interface ExportButtonProps {
 }
 
 export default function ExportButton(props: ExportButtonProps) {
+    const [congratsDialogOpen, setCongratsDialogOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
     const open = Boolean(anchorEl);
@@ -33,19 +35,26 @@ export default function ExportButton(props: ExportButtonProps) {
         setAnchorEl(null);
     };
 
+    const handleCongratsDialogOpen = () => {
+        setCongratsDialogOpen(true);
+    };
+
     // export options handlers
     const handleExportMarkdown = () => {
         props.onExportAsMarkdown();
+        handleCongratsDialogOpen();
         handleExportMenuClose();
     };
 
     const handleExportJson = () => {
         props.onExportAsJson();
+        handleCongratsDialogOpen();
         handleExportMenuClose();
     };
 
     return (
         <>
+            {/* export menu */}
             <StyledMenu
                 id="export-menu"
                 anchorEl={anchorEl}
@@ -68,6 +77,12 @@ export default function ExportButton(props: ExportButtonProps) {
                     <ListItemText>Export as Template</ListItemText>
                 </MenuItem>
             </StyledMenu>
+
+            {/* congrats dialog */}
+            <CongratsDialog
+                open={congratsDialogOpen}
+                setOpen={(isOpen) => setCongratsDialogOpen(isOpen)}
+            />
             <StyledButton
                 id="toggle-export-menu-btn"
                 onClick={handleExportMenuOpen}

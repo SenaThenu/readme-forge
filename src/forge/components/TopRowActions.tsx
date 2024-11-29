@@ -4,6 +4,7 @@ import { useState } from "react";
 import GlobalDataType from "../../types/GlobalDataType";
 
 // material ui components
+import { useTheme } from "@mui/material";
 import RotateLeftRoundedIcon from "@mui/icons-material/RotateLeftRounded";
 import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
@@ -14,7 +15,6 @@ import GlobalsDialog from "./GlobalsDialog";
 
 // styles
 import "./TopRowActions.scss";
-import { useTheme } from "@mui/material";
 
 interface TopRowActionsProps {
     onReset: () => void;
