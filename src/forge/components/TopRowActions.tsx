@@ -84,10 +84,12 @@ export default function TopRowActions(props: TopRowActionsProps) {
                 onGlobalsListChange={props.onGlobalsListChange}
             />
 
-            <StyledDialog open={resetDialogOpen}>
+            <StyledDialog
+                open={resetDialogOpen}
+                onClose={handleResetDialogClose}>
                 <DialogTitle>Are you sure?</DialogTitle>
                 <DialogActions>
-                    <StyledButton onClick={handleResetDialogClose}>
+                    <StyledButton onClick={handleResetDialogClose} blurBg>
                         Cancel
                     </StyledButton>
                     <StyledButton
