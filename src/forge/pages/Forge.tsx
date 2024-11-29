@@ -238,6 +238,7 @@ export default function Forge({ templateName }: ForgeProps) {
                                 <TextualDivider text="No Block is Used!" />
                                 <ImportTemplate
                                     onTemplateLoaded={(loadedTemplate) => {
+                                        setGlobalsList(loadedTemplate.globals);
                                         setUsedBlocksList(
                                             loadedTemplate.usedBlocks
                                         );
