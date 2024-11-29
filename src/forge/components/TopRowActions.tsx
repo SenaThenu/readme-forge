@@ -5,11 +5,15 @@ import GlobalDataType from "../../types/GlobalDataType";
 
 // material ui components
 import { useTheme } from "@mui/material";
+import DialogActions from "@mui/material/DialogActions";
+import DialogTitle from "@mui/material/DialogTitle";
 import RotateLeftRoundedIcon from "@mui/icons-material/RotateLeftRounded";
 import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 
 // components
+import StyledDialog from "../../shared/components/UIElements/StyledDialog";
+import StyledButton from "../../shared/components/UIElements/StyledButton";
 import Block from "./Block";
 import GlobalsDialog from "./GlobalsDialog";
 
@@ -24,7 +28,13 @@ interface TopRowActionsProps {
 
 export default function TopRowActions(props: TopRowActionsProps) {
     const [globalsDialogOpen, setGlobalsDialogOpen] = useState(false);
+    const [resetDialogOpen, setResetDialogOpen] = useState(false);
+
     const theme = useTheme();
+
+    const handleResetDialogClose = () => {
+        setResetDialogOpen(false);
+    };
 
     return (
         <>
@@ -49,7 +59,9 @@ export default function TopRowActions(props: TopRowActionsProps) {
                     <FavoriteRoundedIcon />
                 </Block>
                 <Block
-                    onClick={props.onReset}
+                    onClick={() => {
+                        setResetDialogOpen(true);
+                    }}
                     blockDescription="Reset"
                     className="top-row-action">
                     <RotateLeftRoundedIcon />
@@ -71,6 +83,24 @@ export default function TopRowActions(props: TopRowActionsProps) {
                 globalsList={props.globalsList}
                 onGlobalsListChange={props.onGlobalsListChange}
             />
+
+            <StyledDialog
+                open={resetDialogOpen}
+                onClose={handleResetDialogClose}>
+                <DialogTitle>Are you sure?</DialogTitle>
+                <DialogActions>
+                    <StyledButton onClick={handleResetDialogClose} blurBg>
+                        Cancel
+                    </StyledButton>
+                    <StyledButton
+                        onClick={() => {
+                            props.onReset();
+                            handleResetDialogClose();
+                        }}>
+                        Reset
+                    </StyledButton>
+                </DialogActions>
+            </StyledDialog>
         </>
     );
 }
