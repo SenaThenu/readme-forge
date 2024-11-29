@@ -41,13 +41,14 @@ export default function ExportButton(props: ExportButtonProps) {
 
     // export options handlers
     const handleExportMarkdown = () => {
+        props.onExportAsMarkdown();
         handleCongratsDialogOpen();
-        // props.onExportAsMarkdown();
         handleExportMenuClose();
     };
 
     const handleExportJson = () => {
         props.onExportAsJson();
+        handleCongratsDialogOpen();
         handleExportMenuClose();
     };
 
