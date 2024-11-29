@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 
+// types
+import GlobalDataType from "../../types/GlobalDataType";
+
 // material components
-import { DataGrid, GridColDef, GridRowModel } from "@mui/x-data-grid";
+import {
+    DataGrid,
+    GridColDef,
+    GridRowModel,
+    GridRowSelectionModel,
+} from "@mui/x-data-grid";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
@@ -12,24 +20,22 @@ import Block from "./Block";
 // styles
 import "./GlobalsGrid.scss";
 
-interface GlobalGridRow {
-    id: string;
-    global: string;
-    value: string;
-}
-
 interface GlobalsGrid {
-    initialRows: GlobalGridRow[];
-    onRowsUpdate: (newRows: GlobalGridRow[]) => void;
+    initialRows: GlobalDataType[];
+    onRowsUpdate: (newRows: GlobalDataType[]) => void;
 }
 
 export default function GlobalsGrid(props: GlobalsGrid) {
-    const [rows, setRows] = useState<GlobalGridRow[]>(props.initialRows);
+    const [rows, setRows] = useState<GlobalDataType[]>(props.initialRows);
     const [selectedRows, setSelectedRows] = useState<string[]>([]);
 
     useEffect(() => {
+        setRows(props.initialRows);
+    }, [props.initialRows]);
+
+    useEffect(() => {
         props.onRowsUpdate(rows);
-    }, [rows]);
+    }, [rows, props.onRowsUpdate]);
 
     const columns: GridColDef[] = [
         { field: "global", headerName: "Globals", editable: true, flex: 1 },
@@ -37,7 +43,7 @@ export default function GlobalsGrid(props: GlobalsGrid) {
     ];
 
     const handleAddRow = () => {
-        const newRow: GlobalGridRow = {
+        const newRow: GlobalDataType = {
             id: uuidv4(),
             global: "new_variable",
             value: "new_value",
@@ -51,11 +57,15 @@ export default function GlobalsGrid(props: GlobalsGrid) {
     };
 
     const handleProcessRowUpdate = (newRow: GridRowModel) => {
-        const updatedRow = newRow as GlobalGridRow;
+        const updatedRow = newRow as GlobalDataType;
         setRows((prev) =>
             prev.map((row) => (row.id === updatedRow.id ? updatedRow : row))
         );
         return updatedRow;
+    };
+
+    const handleRowSelectionChange = (ids: GridRowSelectionModel) => {
+        setSelectedRows(ids as string[]);
     };
 
     return (
@@ -64,9 +74,7 @@ export default function GlobalsGrid(props: GlobalsGrid) {
                 rows={rows}
                 columns={columns}
                 processRowUpdate={handleProcessRowUpdate}
-                onRowSelectionModelChange={(ids) =>
-                    setSelectedRows(ids as string[])
-                }
+                onRowSelectionModelChange={handleRowSelectionChange}
                 checkboxSelection
                 className="globals-grid"
             />

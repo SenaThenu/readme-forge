@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 // custom types
 import TemplateDataType from "../../types/TemplateDataType";
 import BlockDataType from "../../types/BlockDataType";
+import GlobalDataType from "../../types/GlobalDataType";
 
 // material ui components
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -53,6 +54,9 @@ export default function Forge({ templateName }: ForgeProps) {
     const [usedBlocksList, setUsedBlocksList] = useState<BlockDataType[]>([]);
     const [activeBlockId, setActiveBlockId] = useState<string | null>(null);
 
+    // globals states
+    const [globalsList, setGlobalsList] = useState<GlobalDataType[]>([]);
+
     // setting up the forge workspace based on the template
     useEffect(() => {
         // checking for a saved local version
@@ -65,6 +69,7 @@ export default function Forge({ templateName }: ForgeProps) {
                     localSavedTemplateData
                 ) as TemplateDataType;
                 setUsedBlocksList(parsedTemplateData.usedBlocks);
+                setGlobalsList(parsedTemplateData.globals);
                 setTemplateData(parsedTemplateData);
             } catch (error) {
                 console.error("Error parsing data:", error);
@@ -107,6 +112,11 @@ export default function Forge({ templateName }: ForgeProps) {
         }
     }, [usedBlocksList]);
 
+    // update the template data based on globalsList
+    useEffect(() => {
+        setTemplateData((prev) => prev && { ...prev, globals: globalsList });
+    }, [globalsList]);
+
     // setting up the markdown based on the activeBlockId
     useEffect(() => {
         if (activeBlockId !== null) {
@@ -138,6 +148,7 @@ export default function Forge({ templateName }: ForgeProps) {
         if (fetchedTemplateData !== null) {
             setTemplateData(fetchedTemplateData);
             setUsedBlocksList(fetchedTemplateData.usedBlocks);
+            setGlobalsList(fetchedTemplateData.globals);
         } else {
             console.log(
                 `Error fetching the template data from ${templateName}`
@@ -196,13 +207,21 @@ export default function Forge({ templateName }: ForgeProps) {
         );
     }, []);
 
+    const onGlobalsListChange = useCallback((newList: GlobalDataType[]) => {
+        setGlobalsList(newList);
+    }, []);
+
     const markdownBlocks = (
         <div className="blocks-container">
             {!templateData ? (
                 <CircularProgress />
             ) : (
                 <>
-                    <TopRowActions onReset={onReset} />
+                    <TopRowActions
+                        onReset={onReset}
+                        globalsList={globalsList}
+                        onGlobalsListChange={onGlobalsListChange}
+                    />
                     <Divider flexItem />
                     <div className="used-blocks">
                         {usedBlocksList.length > 0 ? (
