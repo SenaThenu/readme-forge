@@ -304,7 +304,10 @@ export default function Forge({ templateName }: ForgeProps) {
                             />
                         </div>
                         <div className="markdown-preview">
-                            <MarkdownPreview markdownInput={markdown} />
+                            <MarkdownPreview
+                                markdownInput={markdown}
+                                globalsList={globalsList}
+                            />
                         </div>
                     </>
                 ) : (

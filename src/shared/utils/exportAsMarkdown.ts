@@ -9,6 +9,10 @@ export default function exportAsMarkdown(templateData: TemplateDataType) {
         outputMarkdown += "\n\n"
     }
 
+    for (let global of templateData.globals) {
+        outputMarkdown = outputMarkdown.replace(`{{${global.global}}}`, global.value);
+    }
+
     const blob = new Blob([outputMarkdown], { type: 'text/markdown' });
     const url = URL.createObjectURL(blob);
     

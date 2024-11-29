@@ -50,7 +50,6 @@ export default function ImportTemplate(props: ImportTemplateProps) {
                     TemplateDataTypeSchema.safeParse(jsonData);
 
                 if (parsedTemplate.success) {
-                    console.log("Uploaded Template Data:", parsedTemplate.data);
                     props.onTemplateLoaded(
                         parsedTemplate.data as TemplateDataType
                     );
