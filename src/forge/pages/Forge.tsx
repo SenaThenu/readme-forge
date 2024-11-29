@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 // custom types
 import TemplateDataType from "../../types/TemplateDataType";
 import BlockDataType from "../../types/BlockDataType";
+import GlobalDataType from "../../types/GlobalDataType";
 
 // material ui components
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -21,6 +22,7 @@ import AddBlock from "../components/AddBlock";
 import TextualDivider from "../../shared/components/UIElements/TextualDivider";
 import ImportTemplate from "../components/ImportTemplate";
 import BrowseTemplates from "../components/BrowseTemplates";
+import TopRowActions from "../components/TopRowActions";
 
 // utils
 import fetchTemplateData from "../../shared/utils/fetchTemplateData";
@@ -52,20 +54,11 @@ export default function Forge({ templateName }: ForgeProps) {
     const [usedBlocksList, setUsedBlocksList] = useState<BlockDataType[]>([]);
     const [activeBlockId, setActiveBlockId] = useState<string | null>(null);
 
+    // globals states
+    const [globalsList, setGlobalsList] = useState<GlobalDataType[]>([]);
+
     // setting up the forge workspace based on the template
     useEffect(() => {
-        const fetchTemplate = async () => {
-            const fetchedTemplateData = await fetchTemplateData(templateName);
-            if (fetchedTemplateData !== null) {
-                setTemplateData(fetchedTemplateData);
-                setUsedBlocksList(fetchedTemplateData.usedBlocks);
-            } else {
-                console.log(
-                    `Error fetching the template data from ${templateName}`
-                );
-            }
-        };
-
         // checking for a saved local version
         const localSavedTemplateData = localStorage.getItem(
             `${templateName}-template-latest-save`
@@ -76,6 +69,7 @@ export default function Forge({ templateName }: ForgeProps) {
                     localSavedTemplateData
                 ) as TemplateDataType;
                 setUsedBlocksList(parsedTemplateData.usedBlocks);
+                setGlobalsList(parsedTemplateData.globals);
                 setTemplateData(parsedTemplateData);
             } catch (error) {
                 console.error("Error parsing data:", error);
@@ -118,6 +112,11 @@ export default function Forge({ templateName }: ForgeProps) {
         }
     }, [usedBlocksList]);
 
+    // update the template data based on globalsList
+    useEffect(() => {
+        setTemplateData((prev) => prev && { ...prev, globals: globalsList });
+    }, [globalsList]);
+
     // setting up the markdown based on the activeBlockId
     useEffect(() => {
         if (activeBlockId !== null) {
@@ -144,12 +143,31 @@ export default function Forge({ templateName }: ForgeProps) {
         }
     }, [markdown]);
 
+    const fetchTemplate = useCallback(async () => {
+        const fetchedTemplateData = await fetchTemplateData(templateName);
+        if (fetchedTemplateData !== null) {
+            setTemplateData(fetchedTemplateData);
+            setUsedBlocksList(fetchedTemplateData.usedBlocks);
+            setGlobalsList(fetchedTemplateData.globals);
+        } else {
+            console.log(
+                `Error fetching the template data from ${templateName}`
+            );
+        }
+    }, []);
+
     const onUsedBlocksOrderChanged = useCallback(
         (newOrder: BlockDataType[]) => {
             setUsedBlocksList(newOrder);
         },
         []
     );
+
+    const onReset = () => {
+        fetchTemplate();
+        setActiveBlockId(null);
+        setMarkdown("");
+    };
 
     const onUpdateMarkdown = (newMarkdown: string) => {
         setMarkdown(newMarkdown);
@@ -189,12 +207,22 @@ export default function Forge({ templateName }: ForgeProps) {
         );
     }, []);
 
+    const onGlobalsListChange = useCallback((newList: GlobalDataType[]) => {
+        setGlobalsList(newList);
+    }, []);
+
     const markdownBlocks = (
         <div className="blocks-container">
             {!templateData ? (
                 <CircularProgress />
             ) : (
                 <>
+                    <TopRowActions
+                        onReset={onReset}
+                        globalsList={globalsList}
+                        onGlobalsListChange={onGlobalsListChange}
+                    />
+                    <Divider flexItem />
                     <div className="used-blocks">
                         {usedBlocksList.length > 0 ? (
                             <UsedBlocks
@@ -210,6 +238,7 @@ export default function Forge({ templateName }: ForgeProps) {
                                 <TextualDivider text="No Block is Used!" />
                                 <ImportTemplate
                                     onTemplateLoaded={(loadedTemplate) => {
+                                        setGlobalsList(loadedTemplate.globals);
                                         setUsedBlocksList(
                                             loadedTemplate.usedBlocks
                                         );
@@ -276,7 +305,10 @@ export default function Forge({ templateName }: ForgeProps) {
                             />
                         </div>
                         <div className="markdown-preview">
-                            <MarkdownPreview markdownInput={markdown} />
+                            <MarkdownPreview
+                                markdownInput={markdown}
+                                globalsList={globalsList}
+                            />
                         </div>
                     </>
                 ) : (

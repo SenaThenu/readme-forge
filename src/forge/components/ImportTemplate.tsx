@@ -19,10 +19,17 @@ const BlockDataTypeSchema = z.object({
     originalMarkdown: z.string().optional(),
 });
 
+const GlobalDataTypeSchema = z.object({
+    id: z.string(),
+    global: z.string(),
+    value: z.string(),
+});
+
 const TemplateDataTypeSchema = z.object({
     displayName: z.string(),
     usedBlocks: z.array(BlockDataTypeSchema), // array of BlockDataType
     availableBlockCategories: z.array(z.string()), // array of strings
+    globals: z.array(GlobalDataTypeSchema), // array of GlobalDataTypeSchema
 });
 
 interface ImportTemplateProps {
@@ -50,7 +57,6 @@ export default function ImportTemplate(props: ImportTemplateProps) {
                     TemplateDataTypeSchema.safeParse(jsonData);
 
                 if (parsedTemplate.success) {
-                    console.log("Uploaded Template Data:", parsedTemplate.data);
                     props.onTemplateLoaded(
                         parsedTemplate.data as TemplateDataType
                     );

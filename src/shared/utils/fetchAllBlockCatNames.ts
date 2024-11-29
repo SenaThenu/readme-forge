@@ -12,8 +12,6 @@ export default async function fetchAllBlockCatNames() {
             return filename;
         });
 
-        console.log(blockCatNames)
-
         // fetch display names for each filename
         const blockCatDisplayNamePromises = blockCatNames.map(async (filename) => {
             const blockCatData = await fetchBlockCatData(filename);

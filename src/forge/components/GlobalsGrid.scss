@@ -1,0 +1,18 @@
+.globals-grid {
+  border-radius: 15px;
+  min-width: 250px;
+}
+
+.MuiPaper-elevation {
+  border-radius: 15px;
+}
+
+.grid-action-block {
+  margin-top: 10px;
+
+  .block-card-content {
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+  }
+}

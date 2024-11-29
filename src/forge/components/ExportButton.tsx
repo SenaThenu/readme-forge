@@ -27,7 +27,6 @@ export default function ExportButton(props: ExportButtonProps) {
 
     const handleExportMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
-        console.log(event.currentTarget);
     };
 
     const handleExportMenuClose = () => {

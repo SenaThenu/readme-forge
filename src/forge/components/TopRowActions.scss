@@ -1,0 +1,11 @@
+.top-row-actions {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.top-row-action {
+  width: fit-content;
+}
