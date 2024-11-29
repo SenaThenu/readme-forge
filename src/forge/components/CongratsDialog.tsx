@@ -32,10 +32,7 @@ export default function CongratsDialog(props: CongratsDialogProps) {
 
     return (
         <>
-            <ShareDialog
-                open={shareDialogOpen}
-                setOpen={(isOpen) => setShareDialogOpen(isOpen)}
-            />
+            <ShareDialog open={shareDialogOpen} setOpen={setShareDialogOpen} />
             <StyledDialog open={props.open} onClose={handleClose}>
                 <DialogContent className="congrats-dialog-content">
                     <img

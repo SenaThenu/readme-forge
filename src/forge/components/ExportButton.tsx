@@ -81,7 +81,7 @@ export default function ExportButton(props: ExportButtonProps) {
             {/* congrats dialog */}
             <CongratsDialog
                 open={congratsDialogOpen}
-                setOpen={(isOpen) => setCongratsDialogOpen(isOpen)}
+                setOpen={setCongratsDialogOpen}
             />
             <StyledButton
                 id="toggle-export-menu-btn"
