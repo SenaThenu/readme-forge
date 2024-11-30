@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const images = import.meta.glob("/src/assets/images/select-a-block/*.png");
+const images = import.meta.glob("/src/assets/images/select-a-block/*.webp");
 const imagePaths = Object.keys(images);
 
 export default function SelectBlockImg() {
