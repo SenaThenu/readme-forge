@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./home/pages/Home";
 import Templates from "./templates/pages/Templates";
 import Forge from "./forge/pages/Forge";
+import ForgeRoutes from "./forge/pages/ForgeRoutes";
 import NotFound from "./shared/pages/NotFound";
 
 // styles
@@ -20,10 +21,8 @@ export default function App() {
                         path="/forge"
                         element={<Forge templateName="default" />}
                     />
-                    <Route
-                        path="/forge/:name"
-                        element={<Forge templateName="default" />}
-                    />
+                    <Route path="/forge/:name" element={<ForgeRoutes />} />
+
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
