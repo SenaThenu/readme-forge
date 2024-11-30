@@ -3,6 +3,7 @@
   height: 100vh;
   margin: 0;
   overflow-y: hidden;
+  animation: fade-in 1s ease;
 }
 
 #app {
@@ -36,4 +37,13 @@ a {
   color: #0670b8;
   text-decoration: none;
   font-weight: 500;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
