@@ -35,6 +35,7 @@ function getCustomButton(iconOnly: boolean, isBlurBg?: boolean) {
         textTransform: "none",
         transition: "none",
         fontSize: "1rem",
+        backdropFilter: "blur(5px)",
         backgroundColor: getButtonBg(theme, isBlurBg),
         color: theme.palette.text.primary,
         "& .MuiButton-startIcon": {

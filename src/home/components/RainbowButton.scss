@@ -1,0 +1,104 @@
+:root {
+  --m: 1.7rem;
+
+  --red: #ff6565;
+  --pink: #ff64f9;
+  --purple: #6b5fff;
+  --blue: #4d8aff;
+  --green: #5bff89;
+  --yellow: #ffee55;
+  --orange: #ff6d1b;
+}
+
+.rainbow-btn {
+  border: calc(0.08 * var(--m)) solid transparent;
+  position: relative;
+  font-family: "Space Grotesk";
+  font-size: var(--m);
+  font-weight: 500;
+  border-radius: calc(1.5 * var(--m));
+  padding: calc(0.5 * var(--m)) calc(0.8 * var(--m));
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+
+  &.light {
+    background: linear-gradient(rgb(105, 194, 229), rgb(105, 194, 229)),
+      linear-gradient(rgb(105, 194, 229) 50%, rgba(105, 194, 229, 0.6) 80%, rgba(105, 194, 229, 0)),
+      linear-gradient(
+        90deg,
+        var(--orange),
+        var(--yellow),
+        var(--green),
+        var(--blue),
+        var(--purple),
+        var(--pink),
+        var(--red)
+      );
+    background-origin: border-box;
+    background-clip: padding-box, border-box, border-box;
+    background-size: 200%;
+    animation: animate 2s infinite linear;
+  }
+
+  &.dark {
+    background: linear-gradient(rgb(13, 63, 119), rgb(13, 63, 119)),
+      linear-gradient(rgb(13, 63, 119) 50%, rgba(13, 63, 119, 0.6) 80%, rgba(13, 63, 119, 0)),
+      linear-gradient(
+        90deg,
+        var(--orange),
+        var(--yellow),
+        var(--green),
+        var(--blue),
+        var(--purple),
+        var(--pink),
+        var(--red)
+      );
+    background-origin: border-box;
+    background-clip: padding-box, border-box, border-box;
+    background-size: 200%;
+    animation: animate 2s infinite linear;
+  }
+}
+
+.rainbow-btn::before {
+  content: "";
+  background: linear-gradient(
+    90deg,
+    var(--orange),
+    var(--yellow),
+    var(--green),
+    var(--blue),
+    var(--purple),
+    var(--pink),
+    var(--red)
+  );
+  height: 30%;
+  width: 60%;
+  position: absolute;
+  bottom: -20%;
+  z-index: -5;
+  background-size: 200%;
+  animation: animate 2s infinite linear;
+  filter: blur(calc(0.8 * var(--m)));
+}
+
+.rainbow-btn:hover,
+.rainbow-btn:hover::before {
+  animation: animate 0.5s infinite linear;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --m: 1.6rem;
+  }
+}
