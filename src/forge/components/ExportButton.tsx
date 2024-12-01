@@ -16,8 +16,8 @@ import StyledMenu from "../../shared/components/UIElements/StyledMenu";
 import CongratsDialog from "./CongratsDialog";
 
 interface ExportButtonProps {
-    onExportAsJson: () => void;
-    onExportAsMarkdown: () => void;
+    onExportAsJson?: () => void;
+    onExportAsMarkdown?: () => void;
     includeText?: boolean;
 }
 
@@ -41,13 +41,17 @@ export default function ExportButton(props: ExportButtonProps) {
 
     // export options handlers
     const handleExportMarkdown = () => {
-        props.onExportAsMarkdown();
+        if (props.onExportAsMarkdown) {
+            props.onExportAsMarkdown();
+        }
         handleCongratsDialogOpen();
         handleExportMenuClose();
     };
 
     const handleExportJson = () => {
-        props.onExportAsJson();
+        if (props.onExportAsJson) {
+            props.onExportAsJson();
+        }
         handleCongratsDialogOpen();
         handleExportMenuClose();
     };

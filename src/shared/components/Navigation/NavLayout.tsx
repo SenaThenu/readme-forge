@@ -18,9 +18,8 @@ import "./NavLayout.scss";
 
 interface NavLayoutProps {
     navBarMode: "default" | "forge";
-    onExportAsJson: () => void;
-    onExportAsMarkdown: () => void;
-    currentNavLinkText?: string;
+    onExportAsJson?: () => void;
+    onExportAsMarkdown?: () => void;
     navLinks?: { text: string; link: string }[];
     drawerComponents?: ReactNode;
     mobileWidthBreakpoint?: number;
@@ -74,7 +73,6 @@ export default function NavLayout(props: NavLayoutProps) {
                     <NavLinks
                         linksLayout="vertical"
                         navLinksList={props.navLinks}
-                        currentLinkText={props.currentNavLinkText}
                     />
                 )}
             </>
@@ -129,7 +127,6 @@ export default function NavLayout(props: NavLayoutProps) {
                         <NavLinks
                             linksLayout="horizontal"
                             navLinksList={props.navLinks}
-                            currentLinkText={props.currentNavLinkText}
                         />
                     )}
                     <ToggleTheme />
