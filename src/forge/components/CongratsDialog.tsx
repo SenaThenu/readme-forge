@@ -53,14 +53,24 @@ export default function CongratsDialog(props: CongratsDialogProps) {
                             <ShareRoundedIcon />
                             Share
                         </Block>
-                        <Block>
-                            <FavoriteRoundedIcon />
-                            Sponsor
-                        </Block>
-                        <Block>
-                            <CoffeeRoundedIcon />
-                            Buy Me a Coffee
-                        </Block>
+                        <a
+                            href="https://github.com/sponsors/SenaThenu"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <Block>
+                                <FavoriteRoundedIcon />
+                                Sponsor
+                            </Block>
+                        </a>
+                        <a
+                            href="https://buymeacoffee.com/senathenu"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <Block>
+                                <CoffeeRoundedIcon />
+                                Buy Me a Coffee
+                            </Block>
+                        </a>
                     </div>
                 </DialogContent>
                 <DialogActions>
