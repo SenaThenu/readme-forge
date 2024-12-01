@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+
+// components
 import { useTheme, alpha } from "@mui/material/styles";
 
 // logo
@@ -15,7 +18,7 @@ export default function NavLogo(props: NavLogoProps) {
 
     return (
         <div className="nav-logo-container">
-            <a href="/">
+            <Link to="/">
                 <div
                     className="nav-logo"
                     style={{
@@ -33,7 +36,7 @@ export default function NavLogo(props: NavLogoProps) {
                     />
                     {props.includeTitle && <h1>Readme Forge</h1>}
                 </div>
-            </a>
+            </Link>
         </div>
     );
 }

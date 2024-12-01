@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 // material ui components
 import ExploreRoundedIcon from "@mui/icons-material/ExploreRounded";
 
@@ -5,13 +7,12 @@ import ExploreRoundedIcon from "@mui/icons-material/ExploreRounded";
 import Block from "./Block";
 
 export default function BrowseTemplates() {
-    const handleClick = () => {
-        console.log("Redirecting to Browse Templates page");
-    };
     return (
-        <Block onClick={handleClick} translucentBg>
-            Browse Templates
-            <ExploreRoundedIcon />
-        </Block>
+        <Link to="/templates">
+            <Block translucentBg>
+                Browse Templates
+                <ExploreRoundedIcon />
+            </Block>
+        </Link>
     );
 }

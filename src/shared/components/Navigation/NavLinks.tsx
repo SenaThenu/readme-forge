@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 // material ui components
 import { useTheme, alpha } from "@mui/material/styles";
 
@@ -6,7 +8,6 @@ import "./NavLinks.scss";
 
 interface NavLinksProps {
     linksLayout: "horizontal" | "vertical";
-    currentLinkText?: string;
     navLinksList?: { text: string; link: string }[];
 }
 
@@ -25,13 +26,16 @@ export default function NavLinks(props: NavLinksProps) {
                 {props.navLinksList !== null &&
                     props.navLinksList!.map((navLink, index) => (
                         <li className="nav-link-li-element" key={index}>
-                            <a href={navLink.link} className="nav-link">
-                                <div
-                                    style={{
-                                        backgroundColor:
-                                            props.currentLinkText ===
-                                            navLink.text
-                                                ? theme.palette.mode == "dark"
+                            <NavLink
+                                to={navLink.link}
+                                className="nav-link"
+                                style={{ textDecoration: "none" }} // Optional: remove default underline styling
+                            >
+                                {({ isActive }) => (
+                                    <div
+                                        style={{
+                                            backgroundColor: isActive
+                                                ? theme.palette.mode === "dark"
                                                     ? alpha(
                                                           theme.palette.accent
                                                               .dark,
@@ -43,10 +47,11 @@ export default function NavLinks(props: NavLinksProps) {
                                                           0.3
                                                       )
                                                 : undefined,
-                                    }}>
-                                    {navLink.text}
-                                </div>
-                            </a>
+                                        }}>
+                                        {navLink.text}
+                                    </div>
+                                )}
+                            </NavLink>
                         </li>
                     ))}
             </ul>

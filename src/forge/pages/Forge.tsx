@@ -280,7 +280,6 @@ export default function Forge({ templateName }: ForgeProps) {
         <div id="forge-root">
             <NavLayout
                 navBarMode="forge"
-                currentNavLinkText="Forge"
                 mobileWidthBreakpoint={mobileWidthBreakpoint}
                 drawerComponents={markdownBlocks}
                 onExportAsJson={() => {
