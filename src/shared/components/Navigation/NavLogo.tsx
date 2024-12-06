@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "motion/react";
 
 // components
 import { useTheme, alpha } from "@mui/material/styles";
@@ -15,9 +16,27 @@ interface NavLogoProps {
 
 export default function NavLogo(props: NavLogoProps) {
     const theme = useTheme();
+    const variants = {
+        initial: { scale: 1 },
+        hover: { scale: 1.05 },
+        focus: { scale: 1.05 },
+        tap: { scale: 0.9 },
+    };
 
     return (
-        <div className="nav-logo-container">
+        <motion.div
+            className="nav-logo-container"
+            variants={variants}
+            initial="initial"
+            whileHover="hover"
+            whileFocus="focus"
+            whileTap="tap"
+            transition={{
+                duration: 0.1,
+                type: "spring",
+                damping: 25,
+                stiffness: 500,
+            }}>
             <Link to="/">
                 <div
                     className="nav-logo"
@@ -37,6 +56,6 @@ export default function NavLogo(props: NavLogoProps) {
                     {props.includeTitle && <h1>Readme Forge</h1>}
                 </div>
             </Link>
-        </div>
+        </motion.div>
     );
 }
