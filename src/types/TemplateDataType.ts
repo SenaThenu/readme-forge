@@ -6,6 +6,7 @@ interface TemplateDataType {
     usedBlocks: BlockDataType[];
     availableBlockCategories: string[];
     globals: GlobalDataType[]
+    description?: string;
 }
 
 export default TemplateDataType
