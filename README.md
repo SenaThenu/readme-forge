@@ -55,10 +55,11 @@ This is still work-in-progress!
 ## Features 🌟
 
 *These are proposed features that are currently under development...*
-- A component-based README.md generator
-- Form UI to customize components (instead of having to deal with markdown directly)
-- Collection of beautiful built-in templates with animated emojis
-- Custom templates builder to build and user your own templates
+- **Component-Based README Generator**: Build your README.md files effortlessly by piecing together pre-designed components.
+- **Extensive Block Library & Versatile Templates**: Access a wide range of block collections tailored for various needs.
+- **Global Variables for Easy Customization**: Manage repetitive content with centralized controls—update once, and it reflects everywhere!
+- **Aesthetic and Functional Design**: Every block is meticulously crafted to ensure both visual appeal and usability.
+- **Exportable Custom Templates**: Create, save, and reuse your personalized templates with ease.
 
 <p align="right"><a href="#readme-top">Jump to Top<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand gestures/Index Pointing Up.png" alt="Pointing Up" width="25" height="25" /></a></p>
 

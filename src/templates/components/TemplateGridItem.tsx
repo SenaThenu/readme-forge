@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 
 // material ui components
-import { useTheme } from "@mui/material/styles";
+import { useTheme, alpha } from "@mui/material/styles";
 
 // styles
 import "./TemplateGridItem.scss";
@@ -48,8 +48,8 @@ export default function TemplateGridItem(props: TemplateGridItemProps) {
                     style={{
                         backgroundColor:
                             theme.palette.mode === "dark"
-                                ? theme.palette.primary.main
-                                : theme.palette.accent.main,
+                                ? alpha(theme.palette.primary.main, 0.8)
+                                : alpha(theme.palette.accent.main, 0.7),
                     }}>
                     {props.templateName}
                 </div>
@@ -58,8 +58,8 @@ export default function TemplateGridItem(props: TemplateGridItemProps) {
                     style={{
                         backgroundColor:
                             theme.palette.mode === "dark"
-                                ? theme.palette.primary.dark
-                                : theme.palette.accent.light,
+                                ? alpha(theme.palette.primary.dark, 0.8)
+                                : alpha(theme.palette.accent.light, 0.6),
                     }}>
                     {props.templateDescription || props.templateName}
                 </div>
