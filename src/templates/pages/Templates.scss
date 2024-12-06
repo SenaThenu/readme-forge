@@ -4,6 +4,11 @@
 }
 .templates-content {
   padding-top: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  row-gap: 25px;
 }
 
 .templates-title {
@@ -14,7 +19,7 @@
 
 .templates-grid {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
   grid-row-gap: 20px;
   grid-column-gap: 20px;
 }
