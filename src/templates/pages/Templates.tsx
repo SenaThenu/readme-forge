@@ -1,13 +1,33 @@
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+
+// types
+import TemplateGridDataType from "../../types/TemplateGridDataType";
 
 // components
 import NavLayout from "../../shared/components/Navigation/NavLayout";
 import TemplateGridItem from "../components/TemplateGridItem";
 
+// utils
+import fetchTemplateGridData from "../../shared/utils/fetchTemplateGridData";
+
 // styles
 import "./Templates.scss";
 
 export default function Templates() {
+    const [templateGridData, setTemplateGridData] = useState<
+        TemplateGridDataType[]
+    >([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const fetchedData = await fetchTemplateGridData();
+            setTemplateGridData(fetchedData);
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <div className="templates-root">
             <div className="nav-container">
@@ -23,26 +43,16 @@ export default function Templates() {
             <div className="templates-content">
                 <div className="templates-title">Templates</div>
                 <motion.div layout className="templates-grid">
-                    <TemplateGridItem
-                        templateDescription="This is a test template asdfjasdklfjaskldjfklasdjfkl asdjfkljasdklfj kladsjfkasdjfkl asdjf klasjdkfj aksdjfklads jkfsdjkfj asdlk"
-                        templateName="🧪 Test fjslgkjsdflgjksjflasdjkf jlsdfjkasdjflksddjflajsdkf a"
-                    />
-                    <TemplateGridItem
-                        templateDescription="This is a test template"
-                        templateName="🧪 Test"
-                    />
-                    <TemplateGridItem
-                        templateDescription="This is a test template"
-                        templateName="🧪 Test"
-                    />
-                    <TemplateGridItem
-                        templateDescription="This is a test template"
-                        templateName="🧪 Test"
-                    />{" "}
-                    <TemplateGridItem
-                        templateDescription="This is a test template"
-                        templateName="🧪 Test"
-                    />
+                    {templateGridData.map((template, index) => {
+                        return (
+                            <TemplateGridItem
+                                templateName={template.displayName}
+                                templateRoute={template.route}
+                                templateDescription={template.description}
+                                key={index}
+                            />
+                        );
+                    })}
                 </motion.div>
             </div>
         </div>

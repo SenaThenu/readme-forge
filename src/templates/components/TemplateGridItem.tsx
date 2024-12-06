@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom";
 
+// material ui components
 import { useTheme } from "@mui/material/styles";
 
 // styles
@@ -8,15 +10,21 @@ import "./TemplateGridItem.scss";
 
 interface TemplateGridItemProps {
     templateName: string;
-    templateDescription: string;
+    templateRoute: string;
+    templateDescription?: string;
 }
 
 export default function TemplateGridItem(props: TemplateGridItemProps) {
     const [isFlipped, setIsFlipped] = useState(false);
+    const navigate = useNavigate();
     const theme = useTheme();
 
     const onClickHandle = () => {
-        console.log("redirecting sir!");
+        if (props.templateRoute === "default") {
+            navigate(`/forge/`);
+        } else {
+            navigate(`/forge/${props.templateRoute}`);
+        }
     };
 
     return (
@@ -53,7 +61,7 @@ export default function TemplateGridItem(props: TemplateGridItemProps) {
                                 ? theme.palette.primary.dark
                                 : theme.palette.accent.light,
                     }}>
-                    {props.templateDescription}
+                    {props.templateDescription || props.templateName}
                 </div>
             </motion.div>
         </motion.div>
