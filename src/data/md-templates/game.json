@@ -1,0 +1,27 @@
+{
+    "displayName": "🎮 Game",
+    "description": "A template for building READMEs for games",
+    "usedBlocks": [
+        {
+            "id": "af7c1fe6-d669-414e-b066-e9733f0de7a8",
+            "name": "title",
+            "displayName": "Title",
+            "description": "The title of the README.md",
+            "markdown": "# Project Name",
+            "originalMarkdown": "# Project Name"
+        }
+    ],
+    "availableBlockCategories": ["basic", "profile"],
+    "globals": [
+        {
+            "id": "5108babc-bf35-44d5-a9ba-de08badfa80a",
+            "global": "username",
+            "value": "SenaThenu"
+        },
+        {
+            "id": "2d790a4d-7c9c-4e23-9c9c-5749c5fa7fdb",
+            "global": "repo_name",
+            "value": "readme-forge"
+        }
+    ]
+}
