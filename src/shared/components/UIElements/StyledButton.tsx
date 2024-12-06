@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { motion } from "motion/react";
 
 // material ui components
 import Button, { ButtonProps } from "@mui/material/Button";
@@ -49,7 +50,32 @@ export default function StyledButton({ blurBg, ...props }: StyledButtonProps) {
     const CustomButton = useMemo(() => {
         return getCustomButton(props.children == null, blurBg);
     }, [props.children]);
+
+    const btnVariants = {
+        initial: { scale: 1 },
+        hover: { scale: 1.05 },
+        focus: { scale: 1.05 },
+        tap: { scale: 0.9 },
+    };
+
     return (
-        <CustomButton {...props} variant="contained" disableRipple={blurBg} />
+        <motion.div
+            variants={btnVariants}
+            initial="initial"
+            whileHover="hover"
+            whileFocus="focus"
+            whileTap="tap"
+            transition={{
+                duration: 0.1,
+                type: "spring",
+                damping: 25,
+                stiffness: 500,
+            }}>
+            <CustomButton
+                {...props}
+                variant="contained"
+                disableRipple={blurBg}
+            />
+        </motion.div>
     );
 }
