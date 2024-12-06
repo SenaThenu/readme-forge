@@ -5,6 +5,7 @@ import { useTheme } from "@mui/material";
 import NavLayout from "../../shared/components/Navigation/NavLayout";
 import RainbowButton from "../components/RainbowButton";
 import StyledButton from "../../shared/components/UIElements/StyledButton";
+import FeaturesList from "../components/FeaturesList";
 
 // styles
 import "./Home.scss";
@@ -34,9 +35,12 @@ export default function Home() {
                         Stunning READMEs, Lightning Fast!
                     </div>
                     <div className="hero-description">
-                        Generate stunning READMEs with ease! <br />
-                        Customize or use our beautiful templates in just a few
-                        clicks
+                        Build README.md files effortlessly by piecing together
+                        pre-designed components
+                        <br />
+                        <strong>
+                            The ultimate tool to conquer any README!
+                        </strong>
                     </div>
                 </div>
                 <div className="hero-btns">
@@ -70,6 +74,7 @@ export default function Home() {
                         />
                     )}
                 </div>
+                <FeaturesList />
                 <div className="footer">
                     <div className="copyright">
                         &copy; Senash Thenuja {new Date().getFullYear()}
