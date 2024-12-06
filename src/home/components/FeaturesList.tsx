@@ -19,25 +19,29 @@ import wideRangeEmoji from "../../assets/images/features-preview/wide-range-emoj
 export default function FeaturesList() {
     const theme = useTheme();
 
+    const divider = (
+        <hr
+            style={{
+                border: `2px solid ${
+                    theme.palette.mode === "dark"
+                        ? theme.palette.primary.main
+                        : theme.palette.accent.main
+                }`,
+            }}
+        />
+    );
+
     return (
         <div className="features-list">
-            <hr
-                style={{
-                    border: `2px solid ${
-                        theme.palette.mode === "dark"
-                            ? theme.palette.primary.main
-                            : theme.palette.accent.main
-                    }`,
-                }}
-            />
+            {divider}
             <div className="feature-block">
                 <div className="feature-info">
                     <div className="feature-title">
                         Component-Based README Generator
                     </div>
                     <div className="feature-description">
-                        Build your README.md files effortlessly by piecing
-                        together pre-designed components.
+                        Easily drag and drop blocks to customize different
+                        sections that build up the README
                     </div>
                 </div>
                 <div className="feature-preview">
@@ -65,7 +69,7 @@ export default function FeaturesList() {
                 </div>
             </div>
 
-            <div className="feature-block">
+            <div className="feature-block reversed">
                 <div className="feature-info">
                     <div className="feature-title">
                         Extensive Block Library & Versatile Templates
@@ -107,7 +111,7 @@ export default function FeaturesList() {
                 </div>
             </div>
 
-            <div className="feature-block">
+            <div className="feature-block reversed">
                 <div className="feature-info">
                     <div className="feature-title">
                         Aesthetic and Functional Design
@@ -160,6 +164,7 @@ export default function FeaturesList() {
                     )}
                 </div>
             </div>
+            {divider}
         </div>
     );
 }
