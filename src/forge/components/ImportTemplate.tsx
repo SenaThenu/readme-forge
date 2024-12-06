@@ -27,6 +27,7 @@ const GlobalDataTypeSchema = z.object({
 
 const TemplateDataTypeSchema = z.object({
     displayName: z.string(),
+    description: z.string().optional(),
     usedBlocks: z.array(BlockDataTypeSchema), // array of BlockDataType
     availableBlockCategories: z.array(z.string()), // array of strings
     globals: z.array(GlobalDataTypeSchema), // array of GlobalDataTypeSchema
