@@ -42,3 +42,27 @@
     grid-template-columns: repeat(1, auto);
   }
 }
+
+@media only screen and (min-width: 2000px) {
+  .templates-grid {
+    grid-template-columns: repeat(5, auto);
+  }
+}
+
+@media only screen and (min-width: 3000px) {
+  .templates-grid {
+    grid-template-columns: repeat(6, auto);
+  }
+}
+
+@media only screen and (min-width: 3800px) {
+  .templates-grid {
+    grid-template-columns: repeat(7, auto);
+  }
+}
+
+@media only screen and (min-width: 5000px) {
+  .templates-grid {
+    grid-template-columns: repeat(8, auto);
+  }
+}
