@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
 
@@ -16,6 +17,10 @@ import darkPreview from "../../assets/images/forge-preview/dark.jpg";
 
 export default function Home() {
     const theme = useTheme();
+
+    useEffect(() => {
+        document.title = "Home - Readme Forge";
+    }, []);
 
     return (
         <div className="home-root">
