@@ -25,6 +25,8 @@ export default function Templates() {
             setTemplateGridData(fetchedData);
         };
 
+        document.title = "Templates - Readme Forge";
+
         fetchData();
     }, []);
 

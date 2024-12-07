@@ -80,10 +80,13 @@ export default function Forge({ templateName }: ForgeProps) {
         }
     }, [templateName]);
 
-    // saving the updated template locally for future use
+    // side effects based on the templateData
     useEffect(() => {
         if (templateData) {
-            // saving template data in local storage
+            // setting the document title
+            document.title = `${templateData.displayName} - Readme Forge`;
+
+            // saving the updated template locally for future use
             const parsedTemplateData = JSON.stringify(templateData);
             localStorage.setItem(
                 `${templateName}-template-latest-save`,
