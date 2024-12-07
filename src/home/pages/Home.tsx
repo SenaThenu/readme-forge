@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material";
 
 // components
-import NavLayout from "../../shared/components/Navigation/NavLayout";
 import RainbowButton from "../components/RainbowButton";
 import StyledButton from "../../shared/components/UIElements/StyledButton";
 import FeaturesList from "../components/FeaturesList";
+import NavBar from "../../shared/components/Navigation/NavBar";
 
 // styles
 import "./Home.scss";
@@ -19,16 +19,7 @@ export default function Home() {
 
     return (
         <div className="home-root">
-            <div className="nav-container">
-                <NavLayout
-                    navBarMode="default"
-                    navLinks={[
-                        { text: "Home", link: "/" },
-                        { text: "Templates", link: "/templates" },
-                        { text: "Forge", link: "/forge" },
-                    ]}
-                />
-            </div>
+            <NavBar />
             <div className="home-content">
                 <div className="hero">
                     <div className="hero-title">
