@@ -35,6 +35,9 @@ const TemplateDataTypeSchema = z.object({
 
 interface ImportTemplateProps {
     onTemplateLoaded: (loadedTemplate: TemplateDataType) => void;
+    iconOnly?: boolean;
+    className?: string;
+    blockDescription?: string;
 }
 
 export default function ImportTemplate(props: ImportTemplateProps) {
@@ -91,7 +94,11 @@ export default function ImportTemplate(props: ImportTemplateProps) {
     };
 
     return (
-        <Block translucentBg onClick={triggerFileInput}>
+        <Block
+            blockDescription={props.blockDescription}
+            translucentBg={!props.iconOnly}
+            onClick={triggerFileInput}
+            className={props.className}>
             <input
                 type="file"
                 accept="application/json"
@@ -99,7 +106,7 @@ export default function ImportTemplate(props: ImportTemplateProps) {
                 ref={fileInputRef}
                 style={{ display: "none" }}
             />
-            Import Template
+            {!props.iconOnly && "Import Template"}
             <CloudUploadRoundedIcon />
         </Block>
     );

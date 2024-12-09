@@ -159,6 +159,12 @@ export default function Forge({ templateName }: ForgeProps) {
         }
     }, []);
 
+    const onImportTemplate = useCallback((loadedTemplate: TemplateDataType) => {
+        setGlobalsList(loadedTemplate.globals);
+        setUsedBlocksList(loadedTemplate.usedBlocks);
+        setTemplateData(loadedTemplate);
+    }, []);
+
     const onUsedBlocksOrderChanged = useCallback(
         (newOrder: BlockDataType[]) => {
             setUsedBlocksList(newOrder);
@@ -224,6 +230,7 @@ export default function Forge({ templateName }: ForgeProps) {
                         onReset={onReset}
                         globalsList={globalsList}
                         onGlobalsListChange={onGlobalsListChange}
+                        onTemplateLoaded={onImportTemplate}
                     />
                     <Divider flexItem />
                     <div className="used-blocks">
@@ -240,13 +247,7 @@ export default function Forge({ templateName }: ForgeProps) {
                             <>
                                 <TextualDivider text="No Block is Used!" />
                                 <ImportTemplate
-                                    onTemplateLoaded={(loadedTemplate) => {
-                                        setGlobalsList(loadedTemplate.globals);
-                                        setUsedBlocksList(
-                                            loadedTemplate.usedBlocks
-                                        );
-                                        setTemplateData(loadedTemplate);
-                                    }}
+                                    onTemplateLoaded={onImportTemplate}
                                 />
                                 <BrowseTemplates />
                             </>
