@@ -2,6 +2,7 @@ import { useState } from "react";
 
 // types
 import GlobalDataType from "../../types/GlobalDataType";
+import TemplateDataType from "../../types/TemplateDataType";
 
 // material ui components
 import { useTheme } from "@mui/material";
@@ -9,19 +10,20 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
 import RotateLeftRoundedIcon from "@mui/icons-material/RotateLeftRounded";
 import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
-import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 
 // components
 import StyledDialog from "../../shared/components/UIElements/StyledDialog";
 import StyledButton from "../../shared/components/UIElements/StyledButton";
 import Block from "./Block";
 import GlobalsDialog from "./GlobalsDialog";
+import ImportTemplate from "./ImportTemplate";
 
 // styles
 import "./TopRowActions.scss";
 
 interface TopRowActionsProps {
     onReset: () => void;
+    onTemplateLoaded: (loadedTemplate: TemplateDataType) => void;
     globalsList: GlobalDataType[];
     onGlobalsListChange: (newList: GlobalDataType[]) => void;
 }
@@ -60,16 +62,12 @@ export default function TopRowActions(props: TopRowActionsProps) {
                         </svg>
                     </Block>
                 </a>
-                <a
-                    href="https://github.com/sponsors/SenaThenu"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    <Block
-                        blockDescription="Sponsor"
-                        className="top-row-action">
-                        <FavoriteRoundedIcon />
-                    </Block>
-                </a>
+                <ImportTemplate
+                    className="top-row-action"
+                    iconOnly
+                    blockDescription="Import Template"
+                    onTemplateLoaded={props.onTemplateLoaded}
+                />
                 <Block
                     onClick={() => {
                         setResetDialogOpen(true);
