@@ -12,6 +12,7 @@ import StyledDialog from "../../shared/components/UIElements/StyledDialog";
 import StyledButton from "../../shared/components/UIElements/StyledButton";
 import Block from "./Block";
 import ShareDialog from "./ShareDialog";
+import ConfettiEffect from "./ConfettiEffect";
 
 // styles
 import "./CongratsDialog.scss";
@@ -33,6 +34,7 @@ export default function CongratsDialog(props: CongratsDialogProps) {
     return (
         <>
             <ShareDialog open={shareDialogOpen} setOpen={setShareDialogOpen} />
+            {props.open && <ConfettiEffect />}
             <StyledDialog open={props.open} onClose={handleClose}>
                 <DialogContent className="congrats-dialog-content">
                     <img
