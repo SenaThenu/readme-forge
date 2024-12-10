@@ -1,6 +1,3 @@
-// types
-import BlockDataType from "../../types/BlockDataType";
-
 function extractHeadings(markdown: string): string[] {
     const headingRegex = /^(#{1,6}\s+.+)$/gm; // Match lines that start with hashes followed spaces
     const headings = [...markdown.matchAll(headingRegex)];
@@ -8,16 +5,8 @@ function extractHeadings(markdown: string): string[] {
 }
 
 // generates a table of content based on the markdown
-export default function generateToc(usedBlocks: BlockDataType[]) {
-    let combinedMarkdown = "";
-
-    for (let block of usedBlocks) {
-        combinedMarkdown += block.markdown;
-        // line break
-        combinedMarkdown += "\n\n";
-    }
-
-    const headings = extractHeadings(combinedMarkdown);
+export default function generateToc(markdown: string) {
+    const headings = extractHeadings(markdown);
 
     return headings
         .map((heading) => {

@@ -7,6 +7,10 @@ import rehypeRaw from "rehype-raw";
 
 // types
 import GlobalDataType from "../../types/GlobalDataType";
+import BlockDataType from "../../types/BlockDataType";
+
+// utils
+import markdownTokenReplace from "../../shared/utils/markdownTokenReplace";
 
 // styles
 import "highlight.js/styles/tokyo-night-dark.css"; // for code highlighting
@@ -15,13 +19,17 @@ import "./MarkdownPreview.scss";
 interface MarkdownEditorProps {
     markdownInput: string;
     globalsList: GlobalDataType[];
+    usedBlockList: BlockDataType[];
 }
 export default function MarkdownPreview(props: MarkdownEditorProps) {
     let markdown = props.markdownInput;
 
-    for (let global of props.globalsList) {
-        markdown = markdown.replace(`{{${global.global}}}`, global.value);
-    }
+    markdown = markdownTokenReplace(
+        markdown,
+        props.globalsList,
+        false,
+        props.usedBlockList
+    );
 
     return (
         <div className="markdown-preview-components">
