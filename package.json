@@ -19,6 +19,8 @@
         "@mui/icons-material": "^6.1.3",
         "@mui/material": "^6.1.2",
         "@mui/x-data-grid": "^7.22.3",
+        "@tsparticles/react": "^3.0.0",
+        "@tsparticles/slim": "^3.7.1",
         "@uiw/codemirror-theme-github": "^4.23.6",
         "@uiw/react-codemirror": "^4.23.6",
         "motion": "^11.13.1",
