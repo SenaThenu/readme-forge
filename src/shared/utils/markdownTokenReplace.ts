@@ -31,6 +31,10 @@ const readmeJokes: string[] = [
     "What's a README file's favorite hobby?\n- Drafting up new ideas for the future!",
 ];
 
+function getRegexToken(stringToReplace: string) {
+    return new RegExp(stringToReplace, "g");
+}
+
 export default function markdownTokenReplace(
     markdown: string,
     globalsList: GlobalDataType[],
@@ -51,24 +55,30 @@ export default function markdownTokenReplace(
         }
 
         markdown = markdown.replace(
-            "{{auto_generated_toc}}",
+            getRegexToken("{{auto_generated_toc}}"),
             generateToc(combinedMarkdown)
         );
     }
 
     // special easter egg tokens
-    markdown = markdown.replace("{{lore}}", readmeForgeLore);
-    markdown = markdown.replace("{{birthday}}", readmeForgeBirthday);
+    markdown = markdown.replace(getRegexToken("{{lore}}"), readmeForgeLore);
+    markdown = markdown.replace(
+        getRegexToken("{{birthday}}"),
+        readmeForgeBirthday
+    );
     if (markdown.includes("{{joke_time}}")) {
         markdown = markdown.replace(
-            "{{joke_time}}",
+            getRegexToken("{{joke_time}}"),
             readmeJokes[Math.floor(Math.random() * readmeJokes.length)]
         );
     }
 
     // globals replace
     for (let global of globalsList) {
-        markdown = markdown.replace(`{{${global.global}}}`, global.value);
+        markdown = markdown.replace(
+            getRegexToken(`{{${global.global}}}`),
+            global.value
+        );
     }
 
     return markdown;
