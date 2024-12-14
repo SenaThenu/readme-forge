@@ -65,55 +65,61 @@ export default function MarkdownPreview(props: MarkdownEditorProps) {
                 components={{
                     blockquote: ({ children, node }) => {
                         // support for github like block quotes
-                        if (node) {
-                            // the first line block quote type
-                            const blockQuoteFirstLine = node
-                                .children?.[1] as Element;
-                            console.log(node.children);
-                            const blockQuoteData = blockQuoteFirstLine
-                                .children[0] as Text;
+                        try {
+                            if (node) {
+                                // the first line block quote type
+                                const blockQuoteFirstLine = node
+                                    .children?.[1] as Element;
+                                const blockQuoteData = blockQuoteFirstLine
+                                    .children[0] as Text;
 
-                            const blockQuoteDataChunks =
-                                blockQuoteData.value.split("\n");
-                            const blockQuoteType = blockQuoteDataChunks[0];
+                                const blockQuoteDataChunks =
+                                    blockQuoteData.value.split("\n");
+                                const blockQuoteType = blockQuoteDataChunks[0];
 
-                            const match = blockQuoteType.match(
-                                /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i
-                            );
-
-                            if (match) {
-                                const type = match[1].toLowerCase();
-                                return (
-                                    <blockquote data-type={type}>
-                                        {/* the rest of the blockQuoteDataChunks is some text following it */}
-                                        <p>
-                                            {blockQuoteDataChunks
-                                                .slice(1)
-                                                .join(" ")}
-                                        </p>
-                                        {/* adding the other lines contained in the block quote  */}
-                                        {node.children.map((child, index) => {
-                                            if (
-                                                index !== 1 &&
-                                                child.type === "element"
-                                            ) {
-                                                const childTextElement = child
-                                                    .children[0] as Text;
-                                                return (
-                                                    <p>
-                                                        {childTextElement.value
-                                                            .split("\n")
-                                                            .join(" ")}
-                                                    </p>
-                                                );
-                                            }
-                                        })}
-                                    </blockquote>
+                                const match = blockQuoteType.match(
+                                    /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i
                                 );
-                            }
-                        }
 
-                        return <blockquote>{children}</blockquote>;
+                                if (match) {
+                                    const type = match[1].toLowerCase();
+                                    return (
+                                        <blockquote data-type={type}>
+                                            {/* the rest of the blockQuoteDataChunks is some text following it */}
+                                            <p>
+                                                {blockQuoteDataChunks
+                                                    .slice(1)
+                                                    .join(" ")}
+                                            </p>
+                                            {/* adding the other lines contained in the block quote  */}
+                                            {node.children.map(
+                                                (child, index) => {
+                                                    if (
+                                                        index !== 1 &&
+                                                        child.type === "element"
+                                                    ) {
+                                                        const childTextElement =
+                                                            child
+                                                                .children[0] as Text;
+                                                        return (
+                                                            <p>
+                                                                {childTextElement.value
+                                                                    .split("\n")
+                                                                    .join(" ")}
+                                                            </p>
+                                                        );
+                                                    }
+                                                }
+                                            )}
+                                        </blockquote>
+                                    );
+                                }
+                            }
+
+                            return <blockquote>{children}</blockquote>;
+                        } catch {
+                            return <blockquote>{children}</blockquote>;
+                        }
                     },
                 }}>
                 {markdown}

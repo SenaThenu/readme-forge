@@ -1,6 +1,7 @@
 .markdown-preview-components {
   code {
     border-radius: 25px !important;
+    padding: 0 5px;
   }
 
   table {
@@ -83,6 +84,10 @@
   }
 
   &.dark {
+    code {
+      background-color: #2a2a2a;
+    }
+
     blockquote {
       background-color: rgba(255, 255, 255, 0.1);
 
@@ -128,6 +133,10 @@
     }
   }
   &.light {
+    code {
+      background-color: #c1c1c1;
+    }
+
     blockquote {
       background-color: rgba(0, 0, 0, 0.05);
 
