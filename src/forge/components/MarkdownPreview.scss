@@ -29,4 +29,147 @@
   tr:last-child td {
     border-bottom: none; /* Remove bottom border for the last row */
   }
+
+  // block quotes
+  blockquote {
+    padding: 10px;
+    margin: 10px 0;
+
+    border-left: 5px solid;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+
+    p {
+      margin: 0;
+    }
+
+    &[data-type="note"] {
+      &::before {
+        content: "💡 NOTE";
+        font-weight: bold;
+      }
+    }
+
+    &[data-type="tip"] {
+      &::before {
+        content: "✨ TIP";
+        font-weight: bold;
+      }
+    }
+
+    &[data-type="warning"] {
+      &::before {
+        content: "🚨 WARNING";
+        font-weight: bold;
+      }
+    }
+
+    &[data-type="caution"] {
+      &::before {
+        content: "⚠️ CAUTION";
+        font-weight: bold;
+      }
+    }
+
+    &[data-type="important"] {
+      &::before {
+        content: "🔑 IMPORTANT";
+        font-weight: bold;
+      }
+    }
+  }
+
+  &.dark {
+    blockquote {
+      background-color: rgba(255, 255, 255, 0.1);
+
+      &[data-type="note"] {
+        border-color: #69a7e9;
+
+        &::before {
+          color: #69a7e9;
+        }
+      }
+
+      &[data-type="tip"] {
+        border-color: #38a169;
+
+        &::before {
+          color: #38a169;
+        }
+      }
+
+      &[data-type="warning"] {
+        border-color: #f9763e;
+
+        &::before {
+          color: #f9763e;
+        }
+      }
+
+      &[data-type="important"] {
+        border-color: #ba73f5;
+
+        &::before {
+          color: #ba73f5;
+        }
+      }
+
+      &[data-type="caution"] {
+        border-color: #fbb85a;
+
+        &::before {
+          color: #fbb85a;
+        }
+      }
+    }
+  }
+  &.light {
+    blockquote {
+      background-color: rgba(0, 0, 0, 0.05);
+
+      &[data-type="note"] {
+        border-color: #1058a4;
+
+        &::before {
+          color: #1058a4;
+        }
+      }
+
+      &[data-type="tip"] {
+        border-color: #228952;
+
+        &::before {
+          color: #228952;
+        }
+      }
+
+      &[data-type="warning"] {
+        border-color: #be4909;
+
+        &::before {
+          color: #be4909;
+        }
+      }
+
+      &[data-type="important"] {
+        border-color: #570a96;
+
+        &::before {
+          color: #570a96;
+        }
+      }
+
+      &[data-type="caution"] {
+        border-color: #a26612;
+
+        &::before {
+          color: #a26612;
+        }
+      }
+    }
+  }
 }
