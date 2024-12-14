@@ -92,8 +92,11 @@ export default function MarkdownPreview(props: MarkdownEditorProps) {
                                                 .join(" ")}
                                         </p>
                                         {/* adding the other lines contained in the block quote  */}
-                                        {node.children.map((child) => {
-                                            if (child.type === "element") {
+                                        {node.children.map((child, index) => {
+                                            if (
+                                                index !== 1 &&
+                                                child.type === "element"
+                                            ) {
                                                 const childTextElement = child
                                                     .children[0] as Text;
                                                 return (
