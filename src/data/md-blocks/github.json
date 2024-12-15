@@ -1,42 +1,42 @@
 {
     "name": "github",
-    "displayName": "GitHub (test)",
+    "displayName": "GitHub",
     "blocks": [
         {
-            "name": "title",
-            "displayName": "Title",
-            "description": "The title of the README.md",
-            "markdown": "# Project Name"
+            "name": "note-alert",
+            "displayName": "Note Alert",
+            "description": "Special callout for notes",
+            "markdown": "> [!NOTE]\n> Useful information that users should know, even when skimming content."
         },
         {
-            "name": "description",
-            "displayName": "Description",
-            "description": "A brief description of the project",
-            "markdown": "A short project description goes here."
+            "name": "tip-alert",
+            "displayName": "Tip Alert",
+            "description": "Special callout for tips",
+            "markdown": "> [!TIP]\n> Helpful advice for doing things better or more easily."
         },
         {
-            "name": "installation",
-            "displayName": "Installation",
-            "description": "Instructions to install the project",
-            "markdown": "```bash\nnpm install\n```"
+            "name": "important-alert",
+            "displayName": "Important Alert",
+            "description": "Special callout for important stuff",
+            "markdown": "> [!IMPORTANT]\n> Key information users need to know to achieve their goal."
         },
         {
-            "name": "usage",
-            "displayName": "Usage",
-            "description": "How to use the project",
-            "markdown": "```bash\nnpm start\n```"
+            "name": "warning-alert",
+            "displayName": "Warning Alert",
+            "description": "Special callout for warning",
+            "markdown": "> [!WARNING]\n> Urgent info that needs immediate user attention to avoid problems."
         },
         {
-            "name": "contributing",
-            "displayName": "Contributing",
-            "description": "Guidelines for contributing to the project",
-            "markdown": "Contributions are welcome! Please open an issue or submit a pull request."
+            "name": "caution-alert",
+            "displayName": "Caution Alert",
+            "description": "Special callout for caution blocks",
+            "markdown": "> [!CAUTION]\n> Advises about risks or negative outcomes of certain actions."
         },
         {
-            "name": "license",
-            "displayName": "License",
-            "description": "The license for the project",
-            "markdown": "This project is licensed under the MIT License."
+            "name": "star-us-alert",
+            "displayName": "Star Us Alert",
+            "description": "Alert to encourage the user star the repo",
+            "markdown": "> [!IMPORTANT]\n> Star Us ⭐️ to instantly receive the latest updates from GitHub ⚡"
         }
     ]
 }
