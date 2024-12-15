@@ -18,25 +18,97 @@
             "name": "share",
             "displayName": "Share",
             "description": "Social media share links",
-            "markdown": "<div align=\"center\">\n<br />\n<strong>Share</strong>\n\n  [![Share on X](https://img.shields.io/badge/Share_on_X-%23000000.svg?logo=X&logoColor=white)](https://x.com/intent/tweet?hashtags=opensource%2Creadme&text=Check%20this%20out:%20{{title}}!&url=https%3A%2F%2Fgithub.com%2F{{github_username}}%2F{{github_repo_name}})\n</div>"
+            "markdown": "<div align=\"center\">\n<br />\n<strong>Share</strong>\n\n[![Share on X](https://img.shields.io/badge/Share_on_X-%23000000.svg?logo=X&logoColor=white)](https://x.com/intent/tweet?hashtags=opensource%2Creadme&text=Check%20this%20out:%20{{title}}!&url=https%3A%2F%2Fgithub.com%2F{{github_username}}%2F{{github_repo_name}})\n</div>"
         },
         {
             "name": "toc",
             "displayName": "Table of Content",
             "description": "Easy navigation to sections",
-            "markdown": "## Table of Contents 📜\n\n{{auto-generated-toc}}"
+            "markdown": "## Table of Contents 📜\n\n{{auto_generated_toc}}\n"
+        },
+        {
+            "name": "demo",
+            "displayName": "Demo",
+            "description": "Live example or features in action",
+            "markdown": "## Demo 🧑‍💻\n\nExperience the features in action with our live demo!\n\n[insert a link or a video]\n"
+        },
+        {
+            "name": "getting-started",
+            "displayName": "Getting Started",
+            "description": "Steps to get started with the project",
+            "markdown": "## Getting Started 🌱\n\nWelcome! Follow the steps below to get everything up and running.\n\n### Prerequisites 📃\n\nBefore you begin, ensure you have the following installed on your machine:\n\n- **Node.js** (version 14 or higher)\n- **npm** (Node Package Manager)\n\nYou can download Node.js from [here](https://nodejs.org/).\n\n### Installation 📥\n\nTo install the project, follow these steps:\n\n#### Windows 🪟\n\n1. Navigate to the latest release of the repo\n2. Under assets, download the `release_for_windows.zip`\n3. Extract it and run `release.exe`\n\n#### MacOS 🍎\n\n1. Navigate to the latest release of the repo\n2. Under assets, download the `release_for_mac.zip`\n3. Extract it and run `release.dmg`\n\n#### Linux 🐧\n\n1. Clone the repository to your local machine:\n    ```bash\n    git clone https://github.com/yourusername/yourproject.git\n    ```\n2. Navigate to the project directory:\n    ```bash\n    cd yourproject\n    ```\n3. Install the dependencies:\n    ```bash\n    npm install\n    ```\n4. Run it:\n    ```bash\n    npm start\n    ```\n"
+        },
+        {
+            "name": "features",
+            "displayName": "Features",
+            "description": "A brief list of all the features",
+            "markdown": "## Features ✨\n\n* **Code Search:** Quickly find code across your repositories.\n* **Pull Requests:** Collaborate efficiently on code changes.\n* **Issues:** Track bugs, feature requests, and other tasks.\n* **Projects:** Organize and prioritize work.\n* **Wikis:** Create and share documentation.\n"
+        },
+        {
+            "name": "in-depth-features",
+            "displayName": "In-Depth Features",
+            "description": "A deep description of all the features",
+            "markdown": "## Features In Depth 🧠\n\n### 1. User Authentication\n- Secure login and registration with email and password.\n- OAuth integration for third-party logins (Google, Facebook).\n\n### 2. Real-Time Notifications\n- Get notified instantly about important events and updates.\n- Push notifications for mobile and desktop users.\n\n### 3. Dynamic Content Management\n- Admin panel for managing content dynamically.\n- Ability to create, update, and delete posts.\n\n### 4. Customizable Themes\n- Choose from a variety of pre-defined themes.\n- Option to create custom themes and save preferences.\n\n### 5. Analytics Dashboard\n- Real-time statistics and metrics for user activity.\n- Visual graphs and charts for easy data interpretation.\n"
+        },
+        {
+            "name": "usage",
+            "displayName": "Usage",
+            "description": "Guide on how to use the project",
+            "markdown": "## Usage 🛠️\n\n### Basic Usage 📝\nTo perform a basic task:\n```bash\npython main.py <command> <arguments>\n```\n**Example:**\n```bash\npython main.py run_analysis data.csv\n```\n\n### Advanced Usage 🦾\nFor more complex operations or customization:\n```bash\npython main.py --config config.yaml\n```\n\n### Additional Options 📌\n- `-h` `--help`: Display help message and usage information.\n- `--verbose`: Increase verbosity level for detailed output.\n- `--debug`: Enable debug mode for troubleshooting.\n"
+        },
+        {
+            "name": "built-with",
+            "displayName": "Built With",
+            "description": "List of stuff used to build the project",
+            "markdown": "## Built With 🔧\n\n> [!TIP]\n> Add stuff using md-badges.\n\nmd-badges: [github.com/inttter/md-badges](https://github.com/inttter/md-badges)\n\n[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff&style=for-the-badge)](#)\n[![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB&style=for-the-badge)](#)\n[![Scss](https://img.shields.io/badge/Scss-C69?logo=sass&logoColor=fff&style=for-the-badge)](#)\n[![Vite](https://img.shields.io/badge/Vite-9575cd?logo=vite&logoColor=fff&style=for-the-badge)](#)\n[![Vitest](https://img.shields.io/badge/Vitest-6E9F18?logo=vitest&logoColor=fff&style=for-the-badge)](#)"
+        },
+        {
+            "name": "feedback",
+            "displayName": "Feedback",
+            "description": "Providing feedback on the project",
+            "markdown": "## Feedback 💬\n\nWe value your feedback and are constantly working to improve the project. If you have any suggestions, issues, or comments, please share them with us.\n\n[**Open an Issue**](https://github.com/{{github_username}}/{{github_repo_name}}) | **Email**: contact@example.com\n"
+        },
+        {
+            "name": "keyboard-shortcuts",
+            "displayName": "Keyboard Shortcuts",
+            "description": "Table of all the keyboard shortcuts",
+            "markdown": "## Keyboard Shortcuts ⌨️\n\n| **Shortcut**              | **Action**                     |\n|---------------------------|--------------------------------|\n| <kbd>Ctrl</kbd> + <kbd>N</kbd> | Create a new file |\n| <kbd>Ctrl</kbd> + <kbd>S</kbd> | Save the current file |\n| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd> | Save all |\n| <kbd>Ctrl</kbd> + <kbd>Z</kbd> | Undo the last action |\n| <kbd>Ctrl</kbd> + <kbd>Y</kbd> | Redo the last undone action |\n| <kbd>Ctrl</kbd> + <kbd>F</kbd> | Open the search bar |\n| <kbd>Ctrl</kbd> + <kbd>H</kbd> | Open the replace tool |\n| <kbd>Ctrl</kbd> + <kbd>P</kbd> | Print the document |\n| <kbd>Ctrl</kbd> + <kbd>Tab</kbd> | Switch between open tabs |\n| <kbd>Ctrl</kbd> + <kbd>W</kbd> | Close the current tab |\n| <kbd>F11</kbd> | Toggle full-screen mode |\n\nUse these shortcuts to speed up your workflow and enhance productivity!\n"
+        },
+        {
+            "name": "api-reference",
+            "displayName": "API Reference",
+            "description": "List of all API endpoints and request params",
+            "markdown": "## API Reference 📚\n\nHere's a detailed list of all the available API endpoints, request parameters, and responses.\n\n### Base URL 🔗\n\nThe base URL for all API requests is:\n\n```web\nhttps://api.yourproject.com/v1\n```\n\n### Authentication 🔒\n\nTo authenticate, include the following header in your API requests:\n\n```web\nAuthorization: Bearer <your-api-token>\n```\n\nYou can obtain an API token by logging into your account and visiting the **API Tokens** section.\n\n### Endpoints 📍\n\n#### Get All Posts\n\n**Endpoint:** `GET /posts`\n\n**Description:** Fetches a list of all posts.\n\n**Query Parameters:**\n\n| Parameter  | Type   | Description             |\n|------------|--------|-------------------------|\n| `page`     | `number` | The page number (default: 1) |\n| `limit`    | `number` | The number of posts to fetch per page (default: 10) |\n\n**Response:**\n\n```json\n{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"title\": \"Post Title\",\n      \"content\": \"Post content goes here.\",\n      \"author\": \"Author Name\",\n      \"created_at\": \"2024-12-01T12:00:00Z\"\n    },\n    ...\n  ],\n  \"meta\": {\n    \"total\": 100,\n    \"page\": 1,\n    \"limit\": 10\n  }\n}\n```\n\n#### Create a New Post\n\n**Endpoint:** `POST /posts`\n\n**Description:** Creates a new post.\n\n**Request Body:**\n```json\n{\n  \"title\": \"New Post Title\",\n  \"content\": \"Content of the new post.\",\n  \"author\": \"Author Name\"\n}\n```\n\n**Response:**\n\n```json\n{\n  \"id\": 101,\n  \"title\": \"New Post Title\",\n  \"content\": \"Content of the new post.\",\n  \"author\": \"Author Name\",\n  \"created_at\": \"2024-12-15T10:00:00Z\"\n}\n```\n"
         },
         {
             "name": "contributing",
             "displayName": "Contributing",
-            "description": "Guidelines for contributing to the project",
-            "markdown": "Contributions are welcome! Please open an issue or submit a pull request."
+            "description": "Informs the user to check CONTRIBUTING.md",
+            "markdown": "## Contributing 🤝\n\nWelcome Code Wizards & Witches! 🧙‍♂️🧙‍♀️\n\nYour contributions fuel this repo! 🔥\n\n_Let's show the power of Open-Source!_ 💪\n\n<details>\n    <summary>Why are open-source developers the sweetest folks in tech? 🍭</summary>\n    <p> Because they believe in sharing not only code but also <i>smiles</i> 😁 and <i>love</i> 💓 through 1s and 0s!</p>\n</details>\n\nSee [`CONTRIBUTING.md`](#) to get started."
+        },
+        {
+            "name": "current-contributors",
+            "displayName": "Current Contributors",
+            "description": "Table of all current contributors",
+            "markdown": "## Current Contributors 🧙‍♂️\n\nThis wouldn't exist if it weren't for these amazing developers! 🤩💖\n\n[Emoji Key](https://allcontributors.org/docs/en/emoji-key) ✨\n\n<!-- please use https://allcontributors.org/ to generate a contributor table with ease -->\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\n### Special Thanks\n\n- [**Michael Lee**](https://github.com/example) for extensive testing and bug reports.\n- [**Sarah Miller**](https://github.com/example) for contributing to the feature roadmap and planning."
+        },
+        {
+            "name": "sponsors",
+            "displayName": "Sponsors",
+            "description": "Info on all the project sponsors",
+            "markdown": "## Sponsors 💖\n\nWe are grateful for the support from our amazing sponsors. Their contributions help us continue to improve and maintain the project.\n\n### Platinum Sponsors 🤍💞\n\n| **Name**          | **Website**                    |\n|-------------------|---------------------------------|\n| TechCorp Inc.     | [techcorp.com](https://techcorp.com)  |\n| DevSolutions Ltd. | [devsolutions.com](https://devsolutions.com) |\n\n### Gold Sponsors 💛\n\n| **Name**          | **Website**                    |\n|-------------------|---------------------------------|\n| CodeMaster Co.    | [codemaster.com](https://codemaster.com) |\n| InnovateTech      | [innovate-tech.com](https://innovate-tech.com) |\n\n### Silver Sponsors 🩶\n\n| **Name**          | **Website**                    |\n|-------------------|---------------------------------|\n| WebDev Solutions  | [webdevsolutions.com](https://webdevsolutions.com) |\n| CloudStream LLC   | [cloudstream.com](https://cloudstream.com) |\n\n### Become a Sponsor 🙌\n\nInterested in supporting the project? Check out our [Sponsorship Page](https://github.com/sponsors/{{github_username}}) for more information on how you can contribute."
+        },
+        {
+            "name": "acknowledgments",
+            "displayName": "Acknowledgments",
+            "description": "List of all the acknowledgements",
+            "markdown": "## Acknowledgments 💝\n\n- [Readme Forge](https://readme-forge.github.io) - Creating README.md\n- [Awesome README](https://github.com/matiassingers/awesome-readme) - Suggesting great tools"
         },
         {
             "name": "faq",
             "displayName": "FAQ",
             "description": "Frequently Asked Questions",
-            "markdown": "Yo, imma answer some questions!"
+            "markdown": "## FAQ 🤔\n\nHere are some frequently asked questions about the project.\n\n### What is this project about?\n\nThis project is a web application designed to help users manage tasks, collaborate with teams, and track progress in real time. It offers features like task assignment, progress tracking, and team communication.\n\n### How do I get started?\n\nTo get started, follow the steps outlined in the [Getting Started](#getting-started) section. You'll need to clone the repository, install dependencies, and run the app locally.\n\n### Is there a mobile version of the app?\n\nCurrently, the project is designed for desktop use only. However, we are working on a mobile version, which will be available in future updates.\n\n### How can I contribute to this project?\n\nWe welcome contributions! Check out the [Contributing Guidelines](https://github.com/{{github_username}}/{{github_repo_name}}/blob/main/CONTRIBUTING.md) to learn how you can get involved.\n\n### How do I report a bug?\n\nIf you find a bug, please open an issue on our [GitHub Issues page](https://github.com/{{github_username}}/{{github_repo_name}}/issues). Provide as much detail as possible to help us resolve the issue quickly.\n\n### How can I contact the project maintainers?\n\nYou can reach the maintainers by opening an issue on GitHub or by sending an email to [support@yourproject.com](mailto:support@yourproject.com)."
         }
     ]
 }

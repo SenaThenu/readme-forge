@@ -28,11 +28,11 @@
 </p>
 
 <!-- SHARING ON SOCIAL MEDIA -->
-<p align="center">
-  <a href="https://x.com/intent/tweet?hashtags=hashtag%2Chashtag&text=Check%20this%20GitHub%20repository%20out:%20readme-forge!&url=https%3A%2F%2Fgithub.com%2Fsenathenu%2Freadme-forge">
-    <img height=24 src="https://img.shields.io/badge/-share%20on%20x-black?labelColor=black&logo=x&logoColor=white&style=flat-square" alt="Share on X">
-  </a>
-</p>
+<div align="center">
+  <strong>Share</strong>
+  
+  [![Share on X](https://img.shields.io/badge/Share_on_X-%23000000.svg?logo=X&logoColor=white)](https://x.com/intent/tweet?hashtags=opensource%2Creadme&text=Check%20this%20out:%20{{project_name}}!&url=https%3A%2F%2Fgithub.com%2F{{username}}%2F{{repo_name}})
+</div>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents 📜
