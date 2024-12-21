@@ -24,7 +24,7 @@
             "name": "toc",
             "displayName": "Table of Content",
             "description": "Easy navigation to sections",
-            "markdown": "## Table of Contents 📜\n\n{{auto_generated_toc}}\n"
+            "markdown": "<details>\n\n<summary><strong>Table of Contents 📜</strong></summary>\n\n{{auto_generated_toc}}\n\n</details>"
         },
         {
             "name": "demo",
