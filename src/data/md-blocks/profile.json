@@ -15,10 +15,10 @@
             "markdown": "> [!TIP]\n> Generate a typing subheading using: ⌨️ Readme Typing SVG\n\nhttps://readme-typing-svg.demolab.com/demo/\n\n<div align=\"center\">\n  <img src='https://readme-typing-svg.demolab.com?font=Space+Mono&pause=1000&color=58a6ff&center=true&width=435&lines=Student+by+Day!;Coding+Wizard+by+Night!' alt='Typing SVG' />\n</div>"
         },
         {
-            "name": "github-streak",
-            "displayName": "Github Streak",
-            "description": "Your GitHub streak information",
-            "markdown": "> [!TIP]\n> Generate one using: 🔥 GitHub Readme Streak Stats\n\nhttps://streak-stats.demolab.com/demo/\n\n<div align=\"center\">\n  <img src='https://streak-stats.demolab.com?user=SenaThenu&theme=react&hide_border=true&border_radius=25&background=150%2C12529A%2C0071BC' alt='GitHub Streak' />\n</div>"
+            "name": "github-stats",
+            "displayName": "Github Stats",
+            "description": "Your GitHub Stat information",
+            "markdown": "### Stats and Activity 📊\n\n> [!TIP]\n> To generate stats, use these great resources:\n\n* [🔥 GitHub Readme Streak Stats](https://streak-stats.demolab.com/demo/)\n* [📊 GitHub Readme Stats]( https://github.com/anuraghazra/github-readme-stats)\n* [📈 GitHub Readme Activity Graph](https://github.com/ashutosh00710/github-readme-activity-graph)\n\n<strong>🔥 Streak Stats</strong>\n\n<div align=\"center\">\n  <img src='https://streak-stats.demolab.com?user={{github_username}}&theme=react&hide_border=true&border_radius={{border_radius}}&background=0c3666' alt='GitHub Streak' />\n</div>\n\n<strong>💻 GitHub Profile Stats</strong>\n\n  <div align=\"center\" style=\"width: 100%\">\n    <img align=\"center\" alt=\"SenaThenu's Stats\" src='https://github-readme-stats.vercel.app/api?username={{github_username}}&show_icons=true&theme=holi&hide_border=true&border_radius={{border_radius}}&bg_color=0c3666' />\n    <br />\n    <img align=\"center\" src='https://github-readme-stats.vercel.app/api/top-langs/?username={{github_username}}&layout=compact&hide=html,tex,jupyter%20notebook&show_icons=true&theme=holi&hide_border=true&border_radius={{border_radius}}&bg_color=0c3666'>\n  </div>\n\n> [!NOTE]\n> Top languages are only a metric of the languages my public code consists of and doesn't reflect my experience or skill level."
         },
         {
             "name": "octocat",
