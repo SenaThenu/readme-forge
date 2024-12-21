@@ -5,14 +5,26 @@
         {
             "name": "intro",
             "displayName": "Introduction",
-            "description": "A brief introduction about yourself",
-            "markdown": "# Hi, I'm [Your Name] 👋\nI'm a passionate developer with a focus on [Your Specializations]."
+            "description": "A brief introduction",
+            "markdown": "<h2 align=\"center\">\n  <img src='https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Grinning Face.png' alt='Grinning Face' width='25' height='25' />\n  Yahoo, I'm Forgey!\n  <img src='https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Grinning Face.png' alt='Grinning Face' width='25' height='25' />\n</h2>"
         },
         {
-            "name": "skills",
-            "displayName": "Skills",
-            "description": "A list of your key skills",
-            "markdown": "### Skills\n- JavaScript\n- React\n- Node.js\n- CSS/SCSS\n- TypeScript"
+            "name": "typing-subheading",
+            "displayName": "Typing Subheading",
+            "description": "A heading with a typing effect",
+            "markdown": "> [!TIP]\n> Generate a typing subheading using: ⌨️ Readme Typing SVG\n\nhttps://readme-typing-svg.demolab.com/demo/\n\n<div align=\"center\">\n  <img src='https://readme-typing-svg.demolab.com?font=Space+Mono&pause=1000&color=58a6ff&center=true&width=435&lines=Student+by+Day!;Coding+Wizard+by+Night!' alt='Typing SVG' />\n</div>"
+        },
+        {
+            "name": "github-streak",
+            "displayName": "Github Streak",
+            "description": "Your GitHub streak information",
+            "markdown": "> [!TIP]\n> Generate one using: 🔥 GitHub Readme Streak Stats\n\nhttps://streak-stats.demolab.com/demo/\n\n<div align=\"center\">\n  <img src='https://streak-stats.demolab.com?user=SenaThenu&theme=react&hide_border=true&border_radius=25&background=150%2C12529A%2C0071BC' alt='GitHub Streak' />\n</div>"
+        },
+        {
+            "name": "octocat",
+            "displayName": "Octocat",
+            "description": "Image of your Octocat",
+            "markdown": "> [!TIP]\n> Generate one using: My Octocat\n\nhttps://myoctocat.com/\n\n<div align=\"center\">\n  <img height=250px src='https://github.com/SenaThenu/SenaThenu/blob/main/Octocat.png?raw=true' />\n</div>"
         },
         {
             "name": "projects",
