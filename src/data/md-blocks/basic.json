@@ -6,7 +6,7 @@
             "name": "title-and-description",
             "displayName": "Title & Description",
             "description": "Section with the title, description and logo",
-            "markdown": "<h3 align=\"center\">{{title}}</h3>\n\n<div align=\"center\">This is cool README file!</div>\n"
+            "markdown": "<div align=\"center\">\n  <a href=\"https://github.com/{{github_username}}/{{github_repo_name}}\">\n    <img src=\"https://github.com//{{github_username}}/{{github_repo_name}}/blob/main/src/assets/logo.svg?raw=true\" alt=\"Repo Logo\" height=\"100\">\n  </a>\n</div>\n\n<h3 align=\"center\">{{title}}</h3>\n\n<div align=\"center\">This is cool README file!</div>"
         },
         {
             "name": "project-shields",
@@ -18,7 +18,7 @@
             "name": "share",
             "displayName": "Share",
             "description": "Social media share links",
-            "markdown": "<div align=\"center\">\n<br />\n<strong>Share</strong>\n\n[![Share on X](https://img.shields.io/badge/Share_on_X-%23000000.svg?logo=X&logoColor=white)](https://x.com/intent/tweet?hashtags=opensource%2Creadme&text=Check%20this%20out:%20{{title}}!&url=https%3A%2F%2Fgithub.com%2F{{github_username}}%2F{{github_repo_name}})\n</div>"
+            "markdown": "<div align=\"center\">\n  \n  <strong>Share</strong>\n\n  <a href=\"https://x.com/intent/tweet?hashtags=opensource%2Creadme&text=Check%20this%20out:%20{{title}}!&url=https%3A%2F%2Fgithub.com%2F{{github_username}}%2F{{github_repo_name}}\">\n    <img src=\"https://img.shields.io/badge/Share_on_X-%23000000.svg?logo=X&logoColor=white\" alt=\"Share on X\" />\n  </a>\n  \n</div>"
         },
         {
             "name": "toc",
