@@ -43,6 +43,12 @@
             "displayName": "Education",
             "description": "Your educational background",
             "markdown": "### Education 🎓\n\n- **Degree**, [University/Institution Name], (YYYY-MM to YYYY-MM)"
+        },
+        {
+            "name": "badges-inventory",
+            "displayName": "Badges Inventory",
+            "description": "A collection of virtual badges",
+            "markdown": "### My Virtual Badges Inventory 📛\n\n> [!TIP]\n> Create your own at Holopin (not sponsored):\n\nhttps://www.holopin.io/\n\n<a href=\"https://holopin.io/@senathenu\">\n  <img src=\"https://holopin.me/senathenu\" alt=\"An image of SenaThenu's Holopin Badges!\" align=\"center\" style=\"width: 100%\">\n</a>"
         }
     ]
 }
