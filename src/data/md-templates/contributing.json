@@ -51,7 +51,7 @@
             "originalMarkdown": "## Submitting Pull Requests 📤\n\nWhen you're ready to submit your code, please follow these steps:\n\n1. Ensure your code follows the project's coding standards.\n2. Run tests to ensure everything works as expected.\n3. Submit a pull request:\n    - Provide a clear and descriptive title.\n    - Explain the purpose of the pull request in the description.\n    - Reference any related issues (e.g., \"Closes #123\")."
         }
     ],
-    "availableBlockCategories": ["contributing", "basic"],
+    "availableBlockCategories": ["contributing"],
     "globals": [
         {
             "id": "5108babc-bf35-44d5-a9ba-de08badfa80a",
