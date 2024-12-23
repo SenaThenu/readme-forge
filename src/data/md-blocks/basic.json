@@ -6,7 +6,7 @@
             "name": "title-and-description",
             "displayName": "Title & Description",
             "description": "Section with the title, description and logo",
-            "markdown": "<h3 align=\"center\">{{title}}</h3>\n\n<div align=\"center\">This is cool README file!</div>\n"
+            "markdown": "<div align=\"center\">\n  <a href=\"https://github.com/{{github_username}}/{{github_repo_name}}\">\n    <img src=\"https://github.com//{{github_username}}/{{github_repo_name}}/blob/main/src/assets/logo.svg?raw=true\" alt=\"Repo Logo\" height=\"100\">\n  </a>\n</div>\n\n<h3 align=\"center\">{{title}}</h3>\n\n<div align=\"center\">This is cool README file!</div>"
         },
         {
             "name": "project-shields",
@@ -18,7 +18,7 @@
             "name": "share",
             "displayName": "Share",
             "description": "Social media share links",
-            "markdown": "<div align=\"center\">\n<br />\n<strong>Share</strong>\n\n[![Share on X](https://img.shields.io/badge/Share_on_X-%23000000.svg?logo=X&logoColor=white)](https://x.com/intent/tweet?hashtags=opensource%2Creadme&text=Check%20this%20out:%20{{title}}!&url=https%3A%2F%2Fgithub.com%2F{{github_username}}%2F{{github_repo_name}})\n</div>"
+            "markdown": "<div align=\"center\">\n  \n  <strong>Share</strong>\n\n  <a href=\"https://x.com/intent/tweet?hashtags=opensource%2Creadme&text=Check%20this%20out:%20{{title}}!&url=https%3A%2F%2Fgithub.com%2F{{github_username}}%2F{{github_repo_name}}\">\n    <img src=\"https://img.shields.io/badge/Share_on_X-%23000000.svg?logo=X&logoColor=white\" alt=\"Share on X\" />\n  </a>\n  \n</div>"
         },
         {
             "name": "toc",
@@ -90,7 +90,7 @@
             "name": "current-contributors",
             "displayName": "Current Contributors",
             "description": "Table of all current contributors",
-            "markdown": "## Current Contributors 🧙‍♂️\n\nThis wouldn't exist if it weren't for these amazing developers! 🤩💖\n\n[Emoji Key](https://allcontributors.org/docs/en/emoji-key) ✨\n\n<!-- please use https://allcontributors.org/ to generate a contributor table with ease -->\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\n### Special Thanks\n\n- [**Michael Lee**](https://github.com/example) for extensive testing and bug reports.\n- [**Sarah Miller**](https://github.com/example) for contributing to the feature roadmap and planning."
+            "markdown": "## Current Contributors 🧙‍♂️\n\nThis wouldn't exist if it weren't for these amazing developers! 🤩💖\n\n[Emoji Key](https://allcontributors.org/docs/en/emoji-key) ✨\n\n> [!TIP]\n> Use allcontributors to generate a contributor table with ease:\n\nhttps://allcontributors.org/\n\n<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->\n<!-- prettier-ignore-start -->\n<!-- markdownlint-disable -->\n\n<!-- markdownlint-restore -->\n<!-- prettier-ignore-end -->\n\n<!-- ALL-CONTRIBUTORS-LIST:END -->\n\n### Special Thanks\n\n- [**Michael Lee**](https://github.com/example) for extensive testing and bug reports.\n- [**Sarah Miller**](https://github.com/example) for contributing to the feature roadmap and planning."
         },
         {
             "name": "sponsors",
