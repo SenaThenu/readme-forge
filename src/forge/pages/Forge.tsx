@@ -188,6 +188,9 @@ export default function Forge({ templateName }: ForgeProps) {
 
     const onAddBlock = useCallback((newBlock: BlockDataType) => {
         setUsedBlocksList((prev) => [...prev, newBlock]);
+        if (newBlock.id) {
+            setActiveBlockId(newBlock.id);
+        }
     }, []);
 
     const onRemoveAvailableBlockCat = useCallback((blockCatName: string) => {
