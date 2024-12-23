@@ -12,6 +12,7 @@ import CancelRoundedIcon from "@mui/icons-material/CancelRounded";
 import Block from "./Block";
 import StyledButton from "../../shared/components/UIElements/StyledButton";
 import FeedbackSnackbar from "../../shared/components/UIElements/FeedbackSnackbar";
+import TextualDivider from "../../shared/components/UIElements/TextualDivider";
 
 // utils
 import fetchBlockCatData from "../../shared/utils/fetchBlockCatData";
@@ -121,6 +122,12 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
         }));
     }, [blockCategories, props.searchQuery, sortBlocks]);
 
+    const searchResultsAreEmpty = useMemo(() => {
+        return processedCategories.every(
+            (category) => category.filteredBlocks.length === 0
+        );
+    }, [processedCategories]);
+
     const openSnackbar = () => {
         if (snackbarOpen) {
             setSnackbarOpen(false);
@@ -146,41 +153,54 @@ export default function AvailableBlocks(props: AvailableBlocksProps) {
                     }
                 }}
             />
-            {processedCategories.map((category) => (
-                <div
-                    className="block-category-container"
-                    key={`${category.name}-${uuidv4()}`}>
-                    {category.filteredBlocks.length > 0 && (
-                        <>
-                            <div className="block-category-name">
-                                {category.displayName}
-                                <StyledButton
-                                    onClick={() => {
-                                        props.onRemoveBlockCat(category.name);
-                                        setSnackbarMessage(
-                                            `Removed ${category.displayName} Block Category!`
-                                        );
-                                        openSnackbar();
-                                        setRemoveBlockCatName(category.name);
-                                    }}
-                                    startIcon={<CancelRoundedIcon />}
-                                    blurBg
-                                    sx={{ minWidth: "28px", height: "28px" }}
-                                />
-                            </div>
+            {searchResultsAreEmpty ? (
+                <TextualDivider text="No Block is Found!" />
+            ) : (
+                processedCategories.map((category) => (
+                    <div
+                        className="block-category-container"
+                        key={`${category.name}-${uuidv4()}`}>
+                        {category.filteredBlocks.length > 0 && (
+                            <>
+                                <div className="block-category-name">
+                                    {category.displayName}
+                                    <StyledButton
+                                        onClick={() => {
+                                            props.onRemoveBlockCat(
+                                                category.name
+                                            );
+                                            setSnackbarMessage(
+                                                `Removed ${category.displayName} Block Category!`
+                                            );
+                                            openSnackbar();
+                                            setRemoveBlockCatName(
+                                                category.name
+                                            );
+                                        }}
+                                        startIcon={<CancelRoundedIcon />}
+                                        blurBg
+                                        sx={{
+                                            minWidth: "28px",
+                                            height: "28px",
+                                        }}
+                                    />
+                                </div>
 
-                            {category.filteredBlocks.map((block, index) => (
-                                <Block
-                                    blockDescription={block.description}
-                                    key={index}
-                                    onClick={createBlockClickHandler(block)}>
-                                    {block.displayName}
-                                </Block>
-                            ))}
-                        </>
-                    )}
-                </div>
-            ))}
+                                {category.filteredBlocks.map((block, index) => (
+                                    <Block
+                                        blockDescription={block.description}
+                                        key={index}
+                                        onClick={createBlockClickHandler(
+                                            block
+                                        )}>
+                                        {block.displayName}
+                                    </Block>
+                                ))}
+                            </>
+                        )}
+                    </div>
+                ))
+            )}
         </>
     );
 }
