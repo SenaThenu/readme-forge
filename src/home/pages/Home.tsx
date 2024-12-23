@@ -72,9 +72,7 @@ export default function Home() {
                 </div>
                 <FeaturesList />
                 <div className="footer">
-                    <div className="copyright">
-                        &copy; Senash Thenuja {new Date().getFullYear()}
-                    </div>
+                    <div className="copyright">Built with ❤️ by SenaThenu</div>
                     <div className="socials">
                         <a
                             href="https://github.com/SenaThenu"
