@@ -1,6 +1,6 @@
 {
     "displayName": "🛠️ Project",
-    "description": "A template for building GitHub Project READMEs",
+    "description": "Template for building GitHub Project READMEs",
     "usedBlocks": [
         {
             "name": "title-and-description",
