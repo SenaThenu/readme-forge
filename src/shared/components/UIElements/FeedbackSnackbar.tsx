@@ -21,7 +21,7 @@ function SlideTransition(props: SlideProps) {
 
 export default function FeedbackSnackbar(props: FeedbackSnackbarProps) {
     const handleClose = (
-        event: React.SyntheticEvent | Event,
+        _event: React.SyntheticEvent | Event,
         reason?: SnackbarCloseReason
     ) => {
         if (reason === "clickaway") {

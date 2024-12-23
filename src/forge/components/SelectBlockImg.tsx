@@ -3,23 +3,25 @@ import { useState, useEffect } from "react";
 // components
 import CircularProgress from "@mui/material/CircularProgress";
 
-const images = import.meta.glob("/src/assets/images/select-a-block/*.webp");
-const imagePaths = Object.keys(images);
+const numberOfImages = 4;
+
+function getRandomImageName() {
+    return Math.ceil(Math.random() * numberOfImages);
+}
 
 export default function SelectBlockImg() {
-    const [randomImagePath, setRandomImagePath] = useState<string>("");
+    const [randomImageName, setRandomImageName] = useState<number>(
+        getRandomImageName()
+    );
 
     useEffect(() => {
-        const randomImage =
-            imagePaths[Math.floor(Math.random() * imagePaths.length)];
-
-        setRandomImagePath(randomImage);
+        setRandomImageName(getRandomImageName);
     }, []);
 
-    if (randomImagePath) {
+    if (randomImageName) {
         return (
             <img
-                src={randomImagePath}
+                src={`/select-a-block/${randomImageName}.webp`}
                 alt="Choose a block image"
                 loading="eager"
                 draggable={false}
