@@ -35,6 +35,14 @@
             "originalMarkdown": "<details>\n\n<summary><strong>Table of Contents 📜</strong></summary>\n\n{{auto_generated_toc}}\n\n</details>"
         },
         {
+            "name": "demo",
+            "displayName": "Demo",
+            "description": "Live example or features in action",
+            "markdown": "## Demo 🧑‍💻\n\nExperience the features in action with our live demo!\n\n[insert a link or a video]\n",
+            "id": "2e829710-1a19-4da9-8531-17948b374e18",
+            "originalMarkdown": "## Demo 🧑‍💻\n\nExperience the features in action with our live demo!\n\n[insert a link or a video]\n"
+        },
+        {
             "name": "features",
             "displayName": "Features",
             "description": "A brief list of all the features",
