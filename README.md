@@ -78,7 +78,7 @@ _Let's show the power of Open-Source!_ 💪
     <p> Because they believe in sharing not only code but also <i>smiles</i> 😁 and <i>love</i> 💓 through 1s and 0s!</p>
 </details>
 
-See [`CONTRIBUTING.md`](#) to get started.
+See [`CONTRIBUTING.md`](https://github.com/SenaThenu/readme-forge/blob/main/CONTRIBUTING.md) to get started.
 
 ## Current Contributors 🧙‍♂️
 
