@@ -1,4 +1,4 @@
-const e="🛠️ Project",t="Template for building GitHub Project READMEs",n=[{name:"title-and-description",displayName:"Title & Description",description:"Section with the title, description and logo",markdown:`<div align="center">
+const e="🛠️ Project",n="Template for building GitHub Project READMEs",t=[{name:"title-and-description",displayName:"Title & Description",description:"Section with the title, description and logo",markdown:`<div align="center">
   <a href="https://github.com/{{github_username}}/{{github_repo_name}}">
     <img src="https://github.com//{{github_username}}/{{github_repo_name}}/blob/main/src/assets/logo.svg?raw=true" alt="Repo Logo" height="100">
   </a>
@@ -54,7 +54,17 @@ const e="🛠️ Project",t="Template for building GitHub Project READMEs",n=[{n
 
 {{auto_generated_toc}}
 
-</details>`},{name:"features",displayName:"Features",description:"A brief list of all the features",markdown:`## Features ✨
+</details>`},{name:"demo",displayName:"Demo",description:"Live example or features in action",markdown:`## Demo 🧑‍💻
+
+Experience the features in action with our live demo!
+
+[insert a link or a video]
+`,id:"2e829710-1a19-4da9-8531-17948b374e18",originalMarkdown:`## Demo 🧑‍💻
+
+Experience the features in action with our live demo!
+
+[insert a link or a video]
+`},{name:"features",displayName:"Features",description:"A brief list of all the features",markdown:`## Features ✨
 
 * **Code Search:** Quickly find code across your repositories.
 * **Pull Requests:** Collaborate efficiently on code changes.
@@ -260,4 +270,4 @@ This wouldn't exist if it weren't for these amazing developers! 🤩💖
 - [Awesome README](https://github.com/matiassingers/awesome-readme) - Suggesting great tools`,id:"dd9fd405-080c-4182-9fc1-be7fd57ebb8b",originalMarkdown:`## Acknowledgments 💝
 
 - [Readme Forge](https://readme-forge.github.io) - Creating README.md
-- [Awesome README](https://github.com/matiassingers/awesome-readme) - Suggesting great tools`}],o=["basic","github","animated-basic"],a=[{id:"5108babc-bf35-44d5-a9ba-de08badfa80a",global:"github_username",value:"SenaThenu"},{id:"2d790a4d-7c9c-4e23-9c9c-5749c5fa7fdb",global:"github_repo_name",value:"readme-forge"},{id:"871c574c-be7d-4a23-832c-a34d740ed78e",global:"title",value:"Readme Forge"}],i={displayName:e,description:t,usedBlocks:n,availableBlockCategories:o,globals:a};export{o as availableBlockCategories,i as default,t as description,e as displayName,a as globals,n as usedBlocks};
+- [Awesome README](https://github.com/matiassingers/awesome-readme) - Suggesting great tools`}],o=["basic","github","animated-basic"],a=[{id:"5108babc-bf35-44d5-a9ba-de08badfa80a",global:"github_username",value:"SenaThenu"},{id:"2d790a4d-7c9c-4e23-9c9c-5749c5fa7fdb",global:"github_repo_name",value:"readme-forge"},{id:"871c574c-be7d-4a23-832c-a34d740ed78e",global:"title",value:"Readme Forge"}],i={displayName:e,description:n,usedBlocks:t,availableBlockCategories:o,globals:a};export{o as availableBlockCategories,i as default,n as description,e as displayName,a as globals,t as usedBlocks};
