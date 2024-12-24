@@ -4,9 +4,17 @@
   </a>
 </div>
 
-<h3 align="center">Readme Forge</h3>
+<h3 align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="25" height="25" />
+  Readme Forge
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="25" height="25" />
+</h3>
 
-<div align="center">This is cool README file!</div>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkles.png" alt="Sparkles" width="25" height="25" />
+  Web app to generate stunning READMEs with ease
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Activities/Sparkles.png" alt="Sparkles" width="25" height="25" />
+</div>
 
 <div align="center">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg?labelColor=003694&color=ffffff" alt="License">
@@ -45,7 +53,6 @@ Try using the live web app on [readme-forge.github.io](https://readme-forge.gith
 
 <img src="/src/assets/images/forge-preview/dark.jpg" alt="Demo of Readme Forge" align="center" />
 
-
 ## Features ✨
 
 - **Component-Based README Generator**: Build your README.md files effortlessly by piecing together pre-designed components.
@@ -67,15 +74,15 @@ Try using the live web app on [readme-forge.github.io](https://readme-forge.gith
 
 ## Contributing 🤝
 
-Welcome Code Wizards & Witches! 🧙‍♂️🧙‍♀️
+Welcome Code Wizards & Witches! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Man%20Mage.png" alt="Man Mage" width="25" height="25" /><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People/Woman%20Mage.png" alt="Woman Mage" width="25" height="25" />
 
-Your contributions fuel this repo! 🔥
+Your contributions fuel this repo! <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Fire.png" alt="Fire" width="25" height="25" />
 
-_Let's show the power of Open-Source!_ 💪
+_Let's show the power of Open-Source!_ <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Flexed%20Biceps.png" alt="Muscles" width="25" height="25" />
 
 <details>
-    <summary>Why are open-source developers the sweetest folks in tech? 🍭</summary>
-    <p> Because they believe in sharing not only code but also <i>smiles</i> 😁 and <i>love</i> 💓 through 1s and 0s!</p>
+    <summary>Why are open-source developers the sweetest folks in tech? <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Food/Lollipop.png" alt="Lollipop" width="25" height="25" /></summary>
+    <p> Because they believe in sharing not only code but also <i>smiles <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Face%20with%20Hand%20Over%20Mouth.png" alt="Laugh" width="25" height="25" /></i> and <i>love <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Beating%20Heart.png" alt="Beating Heart" width="25" height="25" /></i> through 1s and 0s!</p>
 </details>
 
 See [`CONTRIBUTING.md`](https://github.com/SenaThenu/readme-forge/blob/main/CONTRIBUTING.md) to get started.
